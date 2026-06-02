@@ -1,0 +1,122 @@
+{
+  "app": {
+    "name": "SentinelOps",
+    "title": "Centre d'opérations tactique",
+    "tagline": "Système de veille stratégique"
+  },
+  "status": {
+    "system": "État du système",
+    "nominal": "NOMINAL",
+    "degraded": "DÉGRADÉ",
+    "critical": "CRITIQUE",
+    "offline": "HORS LIGNE",
+    "online": "EN LIGNE",
+    "sync": "Synchronisation",
+    "lastSync": "Dernière synchronisation",
+    "officer": "Officier de Garde",
+    "sector": "Secteur Alpha • SentinelOps"
+  },
+  "dashboard": {
+    "command": "Centre de commandement",
+    "analytics": "Centre d'analyse",
+    "field": "Terrain",
+    "intel": "Renseignements au sol",
+    "activeUnits": "Unités actives",
+    "fusionScore": "Score de fusion",
+    "tempo": "Statut tempo",
+    "uptime": "Disponibilité"
+  },
+  "map": {
+    "title": "Carte tactique",
+    "hotspots": "Points chauds",
+    "legend": "Légende",
+    "critical": "Critique",
+    "high": "Élevé",
+    "medium": "Modéré",
+    "low": "Faible",
+    "coordinates": "Coordonnées",
+    "search": "Rechercher une zone"
+  },
+  "alerts": {
+    "title": "Alertes critiques",
+    "critical": "CRITIQUE",
+    "urgent": "URGENT",
+    "moderate": "MODÉRÉ",
+    "info": "INFORMATION",
+    "zone": "Zone",
+    "action": "Action requise",
+    "noAlerts": "Aucune alerte critique",
+    "timestamp": "Il y a"
+  },
+  "filters": {
+    "title": "Filtres tactiques",
+    "global": "Vue globale",
+    "fires": "Incendies",
+    "floods": "Inondations",
+    "earthquakes": "Tremblements",
+    "conflicts": "Conflits",
+    "infrastructure": "Infrastructures",
+    "reset": "Réinitialiser"
+  },
+  "simulator": {
+    "title": "Simulateur stratégique",
+    "propagation": "Propagation estimée",
+    "speed": "km/h",
+    "direction": "Direction",
+    "risk": "Risque",
+    "worstCase": "Le pire des cas",
+    "stability": "Stabilité"
+  },
+  "ast": {
+    "title": "Conseiller stratégique tactique",
+    "analysis": "Analyse en cours",
+    "recommendation": "Recommandation",
+    "details": "Détails"
+  },
+  "export": {
+    "title": "Exporter le rapport",
+    "pdf": "Export PDF",
+    "csv": "Export CSV",
+    "geojson": "Export GeoJSON",
+    "options": "Options d'export",
+    "orientation": "Orientation",
+    "portrait": "Portrait",
+    "landscape": "Paysage",
+    "quality": "Qualité",
+    "include": "Inclure",
+    "timestamp": "Horodatage",
+    "footer": "Pied de page"
+  },
+  "offline": {
+    "title": "Mode hors ligne actif",
+    "message": "Les rapports seront sauvegardés localement",
+    "sync": "Rapports en attente",
+    "syncNow": "Synchroniser maintenant"
+  },
+  "buttons": {
+    "submit": "Transmettre",
+    "cancel": "Annuler",
+    "save": "Sauvegarder",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "refresh": "Rafraîchir",
+    "export": "Exporter",
+    "print": "Imprimer"
+  },
+  "errors": {
+    "generic": "Une erreur est survenue",
+    "network": "Erreur réseau",
+    "offline": "Vous êtes hors ligne",
+    "notFound": "Page non trouvée",
+    "unauthorized": "Accès non autorisé"
+  },
+  "time": {
+    "now": "À l'instant",
+    "minute": "minute",
+    "minutes": "minutes",
+    "hour": "heure",
+    "hours": "heures",
+    "day": "jour",
+    "days": "jours"
+  }
+}

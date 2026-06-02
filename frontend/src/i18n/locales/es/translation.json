@@ -1,0 +1,120 @@
+{
+  "app": {
+    "name": "SentinelOps",
+    "title": "Centro de Comando Unificado",
+    "tagline": "Sistema de Respuesta a Crisis"
+  },
+  "status": {
+    "system": "Estado del Sistema",
+    "nominal": "NOMINAL",
+    "degraded": "DEGRADADO",
+    "critical": "CRÍTICO",
+    "offline": "FUERA DE LÍNEA",
+    "online": "EN LÍNEA",
+    "sync": "Sincronización",
+    "lastSync": "Última sincronización"
+  },
+  "dashboard": {
+    "command": "Centro de Comando",
+    "analytics": "Centro de Análisis",
+    "field": "Operaciones de Campo",
+    "intel": "Inteligencia Terrestre",
+    "activeUnits": "Unidades Activas",
+    "fusionScore": "Puntuación de Fusión",
+    "tempo": "Estado Tempo",
+    "uptime": "Tiempo Activo"
+  },
+  "map": {
+    "title": "Mapa Táctico",
+    "hotspots": "Puntos Calientes",
+    "legend": "Leyenda",
+    "critical": "Crítico",
+    "high": "Alto",
+    "medium": "Medio",
+    "low": "Bajo",
+    "coordinates": "Coordenadas",
+    "search": "Buscar área"
+  },
+  "alerts": {
+    "title": "Alertas Críticas",
+    "critical": "CRÍTICO",
+    "urgent": "URGENTE",
+    "moderate": "MODERADO",
+    "info": "INFORMACIÓN",
+    "zone": "Zona",
+    "action": "Acción requerida",
+    "noAlerts": "No hay alertas críticas",
+    "timestamp": "hace"
+  },
+  "filters": {
+    "title": "Filtros Tácticos",
+    "global": "Vista global",
+    "fires": "Incendios",
+    "floods": "Inundaciones",
+    "earthquakes": "Terremotos",
+    "conflicts": "Conflictos",
+    "infrastructure": "Infraestructuras",
+    "reset": "Restablecer"
+  },
+  "simulator": {
+    "title": "Simulador Estratégico",
+    "propagation": "Propagación estimada",
+    "speed": "km/h",
+    "direction": "Dirección",
+    "risk": "Riesgo",
+    "worstCase": "Peor caso",
+    "stability": "Estabilidad"
+  },
+  "ast": {
+    "title": "Asesor Estratégico Táctico",
+    "analysis": "Análisis en curso",
+    "recommendation": "Recomendación",
+    "details": "Detalles"
+  },
+  "export": {
+    "title": "Exportar Informe",
+    "pdf": "Exportar PDF",
+    "csv": "Exportar CSV",
+    "geojson": "Exportar GeoJSON",
+    "options": "Opciones de exportación",
+    "orientation": "Orientación",
+    "portrait": "Retrato",
+    "landscape": "Paisaje",
+    "quality": "Calidad",
+    "include": "Incluir",
+    "timestamp": "Marca de tiempo",
+    "footer": "Pie de página"
+  },
+  "offline": {
+    "title": "Modo fuera de línea activo",
+    "message": "Los informes se guardarán localmente",
+    "sync": "Informes pendientes",
+    "syncNow": "Sincronizar ahora"
+  },
+  "buttons": {
+    "submit": "Enviar",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "refresh": "Actualizar",
+    "export": "Exportar",
+    "print": "Imprimir"
+  },
+  "errors": {
+    "generic": "Ocurrió un error",
+    "network": "Error de red",
+    "offline": "Estás fuera de línea",
+    "notFound": "Página no encontrada",
+    "unauthorized": "Acceso no autorizado"
+  },
+  "time": {
+    "now": "Ahora mismo",
+    "minute": "minuto",
+    "minutes": "minutos",
+    "hour": "hora",
+    "hours": "horas",
+    "day": "día",
+    "days": "días"
+  }
+}

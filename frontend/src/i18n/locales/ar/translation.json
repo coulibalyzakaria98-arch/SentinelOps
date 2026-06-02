@@ -1,0 +1,120 @@
+{
+  "app": {
+    "name": "SentinelOps",
+    "title": "مركز القيادة الموحد",
+    "tagline": "نظام الاستجابة للأزمات"
+  },
+  "status": {
+    "system": "حالة النظام",
+    "nominal": "اسمي",
+    "degraded": "متدهور",
+    "critical": "حرج",
+    "offline": "غير متصل",
+    "online": "متصل",
+    "sync": "مزامنة",
+    "lastSync": "آخر مزامنة"
+  },
+  "dashboard": {
+    "command": "مركز القيادة",
+    "analytics": "مركز التحليلات",
+    "field": "عمليات ميدانية",
+    "intel": "معلومات ميدانية",
+    "activeUnits": "الوحدات النشطة",
+    "fusionScore": "درجة الدمج",
+    "tempo": "حالة الوقت",
+    "uptime": "وقت التشغيل"
+  },
+  "map": {
+    "title": "خريطة تكتيكية",
+    "hotspots": "نقاط ساخنة",
+    "legend": "مفتاح الخريطة",
+    "critical": "حرج",
+    "high": "مرتفع",
+    "medium": "متوسط",
+    "low": "منخفض",
+    "coordinates": "إحداثيات",
+    "search": "البحث عن منطقة"
+  },
+  "alerts": {
+    "title": "تنبيهات حرجة",
+    "critical": "حرج",
+    "urgent": "عاجل",
+    "moderate": "متوسط",
+    "info": "معلومة",
+    "zone": "منطقة",
+    "action": "الإجراء المطلوب",
+    "noAlerts": "لا توجد تنبيهات حرجة",
+    "timestamp": "منذ"
+  },
+  "filters": {
+    "title": "مرشحات تكتيكية",
+    "global": "عرض عام",
+    "fires": "حرائق",
+    "floods": "فيضانات",
+    "earthquakes": "زلازل",
+    "conflicts": "نزاعات",
+    "infrastructure": "بنية تحتية",
+    "reset": "إعادة تعيين"
+  },
+  "simulator": {
+    "title": "محاكي استراتيجي",
+    "propagation": "انتشار تقديري",
+    "speed": "كم/ساعة",
+    "direction": "اتجاه",
+    "risk": "خطر",
+    "worstCase": "أسوأ سيناريو",
+    "stability": "استقرار"
+  },
+  "ast": {
+    "title": "مستشار استراتيجي تكتيكي",
+    "analysis": "تحليل قيد التقدم",
+    "recommendation": "توصية",
+    "details": "تفاصيل"
+  },
+  "export": {
+    "title": "تصدير التقرير",
+    "pdf": "تصدير PDF",
+    "csv": "تصدير CSV",
+    "geojson": "تصدير GeoJSON",
+    "options": "خيارات التصدير",
+    "orientation": "اتجاه",
+    "portrait": "عمودي",
+    "landscape": "أفقي",
+    "quality": "جودة",
+    "include": "تضمين",
+    "timestamp": "ختم زمني",
+    "footer": "تذييل"
+  },
+  "offline": {
+    "title": "وضع عدم الاتصال نشط",
+    "message": "سيتم حفظ التقارير محليًا",
+    "sync": "تقارير معلقة",
+    "syncNow": "مزامنة الآن"
+  },
+  "buttons": {
+    "submit": "إرسال",
+    "cancel": "إلغاء",
+    "save": "حفظ",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "refresh": "تحديث",
+    "export": "تصدير",
+    "print": "طباعة"
+  },
+  "errors": {
+    "generic": "حدث خطأ",
+    "network": "خطأ في الشبكة",
+    "offline": "أنت غير متصل بالإنترنت",
+    "notFound": "الصفحة غير موجودة",
+    "unauthorized": "ليس لديك الإذن بالوصول"
+  },
+  "time": {
+    "now": "الآن",
+    "minute": "دقيقة",
+    "minutes": "دقائق",
+    "hour": "ساعة",
+    "hours": "ساعات",
+    "day": "يوم",
+    "days": "أيام"
+  }
+}

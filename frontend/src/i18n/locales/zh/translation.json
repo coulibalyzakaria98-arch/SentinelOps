@@ -1,0 +1,120 @@
+{
+  "app": {
+    "name": "SentinelOps",
+    "title": "统一指挥中心",
+    "tagline": "危机响应系统"
+  },
+  "status": {
+    "system": "系统状态",
+    "nominal": "正常",
+    "degraded": "降级",
+    "critical": "关键",
+    "offline": "离线",
+    "online": "在线",
+    "sync": "同步",
+    "lastSync": "最后同步"
+  },
+  "dashboard": {
+    "command": "指挥中心",
+    "analytics": "分析中心",
+    "field": "现场行动",
+    "intel": "地面情报",
+    "activeUnits": "活跃单位",
+    "fusionScore": "融合评分",
+    "tempo": "节奏状态",
+    "uptime": "运行时间"
+  },
+  "map": {
+    "title": "战术地图",
+    "hotspots": "热点",
+    "legend": "图例",
+    "critical": "关键",
+    "high": "高",
+    "medium": "中",
+    "low": "低",
+    "coordinates": "坐标",
+    "search": "搜索区域"
+  },
+  "alerts": {
+    "title": "关键警报",
+    "critical": "关键",
+    "urgent": "紧急",
+    "moderate": "中等",
+    "info": "信息",
+    "zone": "区域",
+    "action": "需要行动",
+    "noAlerts": "无关键警报",
+    "timestamp": "前"
+  },
+  "filters": {
+    "title": "战术筛选",
+    "global": "全局视图",
+    "fires": "火灾",
+    "floods": "洪水",
+    "earthquakes": "地震",
+    "conflicts": "冲突",
+    "infrastructure": "基础设施",
+    "reset": "重置"
+  },
+  "simulator": {
+    "title": "战略模拟器",
+    "propagation": "预计传播",
+    "speed": "公里/小时",
+    "direction": "方向",
+    "risk": "风险",
+    "worstCase": "最坏情况",
+    "stability": "稳定性"
+  },
+  "ast": {
+    "title": "战术战略顾问",
+    "analysis": "分析进行中",
+    "recommendation": "建议",
+    "details": "详情"
+  },
+  "export": {
+    "title": "导出报告",
+    "pdf": "导出 PDF",
+    "csv": "导出 CSV",
+    "geojson": "导出 GeoJSON",
+    "options": "导出选项",
+    "orientation": "方向",
+    "portrait": "纵向",
+    "landscape": "横向",
+    "quality": "质量",
+    "include": "包括",
+    "timestamp": "时间戳",
+    "footer": "页脚"
+  },
+  "offline": {
+    "title": "离线模式已激活",
+    "message": "报告将本地保存",
+    "sync": "待同步报告",
+    "syncNow": "立即同步"
+  },
+  "buttons": {
+    "submit": "提交",
+    "cancel": "取消",
+    "save": "保存",
+    "delete": "删除",
+    "edit": "编辑",
+    "refresh": "刷新",
+    "export": "导出",
+    "print": "打印"
+  },
+  "errors": {
+    "generic": "发生错误",
+    "network": "网络错误",
+    "offline": "您处于离线状态",
+    "notFound": "页面未找到",
+    "unauthorized": "未授权访问"
+  },
+  "time": {
+    "now": "刚刚",
+    "minute": "分钟",
+    "minutes": "分钟",
+    "hour": "小时",
+    "hours": "小时",
+    "day": "天",
+    "days": "天"
+  }
+}

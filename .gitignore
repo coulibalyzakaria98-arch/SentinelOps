@@ -1,0 +1,11 @@
+node_modules
+dist
+.env
+__pycache__
+*.pyc
+venv
+uploads
+.DS_Store
+postgres_data
+frontend/dist
+backend/uploads

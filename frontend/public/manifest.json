@@ -1,0 +1,16 @@
+{
+  "name": "SentinelOps",
+  "short_name": "SentinelOps",
+  "description": "Système de veille stratégique et de réponse aux crises",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#0A0F2A",
+  "background_color": "#0A0F2A",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
