@@ -17,6 +17,10 @@ import TacticalMap from './pages/TacticalMap';
 // Components
 import ErrorBoundary from './components/ErrorBoundary';
 import { syncService } from './services/syncService';
+import { config } from './config';
+
+console.log(`SentinelOps v${config.version} - ${config.isProduction ? 'PRODUCTION' : 'DEVELOPMENT'}`);
+console.log(`API URL: ${config.apiUrl}`);
 
 /**
  * ProtectedRoute - Checks if user is logged in
@@ -70,9 +74,12 @@ const AppRoutes = () => {
         }
       >
         <Route path="dashboard" element={<RoleDispatcher />} />
-        <Route path="map" element={<TacticalMap />} />
-        <Route path="intel" element={<Analyst />} />
+        <Route path="field" element={<FieldAgent />} />
+        <Route path="command" element={<CommandCenter />} />
         <Route path="analytics" element={<Analyst />} />
+        <Route path="intel" element={<Analyst />} />
+        <Route path="admin" element={<AdminPanel />} />
+        <Route path="map" element={<TacticalMap />} />
         <Route path="settings" element={<AdminPanel />} />
       </Route>
 

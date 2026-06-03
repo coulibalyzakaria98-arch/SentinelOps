@@ -38,6 +38,8 @@ const FieldAgent = () => {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   
+  const fileInputRef = useRef(null);
+  
   // États UI
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
@@ -65,7 +67,17 @@ const FieldAgent = () => {
       }, 100);
     } catch (err) {
       console.error("Camera error:", err);
-      alert("Accès caméra refusé. Vérifiez vos permissions.");
+      // Fallback au sélecteur de fichier si la caméra direct échoue
+      fileInputRef.current?.click();
+    }
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => setCapturedImage(e.target.result);
+      reader.readAsDataURL(file);
     }
   };
 
@@ -100,6 +112,7 @@ const FieldAgent = () => {
       description,
       damage_level: damageLevel,
       crisis_type: crisisType,
+      infrastructure_type: 'public', // Default for now
       latitude: position.lat,
       longitude: position.lng,
       timestamp: new Date().toISOString(),
@@ -114,20 +127,26 @@ const FieldAgent = () => {
         imageBlob = await res.blob();
       }
 
+      // Toujours sauvegarder offline d'abord pour garantir l'intégrité
       const result = await saveOffline(reportData, imageBlob);
       
       if (result.success) {
         setSubmitStatus({
           type: isOnline ? 'success' : 'offline',
-          message: isOnline ? "Transmis avec succès." : "Stocké localement."
+          message: isOnline ? "Rapport enregistré et en cours de synchronisation..." : "Rapport stocké localement (Mode Offline)."
         });
+        
+        // Reset form
         setTitle('');
         setDescription('');
         setCapturedImage(null);
+        if (fileInputRef.current) fileInputRef.current.value = '';
+        
         setTimeout(() => setSubmitStatus(null), 5000);
       }
     } catch (err) {
-      setSubmitStatus({ type: 'error', message: "Échec de l'envoi." });
+      console.error("Submit error:", err);
+      setSubmitStatus({ type: 'error', message: "Échec de l'enregistrement du rapport." });
     } finally {
       setIsSubmitting(false);
     }
@@ -257,10 +276,26 @@ const FieldAgent = () => {
               <Camera size={14} className="text-blue-500" /> Capture
             </h3>
             <div className="relative aspect-square rounded-3xl bg-[#0A0F2A] border border-white/5 overflow-hidden">
+               {/* Hidden input for native camera capture */}
+               <input 
+                 type="file" 
+                 ref={fileInputRef}
+                 onChange={handleFileChange}
+                 accept="image/*"
+                 capture="environment"
+                 className="hidden"
+               />
+               
                {!isCameraActive && !capturedImage && (
-                 <button onClick={startCamera} className="absolute inset-0 flex flex-col items-center justify-center gap-4">
-                    <Camera size={32} className="text-blue-500" />
-                    <span className="text-[10px] font-black text-slate-500 uppercase">Activer Caméra</span>
+                 <button 
+                   type="button"
+                   onClick={startCamera} 
+                   className="absolute inset-0 flex flex-col items-center justify-center gap-4 group"
+                 >
+                    <div className="w-16 h-16 rounded-full bg-blue-600/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <Camera size={32} className="text-blue-500" />
+                    </div>
+                    <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Activer Caméra</span>
                  </button>
                )}
                {isCameraActive && (

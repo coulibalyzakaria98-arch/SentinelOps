@@ -1,27 +1,24 @@
-import { offlineStorage } from './offlineStorage';
-import { reportApi } from './api';
+import { syncManager } from './syncManager';
 
 export const syncService = {
   isSyncing: false,
   statusListeners: [],
 
   subscribe(callback) {
-    this.statusListeners.push(callback);
-    return () => {
-      this.statusListeners = this.statusListeners.filter(l => l !== callback);
-    };
-  },
-
-  notify(status) {
-    this.statusListeners.forEach(l => l(status));
+    return syncManager.onSync(callback);
   },
 
   async syncPendingReports() {
-    // 🛠️ [Prototype Mode] Sync disabled
-    return;
+    return await syncManager.syncAll();
   },
 
   startAutoSyncListener() {
-    // 🛠️ [Prototype Mode] Auto-sync listener disabled
+    console.log('[SyncService] Auto-sync listener started');
+    syncManager.checkAndSync();
+    
+    // Check every 2 minutes
+    setInterval(() => {
+      syncManager.checkAndSync();
+    }, 120000);
   }
 };

@@ -5,7 +5,11 @@ from .api.v1 import reports, stats, health, export, sms, intelligence
 from .config import settings
 from .core.ws import manager
 
-app = FastAPI(title="SentinelOps Map API")
+app = FastAPI(
+    title="SentinelOps API",
+    description="API pour le système de veille stratégique",
+    version="1.0.0"
+)
 
 # Store manager in app state for access in routes
 app.state.manager = manager
@@ -20,20 +24,29 @@ async def websocket_endpoint(websocket: WebSocket):
         manager.disconnect(websocket)
 
 
-# CORS
+# Configuration CORS pour production
+origins = [
+    "http://localhost:5173",
+    "http://localhost:8080",
+    "https://sentinelops.vercel.app",
+    "https://sentinelops-git-main.vercel.app",
+    "*.vercel.app",
+    "https://sentinelops.netlify.app",
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
 # Routes
-app.include_router(health.router, prefix="/api/v1/health", tags=["Health"])
-app.include_router(reports.router, prefix="/api/v1/reports", tags=["Reports"])
-app.include_router(stats.router, prefix="/api/v1/stats", tags=["Stats"])
-app.include_router(export.router, prefix="/api/v1/export", tags=["Export"])
+app.include_router(health.router, prefix="/api/v1/health", tags=["health"])
+app.include_router(reports.router, prefix="/api/v1/reports", tags=["reports"])
+app.include_router(stats.router, prefix="/api/v1/stats", tags=["stats"])
+app.include_router(export.router, prefix="/api/v1/export", tags=["export"])
 app.include_router(sms.router, prefix="/api/v1/gateway", tags=["Gateway"])
 app.include_router(intelligence.router, prefix="/api/v1/intelligence", tags=["Intelligence"])
 
@@ -41,6 +54,10 @@ app.include_router(intelligence.router, prefix="/api/v1/intelligence", tags=["In
 @app.get("/api/v1/schema")
 def get_form_schema():
     return settings.FORM_SCHEMA
+
+@app.get("/")
+async def root():
+    return {"message": "SentinelOps API", "version": "1.0.0", "status": "operational"}
 
 if __name__ == "__main__":
     import uvicorn
