@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import KPICard from '../components/common/KPICard';
+import KPICard from '../components/common/KPICard.jsx';
 import { useAuth } from '../contexts/AuthContext';
 import { useOffline } from '../contexts/OfflineContext';
 import { CrisisMap } from '../components/command/CrisisMap';

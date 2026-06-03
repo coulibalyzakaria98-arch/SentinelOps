@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import KPICard from '../components/common/KPICard';
+import React, { useState, useEffect } from 'react';
+import KPICard from '../components/common/KPICard.jsx';
 import OfflineBanner from '../components/offline/OfflineBanner';
 import { useAuth } from '../contexts/AuthContext';
 import { useOffline } from '../contexts/OfflineContext';

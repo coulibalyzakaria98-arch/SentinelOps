@@ -1,56 +1,29 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { Camera, MapPin, Send, AlertTriangle, Wifi, WifiOff, CheckCircle, RotateCw, Clock, Activity, FileText } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { useOffline } from '../contexts/OfflineContext';
 import { useGeolocation } from '../hooks/useGeolocation';
-import KPICard from '../components/common/KPICard';
-import { 
-  Camera, 
-  MapPin, 
-  Send, 
-  AlertTriangle, 
-  CheckCircle2, 
-  Wifi, 
-  WifiOff,
-  Battery,
-  Navigation,
-  FileText,
-  Activity,
-  X,
-  RotateCw, // Remplacé RefreshCw par RotateCw pour éviter le crash DOM
-  Clock
-} from 'lucide-react';
 
 const FieldAgent = () => {
   const { user } = useAuth();
   const { isOnline, pendingCount, saveOffline } = useOffline();
-  const { position, accuracy, error: locationError, isUsingDefault, refresh: refreshGPS } = useGeolocation();
+  const { position, accuracy, error: locationError, refresh: refreshGPS } = useGeolocation();
   
-  // États du formulaire
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [damageLevel, setDamageLevel] = useState('partial');
   const [crisisType, setCrisisType] = useState('flood');
-  
-  // États caméra
-  const [stream, setStream] = useState(null);
-  const [capturedImage, setCapturedImage] = useState(null);
-  const [isCameraActive, setIsCameraActive] = useState(false);
-  const videoRef = useRef(null);
-  const canvasRef = useRef(null);
-  
-  const fileInputRef = useRef(null);
-  
-  // États UI
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
-  const [batteryLevel, setBatteryLevel] = useState(85);
+  const [capturedImage, setCapturedImage] = useState(null);
+  
+  const videoRef = useRef(null);
+  const canvasRef = useRef(null);
+  const [stream, setStream] = useState(null);
+  const [isCameraActive, setIsCameraActive] = useState(false);
 
   useEffect(() => {
-    const batteryInterval = setInterval(() => {
-      setBatteryLevel(prev => Math.max(5, prev - Math.random() * 0.2));
-    }, 60000);
     return () => {
-      clearInterval(batteryInterval);
       if (stream) stream.getTracks().forEach(track => track.stop());
     };
   }, [stream]);
@@ -65,54 +38,44 @@ const FieldAgent = () => {
       setTimeout(() => {
         if (videoRef.current) videoRef.current.srcObject = mediaStream;
       }, 100);
-    } catch (err) {
-      console.error("Camera error:", err);
-      // Fallback au sélecteur de fichier si la caméra direct échoue
-      fileInputRef.current?.click();
-    }
-  };
-
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => setCapturedImage(e.target.result);
-      reader.readAsDataURL(file);
+    } catch (error) {
+      console.error('Camera error:', error);
+      alert('Impossible d\'accéder à la caméra. Vérifiez les permissions.');
     }
   };
 
   const capturePhoto = () => {
+    if (!videoRef.current) return;
     const canvas = canvasRef.current;
     const video = videoRef.current;
-    if (!video || !canvas) return;
-
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
-    canvas.getContext('2d').drawImage(video, 0, 0);
-    
-    const dataUrl = canvas.toDataURL('image/jpeg', 0.8);
-    setCapturedImage(dataUrl);
-    
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    const imageData = canvas.toDataURL('image/jpeg', 0.8);
+    setCapturedImage(imageData);
     if (stream) {
-      stream.getTracks().forEach(t => t.stop());
+      stream.getTracks().forEach(track => track.stop());
       setStream(null);
+      setIsCameraActive(false);
     }
-    setIsCameraActive(false);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!title || !position) return;
-
+    if (!title || !position) {
+      setSubmitStatus({ type: 'error', message: 'Titre et position requis' });
+      return;
+    }
+    
     setIsSubmitting(true);
     setSubmitStatus(null);
-
+    
     const reportData = {
       title,
       description,
       damage_level: damageLevel,
       crisis_type: crisisType,
-      infrastructure_type: 'public', // Default for now
       latitude: position.lat,
       longitude: position.lng,
       timestamp: new Date().toISOString(),
@@ -127,206 +90,209 @@ const FieldAgent = () => {
         imageBlob = await res.blob();
       }
 
-      // Toujours sauvegarder offline d'abord pour garantir l'intégrité
       const result = await saveOffline(reportData, imageBlob);
       
       if (result.success) {
         setSubmitStatus({
           type: isOnline ? 'success' : 'offline',
-          message: isOnline ? "Rapport enregistré et en cours de synchronisation..." : "Rapport stocké localement (Mode Offline)."
+          message: isOnline ? 'Rapport envoyé avec succès !' : 'Rapport sauvegardé (Hors ligne)'
         });
-        
-        // Reset form
         setTitle('');
         setDescription('');
         setCapturedImage(null);
-        if (fileInputRef.current) fileInputRef.current.value = '';
-        
         setTimeout(() => setSubmitStatus(null), 5000);
       }
     } catch (err) {
-      console.error("Submit error:", err);
-      setSubmitStatus({ type: 'error', message: "Échec de l'enregistrement du rapport." });
+      setSubmitStatus({ type: 'error', message: "Échec de l'envoi." });
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="space-y-6 animate-fade-in">
-      {/* 📡 BARRE DE STATUT */}
-      <div className="flex flex-wrap items-center justify-between gap-4 glass-panel p-4 rounded-2xl border-white/10 shadow-xl">
-        <div className="flex items-center gap-6">
-          <div className="flex items-center gap-2">
-            {isOnline ? <Wifi className="text-emerald-500" size={16} /> : <WifiOff className="text-red-500" size={16} />}
-            <span className={`text-[10px] font-black uppercase tracking-widest ${isOnline ? 'text-emerald-400' : 'text-red-400'}`}>
-              {isOnline ? 'Liaison Active' : 'Mode Offline'}
-            </span>
+    <div className="min-h-screen bg-gradient-to-br from-[#0A0F2A] to-[#0F172A] text-white">
+      <header className="sticky top-0 z-20 bg-[#0A0F2A]/90 backdrop-blur border-b border-[#1F77D2]/30 px-4 py-3">
+        <div className="flex justify-between items-center">
+          <div>
+            <h1 className="text-xl font-bold">
+              Sentinel<span className="text-[#1F77D2]">Ops</span>
+              <span className="text-xs text-slate-400 ml-2 uppercase tracking-widest">Field</span>
+            </h1>
           </div>
-          <div className="flex items-center gap-2">
-            <Battery size={16} className={batteryLevel > 20 ? 'text-emerald-500' : 'text-red-500'} />
-            <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">{Math.round(batteryLevel)}%</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Navigation size={16} className={isUsingDefault ? 'text-amber-500' : 'text-emerald-500'} />
-            <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">
-              {isUsingDefault ? 'GPS Default' : `±${Math.round(accuracy || 0)}m`}
-            </span>
-          </div>
-        </div>
-        <div className="hidden sm:block text-[9px] font-black text-slate-600 uppercase tracking-[0.3em]">
-          RR-PROTO-FIELD-882
-        </div>
-      </div>
-
-      {/* 🚀 KPIS RAPIDES */}
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <KPICard title="Queue" value={pendingCount.toString()} subtitle="En attente" icon={<Clock size={20} />} color={pendingCount > 0 ? "amber" : "emerald"} />
-        <KPICard title="ID Agent" value={user?.name?.split(' ')[0].toUpperCase() || 'AGENT'} subtitle="Secteur Alpha" icon={<Activity size={20} />} color="blue" />
-        <KPICard title="Position" value={`${position.lat.toFixed(2)} / ${position.lng.toFixed(2)}`} subtitle="Tactique" icon={<MapPin size={20} />} color="accent" />
-        <KPICard title="Rapports" value="03" subtitle="24h" icon={<FileText size={20} />} color="emerald" />
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* 📝 FORMULAIRE */}
-        <div className="lg:col-span-2">
-          <div className="glass-panel p-8 rounded-[2rem] border-white/10 shadow-2xl relative overflow-hidden">
-             <div className="relative z-10">
-                <div className="flex items-center gap-4 mb-8">
-                  <div className="p-4 rounded-2xl bg-blue-600/20 text-blue-400 border border-blue-500/20">
-                    <Send size={24} />
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-black text-white uppercase tracking-tighter">Nouveau Rapport</h3>
-                    <p className="text-xs font-bold text-slate-500 uppercase tracking-widest mt-1">Intelligence Terrain</p>
-                  </div>
-                </div>
-
-                {submitStatus && (
-                  <div className={`mb-6 p-4 rounded-2xl flex items-center gap-3 ${
-                    submitStatus.type === 'success' ? 'bg-emerald-500/10 text-emerald-400' : 'bg-amber-500/10 text-amber-400'
-                  }`}>
-                    <CheckCircle2 size={20} />
-                    <span className="text-xs font-black uppercase tracking-widest">{submitStatus.message}</span>
-                  </div>
-                )}
-
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <input 
-                      type="text" 
-                      value={title}
-                      onChange={(e) => setTitle(e.target.value)}
-                      placeholder="Titre de l'incident" 
-                      className="w-full bg-[#0A0F2A]/60 border border-white/10 rounded-2xl px-6 py-4 text-white font-bold text-sm"
-                      required
-                    />
-                    <select 
-                      value={crisisType}
-                      onChange={(e) => setCrisisType(e.target.value)}
-                      className="w-full bg-[#0A0F2A]/60 border border-white/10 rounded-2xl px-6 py-4 text-white font-bold text-sm"
-                    >
-                      <option value="flood">Inondation 🌊</option>
-                      <option value="fire">Incendie 🔥</option>
-                      <option value="earthquake">Séisme 🌋</option>
-                      <option value="conflict">Conflit ⚔️</option>
-                    </select>
-                  </div>
-
-                  <textarea 
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                    rows={3}
-                    placeholder="Description tactique..."
-                    className="w-full bg-[#0A0F2A]/60 border border-white/10 rounded-2xl px-6 py-4 text-white text-sm resize-none"
-                  />
-
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    {['minimal', 'partial', 'total'].map(level => (
-                      <button
-                        key={level}
-                        type="button"
-                        onClick={() => setDamageLevel(level)}
-                        className={`p-4 rounded-2xl border transition-all ${
-                          damageLevel === level ? 'bg-blue-600 text-white' : 'bg-white/5 border-white/10 text-slate-400'
-                        }`}
-                      >
-                        <span className="text-[10px] font-black uppercase tracking-widest">{level}</span>
-                      </button>
-                    ))}
-                  </div>
-
-                  <button 
-                    type="submit"
-                    disabled={isSubmitting || !title}
-                    className="w-full py-5 bg-blue-600 hover:bg-blue-500 text-white rounded-2xl font-black uppercase tracking-[0.3em] shadow-xl disabled:opacity-50 flex items-center justify-center gap-3"
-                  >
-                    {isSubmitting ? <RotateCw className="animate-spin" size={20} /> : <Send size={20} />}
-                    {isOnline ? "Transmettre" : "Sauvegarder"}
-                  </button>
-                </form>
-             </div>
-          </div>
-        </div>
-
-        {/* 📸 CAMERA & GPS */}
-        <div className="space-y-6">
-          <div className="glass-panel p-6 rounded-[2rem] border-white/10 shadow-xl">
-            <h3 className="text-[10px] font-black text-white uppercase tracking-widest mb-6 flex items-center gap-2">
-              <Camera size={14} className="text-blue-500" /> Capture
-            </h3>
-            <div className="relative aspect-square rounded-3xl bg-[#0A0F2A] border border-white/5 overflow-hidden">
-               {/* Hidden input for native camera capture */}
-               <input 
-                 type="file" 
-                 ref={fileInputRef}
-                 onChange={handleFileChange}
-                 accept="image/*"
-                 capture="environment"
-                 className="hidden"
-               />
-               
-               {!isCameraActive && !capturedImage && (
-                 <button 
-                   type="button"
-                   onClick={startCamera} 
-                   className="absolute inset-0 flex flex-col items-center justify-center gap-4 group"
-                 >
-                    <div className="w-16 h-16 rounded-full bg-blue-600/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <Camera size={32} className="text-blue-500" />
-                    </div>
-                    <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Activer Caméra</span>
-                 </button>
-               )}
-               {isCameraActive && (
-                 <div className="relative h-full">
-                   <video ref={videoRef} autoPlay playsInline className="w-full h-full object-cover" />
-                   <button onClick={capturePhoto} className="absolute bottom-4 left-1/2 -translate-x-1/2 px-6 py-2 bg-white text-blue-900 rounded-xl font-black text-[10px] uppercase">Capturer</button>
-                 </div>
-               )}
-               {capturedImage && <img src={capturedImage} alt="Tactical" className="w-full h-full object-cover" />}
-            </div>
-            {capturedImage && (
-              <button onClick={() => setCapturedImage(null)} className="w-full mt-4 py-2 text-red-500 text-[10px] font-black uppercase">Supprimer la photo</button>
+          <div className="flex items-center gap-3">
+            {isOnline ? (
+              <div className="flex items-center gap-1 text-emerald-400">
+                <Wifi size={14} />
+                <span className="text-[10px] font-black uppercase tracking-widest">Online</span>
+              </div>
+            ) : (
+              <div className="flex items-center gap-1 text-amber-400">
+                <WifiOff size={14} />
+                <span className="text-[10px] font-black uppercase tracking-widest">Offline</span>
+              </div>
+            )}
+            {pendingCount > 0 && (
+              <div className="bg-amber-500 text-black px-2 py-0.5 rounded-full text-[10px] font-black">
+                {pendingCount}
+              </div>
             )}
           </div>
-
-          <div className="glass-panel p-6 rounded-[2rem] border-white/10 shadow-xl">
-             <div className="flex items-center justify-between mb-6">
-                <h3 className="text-[10px] font-black text-white uppercase tracking-widest flex items-center gap-2">
-                  <MapPin size={14} className="text-emerald-500" /> GPS
-                </h3>
-                <button onClick={refreshGPS} className="p-1 hover:bg-emerald-500/10 text-emerald-500 rounded-lg">
-                  <RotateCw size={14} />
-                </button>
-             </div>
-             <div className="space-y-2 text-xs font-mono">
-                <div className="flex justify-between text-slate-400"><span>Lat</span><span className="text-white">{position?.lat?.toFixed(6)}</span></div>
-                <div className="flex justify-between text-slate-400"><span>Lng</span><span className="text-white">{position?.lng?.toFixed(6)}</span></div>
-                {locationError && <p className="text-[8px] text-amber-500 mt-2 italic">{locationError}</p>}
-             </div>
-          </div>
         </div>
+      </header>
+
+      <main className="p-4 max-w-2xl mx-auto pb-32">
+        {submitStatus && (
+          <div className={`mb-6 p-4 rounded-2xl flex items-center gap-3 animate-fade-in ${
+            submitStatus.type === 'success' ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' :
+            submitStatus.type === 'offline' ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' :
+            'bg-red-500/20 text-red-400 border border-red-500/30'
+          }`}>
+            {submitStatus.type === 'success' && <CheckCircle size={20} />}
+            {submitStatus.type === 'offline' && <WifiOff size={20} />}
+            <span className="text-xs font-bold uppercase tracking-wide">{submitStatus.message}</span>
+          </div>
+        )}
+
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="glass-panel p-6 rounded-3xl border-white/10 bg-white/5 space-y-6">
+            <div>
+              <label className="block text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-2">
+                Titre Tactique
+              </label>
+              <input
+                type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                placeholder="Ex: Effondrement Secteur Alpha"
+                className="w-full bg-slate-900/50 border border-white/10 rounded-2xl px-5 py-4 text-white placeholder-slate-600 focus:outline-none focus:border-[#1F77D2] transition shadow-inner"
+                required
+              />
+            </div>
+
+            <div>
+              <label className="block text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-2">
+                Intelligence Terrain
+              </label>
+              <textarea
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                placeholder="Détails de l'incident..."
+                rows={3}
+                className="w-full bg-slate-900/50 border border-white/10 rounded-2xl px-5 py-4 text-white placeholder-slate-600 focus:outline-none focus:border-[#1F77D2] transition resize-none shadow-inner"
+              />
+            </div>
+
+            <div>
+              <label className="block text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-3">
+                Niveau de Gravité
+              </label>
+              <div className="flex gap-2">
+                {[
+                  { value: 'minimal', label: 'Minime', color: 'emerald' },
+                  { value: 'partial', label: 'Partiel', color: 'amber' },
+                  { value: 'total', label: 'Critique', color: 'red' }
+                ].map(level => (
+                  <button
+                    key={level.value}
+                    type="button"
+                    onClick={() => setDamageLevel(level.value)}
+                    className={`flex-1 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all ${
+                      damageLevel === level.value
+                        ? `bg-${level.color}-600 text-white shadow-lg`
+                        : 'bg-white/5 text-slate-500 hover:bg-white/10'
+                    }`}
+                  >
+                    {level.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-3">
+                Classification
+              </label>
+              <select
+                value={crisisType}
+                onChange={(e) => setCrisisType(e.target.value)}
+                className="w-full bg-slate-900/50 border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-[#1F77D2] transition appearance-none"
+              >
+                <option value="flood">🌊 Inondation</option>
+                <option value="fire">🔥 Incendie</option>
+                <option value="earthquake">🌋 Séisme</option>
+                <option value="cyclone">🌀 Cyclone</option>
+                <option value="conflict">⚔️ Conflit</option>
+              </select>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4">
+            <div className="glass-panel p-5 rounded-3xl border-white/10 bg-white/5">
+              <div className="flex justify-between items-center mb-3">
+                <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest flex items-center gap-1">
+                  <MapPin size={12} /> GPS
+                </label>
+                <button type="button" onClick={refreshGPS} className="text-[#1F77D2]"><RotateCw size={12} /></button>
+              </div>
+              {position ? (
+                <div className="text-[11px] font-mono font-bold">
+                  <p className="text-white">{position.lat.toFixed(5)}</p>
+                  <p className="text-white">{position.lng.toFixed(5)}</p>
+                  <p className="text-[9px] text-emerald-500 mt-1 uppercase">±{Math.round(accuracy || 0)}m</p>
+                </div>
+              ) : (
+                <p className="text-[10px] text-amber-500 font-bold uppercase animate-pulse">Fixing GPS...</p>
+              )}
+            </div>
+
+            <div className="glass-panel p-5 rounded-3xl border-white/10 bg-white/5 flex flex-col items-center justify-center">
+               {!isCameraActive && !capturedImage ? (
+                 <button type="button" onClick={startCamera} className="flex flex-col items-center gap-2">
+                    <Camera size={24} className="text-[#1F77D2]" />
+                    <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Photo</span>
+                 </button>
+               ) : capturedImage ? (
+                 <div className="relative w-full h-full min-h-[60px]">
+                    <img src={capturedImage} alt="Preview" className="w-full h-full object-cover rounded-xl" />
+                    <button onClick={() => setCapturedImage(null)} className="absolute -top-2 -right-2 bg-red-600 rounded-full p-1"><AlertTriangle size={10} /></button>
+                 </div>
+               ) : (
+                 <button onClick={capturePhoto} className="w-12 h-12 rounded-full border-4 border-white/20 flex items-center justify-center">
+                    <div className="w-8 h-8 rounded-full bg-white animate-pulse" />
+                 </button>
+               )}
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            disabled={isSubmitting || !title || !position}
+            className="w-full py-5 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl font-black text-white text-sm uppercase tracking-[0.3em] shadow-2xl shadow-blue-500/20 disabled:opacity-50 transition-all active:scale-95 flex items-center justify-center gap-3"
+          >
+            {isSubmitting ? <RotateCw className="animate-spin" size={20} /> : <Send size={20} />}
+            {isOnline ? 'Transmettre' : 'Sauvegarder'}
+          </button>
+        </form>
+
+        <canvas ref={canvasRef} className="hidden" />
+      </main>
+
+      {/* 🚨 SOS EMERGENCY BAR */}
+      <div className="fixed bottom-0 left-0 right-0 p-4 bg-[#0A0F2A]/95 backdrop-blur-xl border-t border-white/5 pb-8">
+        <button
+          type="button"
+          className="w-full py-4 bg-red-600 hover:bg-red-500 rounded-2xl flex items-center justify-center gap-3 text-white font-black uppercase tracking-[0.3em] shadow-lg shadow-red-600/20 transition-all active:scale-95"
+          onClick={() => {
+            if (confirm("Lancer l'alerte SOS immédiate ?")) {
+               setTitle('[URGENT] ALERTE SOS AGENT');
+               setDamageLevel('total');
+               handleSubmit(new Event('submit'));
+            }
+          }}
+        >
+          <AlertTriangle size={20} className="animate-pulse" />
+          SIGNAL SOS
+        </button>
       </div>
     </div>
   );
