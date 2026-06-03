@@ -70,8 +70,7 @@ const AppRoutes = () => {
     <Routes>
       {/* AUTH: Landing Page as Login */}
       <Route path="/login" element={<LandingPage />} />
-      <Route path="/" element={<Navigate to="/login" replace />} />
-
+      
       {/* APP: Main Dashboard Area */}
       <Route 
         path="/" 
@@ -81,6 +80,8 @@ const AppRoutes = () => {
           </ProtectedRoute>
         }
       >
+        {/* Default route redirects to RoleDispatcher */}
+        <Route index element={<RoleDispatcher />} />
         <Route path="dashboard" element={<RoleDispatcher />} />
         
         {/* Role-specific routes */}
