@@ -30,17 +30,44 @@ const FieldAgent = () => {
 
   const startCamera = async () => {
     try {
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        alert("Votre navigateur ne supporte pas l'accès à la caméra.");
+        return;
+      }
+
+      if (stream) {
+        stream.getTracks().forEach(track => track.stop());
+      }
+
       const mediaStream = await navigator.mediaDevices.getUserMedia({ 
-        video: { facingMode: 'environment' } 
+        video: { 
+          facingMode: 'environment',
+          width: { ideal: 1280 },
+          height: { ideal: 720 }
+        } 
       });
+      
       setStream(mediaStream);
       setIsCameraActive(true);
+      
+      // Delay to ensure video element is ready
       setTimeout(() => {
-        if (videoRef.current) videoRef.current.srcObject = mediaStream;
-      }, 100);
+        if (videoRef.current) {
+          videoRef.current.srcObject = mediaStream;
+          videoRef.current.onloadedmetadata = () => {
+            videoRef.current.play().catch(e => console.error("Video play failed:", e));
+          };
+        }
+      }, 300);
     } catch (error) {
       console.error('Camera error:', error);
-      alert('Impossible d\'accéder à la caméra. Vérifiez les permissions.');
+      if (error.name === 'NotAllowedError') {
+        alert("Accès caméra refusé. Veuillez autoriser la caméra dans les paramètres de votre navigateur.");
+      } else if (error.name === 'NotFoundError' || error.name === 'DevicesNotFoundError') {
+        alert("Aucune caméra n'a été détectée sur cet appareil.");
+      } else {
+        alert(`Erreur caméra: ${error.message}`);
+      }
     }
   };
 
