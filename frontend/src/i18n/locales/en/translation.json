@@ -1,0 +1,158 @@
+{
+  "app": {
+    "name": "SentinelOps",
+    "title": "Tactical Operations Center",
+    "field": "Field Operations"
+  },
+  "status": {
+    "system": "System Status",
+    "nominal": "NOMINAL",
+    "degraded": "DEGRADED",
+    "critical": "CRITICAL",
+    "online": "ONLINE",
+    "offline": "OFFLINE",
+    "sync": "Synchronization",
+    "lastSync": "Last sync",
+    "officer": "Duty Officer",
+    "sector": "Sector Alpha • SentinelOps"
+  },
+  "dashboard": {
+    "command": "Command Center",
+    "analytics": "Analytics Center",
+    "field": "Field",
+    "intel": "Ground Intelligence",
+    "activeUnits": "Active Units",
+    "fusionScore": "Fusion Score",
+    "tempo": "Tempo Status",
+    "uptime": "Uptime"
+  },
+  "buttons": {
+    "submit": "Submit",
+    "transmit": "TRANSMIT",
+    "camera": "Activate Camera",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "refresh": "Refresh",
+    "export": "Export",
+    "print": "Print",
+    "menu": "Menu"
+  },
+  "field": {
+    "title": "SentinelOps FIELD",
+    "severity": "DAMAGE LEVEL",
+    "minimal": "MINIMAL",
+    "partial": "PARTIAL",
+    "critical": "CRITICAL",
+    "classification": "CLASSIFICATION",
+    "flood": "Flood",
+    "fire": "Fire",
+    "earthquake": "Earthquake",
+    "cyclone": "Cyclone",
+    "conflict": "Conflict",
+    "gps": "GPS",
+    "intelligence": "FIELD INTELLIGENCE",
+    "incident_details": "Incident details",
+    "photo": "Field Photo",
+    "take_photo": "Take a photo",
+    "capture": "Capture",
+    "retake": "Retake",
+    "sos": "LAUNCH SOS ALERT",
+    "tactical_title": "Tactical Title",
+    "intel_terrain": "Field Intelligence",
+    "severity_level": "Severity Level",
+    "gps_fixing": "Fixing GPS...",
+    "success_msg": "Report sent successfully!",
+    "offline_msg": "Report saved (Offline)",
+    "placeholders": {
+      "title": "E.g.: Alpha Sector Collapse",
+      "intel": "Incident details..."
+    }
+  },
+  "map": {
+    "title": "Tactical Map",
+    "hotspots": "Hotspots",
+    "legend": "Legend",
+    "critical": "Critical",
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low",
+    "coordinates": "Coordinates",
+    "search": "Search area"
+  },
+  "alerts": {
+    "title": "Critical Alerts",
+    "critical": "CRITICAL",
+    "urgent": "URGENT",
+    "moderate": "MODERATE",
+    "info": "INFORMATION",
+    "zone": "Zone",
+    "action": "Action required",
+    "noAlerts": "No critical alerts",
+    "timestamp": "ago"
+  },
+  "filters": {
+    "title": "Tactical Filters",
+    "global": "Global view",
+    "fires": "Fires",
+    "floods": "Floods",
+    "earthquakes": "Earthquakes",
+    "conflicts": "Conflicts",
+    "infrastructure": "Infrastructure",
+    "reset": "Reset"
+  },
+  "simulator": {
+    "title": "Strategic Simulator",
+    "propagation": "Estimated propagation",
+    "speed": "km/h",
+    "direction": "Direction",
+    "risk": "Risk",
+    "worstCase": "Worst case",
+    "stability": "Stability"
+  },
+  "ast": {
+    "title": "Tactical Strategic Advisor",
+    "analysis": "Analysis in progress",
+    "recommendation": "Recommendation",
+    "details": "Details"
+  },
+  "export": {
+    "title": "Export Report",
+    "pdf": "PDF Export",
+    "csv": "CSV Export",
+    "geojson": "GeoJSON Export",
+    "options": "Export options",
+    "orientation": "Orientation",
+    "portrait": "Portrait",
+    "landscape": "Landscape",
+    "quality": "Quality",
+    "include": "Include",
+    "timestamp": "Timestamp",
+    "footer": "Footer"
+  },
+  "offline": {
+    "title": "Offline mode active",
+    "message": "Reports will be saved locally",
+    "sync": "Pending reports",
+    "syncNow": "Sync now"
+  },
+  "errors": {
+    "generic": "An error occurred",
+    "network": "Network error",
+    "offline": "You are offline",
+    "notFound": "Page not found",
+    "unauthorized": "Unauthorized access",
+    "camera_permission": "Camera permission denied",
+    "camera_not_found": "No camera found"
+  },
+  "time": {
+    "now": "Just now",
+    "minute": "minute",
+    "minutes": "minutes",
+    "hour": "hour",
+    "hours": "hours",
+    "day": "day",
+    "days": "days"
+  }
+}

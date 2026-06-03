@@ -2,15 +2,15 @@
   "app": {
     "name": "SentinelOps",
     "title": "Centre d'opérations tactique",
-    "tagline": "Système de veille stratégique"
+    "field": "Opérations terrain"
   },
   "status": {
     "system": "État du système",
     "nominal": "NOMINAL",
     "degraded": "DÉGRADÉ",
     "critical": "CRITIQUE",
-    "offline": "HORS LIGNE",
     "online": "EN LIGNE",
+    "offline": "HORS LIGNE",
     "sync": "Synchronisation",
     "lastSync": "Dernière synchronisation",
     "officer": "Officier de Garde",
@@ -25,6 +25,50 @@
     "fusionScore": "Score de fusion",
     "tempo": "Statut tempo",
     "uptime": "Disponibilité"
+  },
+  "buttons": {
+    "submit": "Transmettre",
+    "transmit": "TRANSMETTRE",
+    "camera": "Activer la caméra",
+    "cancel": "Annuler",
+    "save": "Sauvegarder",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "refresh": "Rafraîchir",
+    "export": "Exporter",
+    "print": "Imprimer",
+    "menu": "Menu"
+  },
+  "field": {
+    "title": "SentinelOps FIELD",
+    "severity": "NIVEAU DE GRAVITÉ",
+    "minimal": "MINIME",
+    "partial": "PARTIEL",
+    "critical": "CRITIQUE",
+    "classification": "CLASSIFICATION",
+    "flood": "Inondation",
+    "fire": "Incendie",
+    "earthquake": "Tremblement de terre",
+    "cyclone": "Cyclone",
+    "conflict": "Conflit",
+    "gps": "GPS",
+    "intelligence": "INTELLIGENCE TERRAIN",
+    "incident_details": "Détails de l'incident",
+    "photo": "Photo du terrain",
+    "take_photo": "Prendre une photo",
+    "capture": "Capturer",
+    "retake": "Reprendre",
+    "sos": "LANCER L'ALERTE SOS",
+    "tactical_title": "Titre Tactique",
+    "intel_terrain": "Intelligence Terrain",
+    "severity_level": "Niveau de Gravité",
+    "gps_fixing": "Localisation GPS...",
+    "success_msg": "Rapport envoyé avec succès !",
+    "offline_msg": "Rapport sauvegardé (Hors ligne)",
+    "placeholders": {
+      "title": "Ex: Effondrement Secteur Alpha",
+      "intel": "Détails de l'incident..."
+    }
   },
   "map": {
     "title": "Carte tactique",
@@ -93,22 +137,14 @@
     "sync": "Rapports en attente",
     "syncNow": "Synchroniser maintenant"
   },
-  "buttons": {
-    "submit": "Transmettre",
-    "cancel": "Annuler",
-    "save": "Sauvegarder",
-    "delete": "Supprimer",
-    "edit": "Modifier",
-    "refresh": "Rafraîchir",
-    "export": "Exporter",
-    "print": "Imprimer"
-  },
   "errors": {
     "generic": "Une erreur est survenue",
     "network": "Erreur réseau",
     "offline": "Vous êtes hors ligne",
     "notFound": "Page non trouvée",
-    "unauthorized": "Accès non autorisé"
+    "unauthorized": "Accès non autorisé",
+    "camera_permission": "Permission caméra refusée",
+    "camera_not_found": "Aucune caméra trouvée"
   },
   "time": {
     "now": "À l'instant",
