@@ -19,13 +19,14 @@ import ErrorBoundary from './components/ErrorBoundary';
 import { syncService } from './services/syncService';
 import { config } from './config';
 
-console.log(`SentinelOps v${config.version} - ${config.isProduction ? 'PRODUCTION' : 'DEVELOPMENT'}`);
-console.log(`API URL: ${config.apiUrl}`);
+// Log de démarrage
+console.log(`🚀 SentinelOps v${config.version} - ${config.isProduction ? 'PRODUCTION' : 'DEVELOPMENT'}`);
+console.log(`📡 API URL: ${config.apiUrl}`);
 
 /**
- * ProtectedRoute - Checks if user is logged in
+ * ProtectedRoute - Checks if user is logged in and has appropriate role
  */
-const ProtectedRoute = ({ children }) => {
+const ProtectedRoute = ({ children, allowedRoles }) => {
   const { user, loading } = useAuth();
   
   if (loading) return (
@@ -34,7 +35,14 @@ const ProtectedRoute = ({ children }) => {
     </div>
   );
   
-  return user ? children : <Navigate to="/login" replace />;
+  if (!user) return <Navigate to="/login" replace />;
+  
+  if (allowedRoles && !allowedRoles.includes(user.role)) {
+    // Redirect to their default dashboard if role not allowed for this specific route
+    return <Navigate to="/dashboard" replace />;
+  }
+  
+  return children;
 };
 
 /**
@@ -74,11 +82,38 @@ const AppRoutes = () => {
         }
       >
         <Route path="dashboard" element={<RoleDispatcher />} />
-        <Route path="field" element={<FieldAgent />} />
-        <Route path="command" element={<CommandCenter />} />
-        <Route path="analytics" element={<Analyst />} />
-        <Route path="intel" element={<Analyst />} />
-        <Route path="admin" element={<AdminPanel />} />
+        
+        {/* Role-specific routes */}
+        <Route path="field" element={
+          <ProtectedRoute allowedRoles={['field', 'command', 'admin']}>
+            <FieldAgent />
+          </ProtectedRoute>
+        } />
+        
+        <Route path="command" element={
+          <ProtectedRoute allowedRoles={['command', 'admin']}>
+            <CommandCenter />
+          </ProtectedRoute>
+        } />
+        
+        <Route path="analytics" element={
+          <ProtectedRoute allowedRoles={['analyst', 'command', 'admin']}>
+            <Analyst />
+          </ProtectedRoute>
+        } />
+
+        <Route path="intel" element={
+          <ProtectedRoute allowedRoles={['analyst', 'command', 'admin']}>
+            <Analyst />
+          </ProtectedRoute>
+        } />
+
+        <Route path="admin" element={
+          <ProtectedRoute allowedRoles={['admin']}>
+            <AdminPanel />
+          </ProtectedRoute>
+        } />
+
         <Route path="map" element={<TacticalMap />} />
         <Route path="settings" element={<AdminPanel />} />
       </Route>
