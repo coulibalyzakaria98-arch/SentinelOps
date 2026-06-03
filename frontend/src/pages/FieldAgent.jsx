@@ -1,10 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Camera, MapPin, Send, AlertTriangle, Wifi, WifiOff, CheckCircle, RotateCw, Clock, Activity, FileText } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../contexts/AuthContext';
 import { useOffline } from '../contexts/OfflineContext';
 import { useGeolocation } from '../hooks/useGeolocation';
 
 const FieldAgent = () => {
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
   const { user } = useAuth();
   const { isOnline, pendingCount, saveOffline } = useOffline();
   const { position, accuracy, error: locationError, refresh: refreshGPS } = useGeolocation();
@@ -23,15 +26,21 @@ const FieldAgent = () => {
   const [isCameraActive, setIsCameraActive] = useState(false);
 
   useEffect(() => {
+    // Set document direction for RTL support
+    document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
+    document.documentElement.lang = i18n.language;
+    
     return () => {
       if (stream) stream.getTracks().forEach(track => track.stop());
     };
-  }, [stream]);
+  }, [stream, isRTL, i18n.language]);
 
   const startCamera = async () => {
+    console.log("📸 [Camera] Attempting to start camera...");
     try {
       if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-        alert("Votre navigateur ne supporte pas l'accès à la caméra.");
+        console.error("❌ [Camera] getUserMedia not supported");
+        alert(t('errors.generic') + ": Camera API not supported");
         return;
       }
 
@@ -39,14 +48,22 @@ const FieldAgent = () => {
         stream.getTracks().forEach(track => track.stop());
       }
 
-      const mediaStream = await navigator.mediaDevices.getUserMedia({ 
-        video: { 
-          facingMode: 'environment',
-          width: { ideal: 1280 },
-          height: { ideal: 720 }
-        } 
-      });
+      let mediaStream;
+      try {
+        console.log("🎥 [Camera] Trying environment facing mode...");
+        mediaStream = await navigator.mediaDevices.getUserMedia({ 
+          video: { 
+            facingMode: 'environment',
+            width: { ideal: 1280 },
+            height: { ideal: 720 }
+          } 
+        });
+      } catch (err) {
+        console.warn("⚠️ [Camera] Environment mode failed, trying basic video...", err);
+        mediaStream = await navigator.mediaDevices.getUserMedia({ video: true });
+      }
       
+      console.log("✅ [Camera] Stream obtained:", mediaStream.id);
       setStream(mediaStream);
       setIsCameraActive(true);
       
@@ -55,18 +72,19 @@ const FieldAgent = () => {
         if (videoRef.current) {
           videoRef.current.srcObject = mediaStream;
           videoRef.current.onloadedmetadata = () => {
-            videoRef.current.play().catch(e => console.error("Video play failed:", e));
+            console.log("🎥 [Camera] Video metadata loaded, playing...");
+            videoRef.current.play().catch(e => console.error("❌ [Camera] Video play failed:", e));
           };
         }
       }, 300);
     } catch (error) {
-      console.error('Camera error:', error);
-      if (error.name === 'NotAllowedError') {
-        alert("Accès caméra refusé. Veuillez autoriser la caméra dans les paramètres de votre navigateur.");
+      console.error('❌ [Camera] Error:', error);
+      if (error.name === 'NotAllowedError' || error.name === 'PermissionDeniedError') {
+        alert(t('errors.unauthorized') + " (Camera). " + t('field.sos_confirm'));
       } else if (error.name === 'NotFoundError' || error.name === 'DevicesNotFoundError') {
-        alert("Aucune caméra n'a été détectée sur cet appareil.");
+        alert("No camera found on this device.");
       } else {
-        alert(`Erreur caméra: ${error.message}`);
+        alert(`Camera Error: ${error.message}`);
       }
     }
   };
@@ -91,7 +109,7 @@ const FieldAgent = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!title || !position) {
-      setSubmitStatus({ type: 'error', message: 'Titre et position requis' });
+      setSubmitStatus({ type: 'error', message: t('errors.generic') });
       return;
     }
     
@@ -122,7 +140,7 @@ const FieldAgent = () => {
       if (result.success) {
         setSubmitStatus({
           type: isOnline ? 'success' : 'offline',
-          message: isOnline ? 'Rapport envoyé avec succès !' : 'Rapport sauvegardé (Hors ligne)'
+          message: isOnline ? t('field.success_msg') : t('field.offline_msg')
         });
         setTitle('');
         setDescription('');
@@ -130,32 +148,32 @@ const FieldAgent = () => {
         setTimeout(() => setSubmitStatus(null), 5000);
       }
     } catch (err) {
-      setSubmitStatus({ type: 'error', message: "Échec de l'envoi." });
+      setSubmitStatus({ type: 'error', message: t('errors.network') });
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0A0F2A] to-[#0F172A] text-white">
+    <div className={`min-h-screen bg-gradient-to-br from-[#0A0F2A] to-[#0F172A] text-white ${isRTL ? 'font-arabic' : ''}`} dir={isRTL ? 'rtl' : 'ltr'}>
       <header className="sticky top-0 z-20 bg-[#0A0F2A]/90 backdrop-blur border-b border-[#1F77D2]/30 px-4 py-3">
         <div className="flex justify-between items-center">
-          <div>
+          <div className="flex items-center gap-2">
             <h1 className="text-xl font-bold">
               Sentinel<span className="text-[#1F77D2]">Ops</span>
-              <span className="text-xs text-slate-400 ml-2 uppercase tracking-widest">Field</span>
+              <span className="text-xs text-slate-400 mx-2 uppercase tracking-widest">{t('app.field')}</span>
             </h1>
           </div>
           <div className="flex items-center gap-3">
             {isOnline ? (
               <div className="flex items-center gap-1 text-emerald-400">
                 <Wifi size={14} />
-                <span className="text-[10px] font-black uppercase tracking-widest">Online</span>
+                <span className="text-[10px] font-black uppercase tracking-widest">{t('status.online')}</span>
               </div>
             ) : (
               <div className="flex items-center gap-1 text-amber-400">
                 <WifiOff size={14} />
-                <span className="text-[10px] font-black uppercase tracking-widest">Offline</span>
+                <span className="text-[10px] font-black uppercase tracking-widest">{t('status.offline')}</span>
               </div>
             )}
             {pendingCount > 0 && (
@@ -184,13 +202,13 @@ const FieldAgent = () => {
           <div className="glass-panel p-6 rounded-3xl border-white/10 bg-white/5 space-y-6">
             <div>
               <label className="block text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-2">
-                Titre Tactique
+                {t('field.tactical_title')}
               </label>
               <input
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                placeholder="Ex: Effondrement Secteur Alpha"
+                placeholder={t('field.placeholders.title')}
                 className="w-full bg-slate-900/50 border border-white/10 rounded-2xl px-5 py-4 text-white placeholder-slate-600 focus:outline-none focus:border-[#1F77D2] transition shadow-inner"
                 required
               />
@@ -198,12 +216,12 @@ const FieldAgent = () => {
 
             <div>
               <label className="block text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-2">
-                Intelligence Terrain
+                {t('field.intel_terrain')}
               </label>
               <textarea
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                placeholder="Détails de l'incident..."
+                placeholder={t('field.placeholders.intel')}
                 rows={3}
                 className="w-full bg-slate-900/50 border border-white/10 rounded-2xl px-5 py-4 text-white placeholder-slate-600 focus:outline-none focus:border-[#1F77D2] transition resize-none shadow-inner"
               />
@@ -211,13 +229,13 @@ const FieldAgent = () => {
 
             <div>
               <label className="block text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-3">
-                Niveau de Gravité
+                {t('field.severity_level')}
               </label>
               <div className="flex gap-2">
                 {[
-                  { value: 'minimal', label: 'Minime', color: 'emerald' },
-                  { value: 'partial', label: 'Partiel', color: 'amber' },
-                  { value: 'total', label: 'Critique', color: 'red' }
+                  { value: 'minimal', label: t('field.severity.minimal'), color: 'emerald' },
+                  { value: 'partial', label: t('field.severity.partial'), color: 'amber' },
+                  { value: 'total', label: t('field.severity.critical'), color: 'red' }
                 ].map(level => (
                   <button
                     key={level.value}
@@ -237,18 +255,18 @@ const FieldAgent = () => {
 
             <div>
               <label className="block text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-3">
-                Classification
+                {t('field.classification')}
               </label>
               <select
                 value={crisisType}
                 onChange={(e) => setCrisisType(e.target.value)}
                 className="w-full bg-slate-900/50 border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-[#1F77D2] transition appearance-none"
               >
-                <option value="flood">🌊 Inondation</option>
-                <option value="fire">🔥 Incendie</option>
-                <option value="earthquake">🌋 Séisme</option>
-                <option value="cyclone">🌀 Cyclone</option>
-                <option value="conflict">⚔️ Conflit</option>
+                <option value="flood">🌊 {t('field.types.flood')}</option>
+                <option value="fire">🔥 {t('field.types.fire')}</option>
+                <option value="earthquake">🌋 {t('field.types.earthquake')}</option>
+                <option value="cyclone">🌀 {t('field.types.cyclone')}</option>
+                <option value="conflict">⚔️ {t('field.types.conflict')}</option>
               </select>
             </div>
           </div>
@@ -263,12 +281,12 @@ const FieldAgent = () => {
               </div>
               {position ? (
                 <div className="text-[11px] font-mono font-bold">
-                  <p className="text-white">{position.lat.toFixed(5)}</p>
-                  <p className="text-white">{position.lng.toFixed(5)}</p>
+                  <p className="text-white" dir="ltr">{position.lat.toFixed(5)}</p>
+                  <p className="text-white" dir="ltr">{position.lng.toFixed(5)}</p>
                   <p className="text-[9px] text-emerald-500 mt-1 uppercase">±{Math.round(accuracy || 0)}m</p>
                 </div>
               ) : (
-                <p className="text-[10px] text-amber-500 font-bold uppercase animate-pulse">Fixing GPS...</p>
+                <p className="text-[10px] text-amber-500 font-bold uppercase animate-pulse">{t('field.gps_fixing')}</p>
               )}
             </div>
 
@@ -276,7 +294,7 @@ const FieldAgent = () => {
                {!isCameraActive && !capturedImage ? (
                  <button type="button" onClick={startCamera} className="flex flex-col items-center gap-2">
                     <Camera size={24} className="text-[#1F77D2]" />
-                    <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Photo</span>
+                    <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{t('field.photo')}</span>
                  </button>
                ) : capturedImage ? (
                  <div className="relative w-full h-full min-h-[60px]">
@@ -297,7 +315,7 @@ const FieldAgent = () => {
             className="w-full py-5 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl font-black text-white text-sm uppercase tracking-[0.3em] shadow-2xl shadow-blue-500/20 disabled:opacity-50 transition-all active:scale-95 flex items-center justify-center gap-3"
           >
             {isSubmitting ? <RotateCw className="animate-spin" size={20} /> : <Send size={20} />}
-            {isOnline ? 'Transmettre' : 'Sauvegarder'}
+            {isOnline ? t('field.transmit') : t('field.save')}
           </button>
         </form>
 
@@ -310,15 +328,15 @@ const FieldAgent = () => {
           type="button"
           className="w-full py-4 bg-red-600 hover:bg-red-500 rounded-2xl flex items-center justify-center gap-3 text-white font-black uppercase tracking-[0.3em] shadow-lg shadow-red-600/20 transition-all active:scale-95"
           onClick={() => {
-            if (confirm("Lancer l'alerte SOS immédiate ?")) {
-               setTitle('[URGENT] ALERTE SOS AGENT');
+            if (confirm(t('field.sos_confirm'))) {
+               setTitle(`[URGENT] ${t('field.sos_signal')}`);
                setDamageLevel('total');
                handleSubmit(new Event('submit'));
             }
           }}
         >
           <AlertTriangle size={20} className="animate-pulse" />
-          SIGNAL SOS
+          {t('field.sos_signal')}
         </button>
       </div>
     </div>
@@ -326,3 +344,4 @@ const FieldAgent = () => {
 };
 
 export default FieldAgent;
+
