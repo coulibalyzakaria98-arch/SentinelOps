@@ -2,7 +2,17 @@
   "app": {
     "name": "SentinelOps",
     "title": "Tactical Operations Center",
-    "field": "Field Operations"
+    "tagline": "Strategic Intelligence System"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "command": "Command Center",
+    "field": "Field",
+    "analytics": "Analytics",
+    "intelligence": "Intelligence",
+    "map": "Tactical Map",
+    "settings": "Settings",
+    "logout": "Logout"
   },
   "status": {
     "system": "System Status",
@@ -14,17 +24,10 @@
     "sync": "Synchronization",
     "lastSync": "Last sync",
     "officer": "Duty Officer",
-    "sector": "Sector Alpha • SentinelOps"
-  },
-  "dashboard": {
-    "command": "Command Center",
-    "analytics": "Analytics Center",
-    "field": "Field",
-    "intel": "Ground Intelligence",
-    "activeUnits": "Active Units",
-    "fusionScore": "Fusion Score",
-    "tempo": "Tempo Status",
-    "uptime": "Uptime"
+    "sector": "Sector Alpha • SentinelOps",
+    "dataLink": "Data Link",
+    "stable": "Stable",
+    "active": "Active"
   },
   "buttons": {
     "submit": "Submit",
@@ -37,7 +40,11 @@
     "refresh": "Refresh",
     "export": "Export",
     "print": "Print",
-    "menu": "Menu"
+    "menu": "Menu",
+    "retry": "Retry",
+    "sos": "LAUNCH SOS ALERT",
+    "capture": "Capture",
+    "retake": "Retake"
   },
   "field": {
     "title": "SentinelOps FIELD",
@@ -56,9 +63,13 @@
     "incident_details": "Incident details",
     "photo": "Field Photo",
     "take_photo": "Take a photo",
-    "capture": "Capture",
-    "retake": "Retake",
-    "sos": "LAUNCH SOS ALERT",
+    "reports_sent": "Reports sent",
+    "pending_sync": "Pending sync",
+    "accuracy": "Accuracy",
+    "report_title": "Report title",
+    "report_description": "Description",
+    "enter_title": "E.g.: Building collapse on School Street",
+    "enter_description": "Describe the situation...",
     "tactical_title": "Tactical Title",
     "intel_terrain": "Field Intelligence",
     "severity_level": "Severity Level",
@@ -70,6 +81,45 @@
       "intel": "Incident details..."
     }
   },
+  "command": {
+    "title": "Command Center",
+    "intel": "Ground Intelligence",
+    "activeUnits": "Active Units",
+    "fusionScore": "Fusion Score",
+    "tempo": "Tempo Status",
+    "uptime": "Uptime",
+    "realTime": "Real-time",
+    "live": "Live",
+    "signals": "Ground Signals",
+    "deployedUnits": "Units deployed on the ground",
+    "globalScore": "Global Fusion Score",
+    "tacticalFilters": "Tactical Filters",
+    "globalView": "Global view",
+    "fires": "Fires",
+    "floods": "Floods",
+    "infrastructure": "Infrastructure",
+    "strategicSimulator": "Strategic Simulator",
+    "propagation": "Estimated propagation",
+    "risk": "Risk",
+    "worstCase": "Worst case",
+    "stability": "Stability",
+    "activeIA": "Active IA Strategy",
+    "operations": "Infrastructure Operations",
+    "search": "Search for a sector or alert..."
+  },
+  "analytics": {
+    "title": "Analytics Center",
+    "trends": "Trends",
+    "heatmap": "Heatmap",
+    "history": "History",
+    "exportData": "Export data",
+    "timeRange": "Time range",
+    "last24h": "Last 24 hours",
+    "last7d": "7 days",
+    "last30d": "30 days",
+    "last90d": "90 days",
+    "lastYear": "1 year"
+  },
   "map": {
     "title": "Tactical Map",
     "hotspots": "Hotspots",
@@ -79,7 +129,9 @@
     "medium": "Medium",
     "low": "Low",
     "coordinates": "Coordinates",
-    "search": "Search area"
+    "search": "Search area",
+    "satellite": "Satellite",
+    "terrain": "Terrain"
   },
   "alerts": {
     "title": "Critical Alerts",
@@ -90,32 +142,17 @@
     "zone": "Zone",
     "action": "Action required",
     "noAlerts": "No critical alerts",
-    "timestamp": "ago"
-  },
-  "filters": {
-    "title": "Tactical Filters",
-    "global": "Global view",
-    "fires": "Fires",
-    "floods": "Floods",
-    "earthquakes": "Earthquakes",
-    "conflicts": "Conflicts",
-    "infrastructure": "Infrastructure",
-    "reset": "Reset"
-  },
-  "simulator": {
-    "title": "Strategic Simulator",
-    "propagation": "Estimated propagation",
-    "speed": "km/h",
-    "direction": "Direction",
-    "risk": "Risk",
-    "worstCase": "Worst case",
-    "stability": "Stability"
+    "timestamp": "ago",
+    "deployment": "Recommended deployment",
+    "propagationWarning": "Propagation risk"
   },
   "ast": {
     "title": "Tactical Strategic Advisor",
     "analysis": "Analysis in progress",
     "recommendation": "Recommendation",
-    "details": "Details"
+    "details": "Details",
+    "deployUnit": "Deploy mobile unit",
+    "securePerimeter": "Secure perimeter"
   },
   "export": {
     "title": "Export Report",
@@ -135,7 +172,8 @@
     "title": "Offline mode active",
     "message": "Reports will be saved locally",
     "sync": "Pending reports",
-    "syncNow": "Sync now"
+    "syncNow": "Sync now",
+    "queue": "Queue"
   },
   "errors": {
     "generic": "An error occurred",
@@ -144,7 +182,9 @@
     "notFound": "Page not found",
     "unauthorized": "Unauthorized access",
     "camera_permission": "Camera permission denied",
-    "camera_not_found": "No camera found"
+    "camera_not_found": "No camera found",
+    "gps_error": "GPS error",
+    "upload_failed": "Upload failed"
   },
   "time": {
     "now": "Just now",

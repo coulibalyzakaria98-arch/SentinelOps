@@ -2,7 +2,17 @@
   "app": {
     "name": "SentinelOps",
     "title": "Centro de Operaciones Tácticas",
-    "field": "Operaciones de Campo"
+    "tagline": "Sistema de inteligencia estratégica"
+  },
+  "nav": {
+    "dashboard": "Tablero",
+    "command": "Centro de Comando",
+    "field": "Campo",
+    "analytics": "Analítica",
+    "intelligence": "Inteligencia",
+    "map": "Mapa Táctico",
+    "settings": "Configuración",
+    "logout": "Salir"
   },
   "status": {
     "system": "Estado del Sistema",
@@ -14,12 +24,15 @@
     "sync": "Sincronización",
     "lastSync": "Última sincronización",
     "officer": "Oficial de Guardia",
-    "sector": "Sector Alpha • SentinelOps"
+    "sector": "Sector Alpha • SentinelOps",
+    "dataLink": "Enlace de Datos",
+    "stable": "Estable",
+    "active": "Activo"
   },
   "buttons": {
     "submit": "Enviar",
     "transmit": "TRANSMITIR",
-    "camera": "Activar cámara",
+    "camera": "Activar Cámara",
     "cancel": "Cancelar",
     "save": "Guardar",
     "delete": "Eliminar",
@@ -27,7 +40,11 @@
     "refresh": "Actualizar",
     "export": "Exportar",
     "print": "Imprimir",
-    "menu": "Menú"
+    "menu": "Menú",
+    "retry": "Reintentar",
+    "sos": "LANZAR ALERTA SOS",
+    "capture": "Capturar",
+    "retake": "Repetir"
   },
   "field": {
     "title": "SentinelOps CAMPO",
@@ -46,9 +63,13 @@
     "incident_details": "Detalles del incidente",
     "photo": "Foto de campo",
     "take_photo": "Tomar foto",
-    "capture": "Capturar",
-    "retake": "Repetir",
-    "sos": "LANZAR ALERTA SOS",
+    "reports_sent": "Informes enviados",
+    "pending_sync": "Sincronización pendiente",
+    "accuracy": "Precisión",
+    "report_title": "Título del informe",
+    "report_description": "Descripción",
+    "enter_title": "Ej: Derrumbe en calle Escolar",
+    "enter_description": "Describa la situación...",
     "tactical_title": "Título Táctico",
     "intel_terrain": "Inteligencia de Campo",
     "severity_level": "Nivel de Gravedad",
@@ -60,14 +81,110 @@
       "intel": "Detalles del incidente..."
     }
   },
+  "command": {
+    "title": "Centro de Comando",
+    "intel": "Inteligencia Terrestre",
+    "activeUnits": "Unidades Activas",
+    "fusionScore": "Puntuación de Fusión",
+    "tempo": "Estado Tempo",
+    "uptime": "Tiempo Activo",
+    "realTime": "Tiempo real",
+    "live": "En vivo",
+    "signals": "Señales Terrestres",
+    "deployedUnits": "Unidades desplegadas",
+    "globalScore": "Puntuación Global",
+    "tacticalFilters": "Filtros Tácticos",
+    "globalView": "Vista global",
+    "fires": "Incendios",
+    "floods": "Inundaciones",
+    "infrastructure": "Infraestructura",
+    "strategicSimulator": "Simulador Estratégico",
+    "propagation": "Propagación estimada",
+    "risk": "Risgo",
+    "worstCase": "Peor caso",
+    "stability": "Estabilidad",
+    "activeIA": "Estrategia IA Activa",
+    "operations": "Operaciones de Infraestructura",
+    "search": "Buscar sector o alerta..."
+  },
+  "analytics": {
+    "title": "Centro de Análisis",
+    "trends": "Tendencias",
+    "heatmap": "Mapa de calor",
+    "history": "Historial",
+    "exportData": "Exportar datos",
+    "timeRange": "Rango de tiempo",
+    "last24h": "Últimas 24h",
+    "last7d": "7 días",
+    "last30d": "30 días",
+    "last90d": "90 días",
+    "lastYear": "1 año"
+  },
+  "map": {
+    "title": "Mapa Táctico",
+    "hotspots": "Puntos calientes",
+    "legend": "Leyenda",
+    "critical": "Crítico",
+    "high": "Alto",
+    "medium": "Medio",
+    "low": "Bajo",
+    "coordinates": "Coordenadas",
+    "search": "Buscar área",
+    "satellite": "Satélite",
+    "terrain": "Terreno"
+  },
+  "alerts": {
+    "title": "Alertas Críticas",
+    "critical": "CRÍTICO",
+    "urgent": "URGENTE",
+    "moderate": "MODERADO",
+    "info": "INFORMACIÓN",
+    "zone": "Zona",
+    "action": "Acción requerida",
+    "noAlerts": "No hay alertas críticas",
+    "timestamp": "hace",
+    "deployment": "Despliegue recomendado",
+    "propagationWarning": "Riesgo de propagación"
+  },
+  "ast": {
+    "title": "Asesor Estratégico Táctico",
+    "analysis": "Análisis en curso",
+    "recommendation": "Recomendación",
+    "details": "Detalles",
+    "deployUnit": "Desplegar unidad móvil",
+    "securePerimeter": "Asegurar perímetro"
+  },
+  "export": {
+    "title": "Exportar Informe",
+    "pdf": "Exportar PDF",
+    "csv": "Exportar CSV",
+    "geojson": "Exportar GeoJSON",
+    "options": "Opciones de exportación",
+    "orientation": "Orientación",
+    "portrait": "Retrato",
+    "landscape": "Paisaje",
+    "quality": "Calidad",
+    "include": "Incluir",
+    "timestamp": "Marca de tiempo",
+    "footer": "Pie de página"
+  },
+  "offline": {
+    "title": "Modo fuera de línea activo",
+    "message": "Los informes se guardarán localmente",
+    "sync": "Informes pendientes",
+    "syncNow": "Sincronizar ahora",
+    "queue": "Cola"
+  },
   "errors": {
-    "generic": "Ha ocurrido un error",
+    "generic": "Ocurrió un error",
     "network": "Error de red",
     "offline": "Estás fuera de línea",
     "notFound": "Página no encontrada",
     "unauthorized": "Acceso no autorizado",
     "camera_permission": "Permiso de cámara denegado",
-    "camera_not_found": "No se encontró ninguna cámara"
+    "camera_not_found": "No se encontró cámara",
+    "gps_error": "Error de GPS",
+    "upload_failed": "Error de envío"
   },
   "time": {
     "now": "Ahora mismo",

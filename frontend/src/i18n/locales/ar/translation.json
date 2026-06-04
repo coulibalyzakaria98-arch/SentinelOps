@@ -2,7 +2,17 @@
   "app": {
     "name": "سينتينل أوبس",
     "title": "مركز العمليات التكتيكية",
-    "field": "العمليات الميدانية"
+    "tagline": "نظام الاستخبارات الاستراتيجي"
+  },
+  "nav": {
+    "dashboard": "لوحة القيادة",
+    "command": "مركز القيادة",
+    "field": "الميدان",
+    "analytics": "التحليلات",
+    "intelligence": "الاستخبارات",
+    "map": "الخريطة التكتيكية",
+    "settings": "الإعدادات",
+    "logout": "تسجيل الخروج"
   },
   "status": {
     "system": "حالة النظام",
@@ -14,7 +24,10 @@
     "sync": "مزامنة",
     "lastSync": "آخر مزامنة",
     "officer": "ضابط المناوبة",
-    "sector": "القطاع ألفا • سينتينل أوبس"
+    "sector": "القطاع ألفا • سينتينل أوبس",
+    "dataLink": "ربط البيانات",
+    "stable": "مستقر",
+    "active": "نشط"
   },
   "buttons": {
     "submit": "إرسال",
@@ -27,7 +40,11 @@
     "refresh": "تحديث",
     "export": "تصدير",
     "print": "طباعة",
-    "menu": "القائمة"
+    "menu": "القائمة",
+    "retry": "إعادة المحاولة",
+    "sos": "إطلاق إنذار SOS",
+    "capture": "التقاط",
+    "retake": "إعادة المحاولة"
   },
   "field": {
     "title": "سينتينل أوبس ميداني",
@@ -46,9 +63,13 @@
     "incident_details": "تفاصيل الحادث",
     "photo": "الصورة الميدانية",
     "take_photo": "التقاط صورة",
-    "capture": "التقاط",
-    "retake": "إعادة المحاولة",
-    "sos": "إطلاق إنذار SOS",
+    "reports_sent": "التقارير المرسلة",
+    "pending_sync": "في انتظار المزامنة",
+    "accuracy": "الدقة",
+    "report_title": "عنوان التقرير",
+    "report_description": "الوصف",
+    "enter_title": "مثال: انهيار مبنى في شارع المدرسة",
+    "enter_description": "صف الوضع...",
     "tactical_title": "العنوان التكتيكي",
     "intel_terrain": "الاستخبارات الميدانية",
     "severity_level": "مستوى الخطورة",
@@ -60,6 +81,47 @@
       "intel": "تفاصيل الحادث..."
     }
   },
+  "command": {
+    "title": "مركز القيادة",
+    "intel": "الاستخبارات الميدانية",
+    "activeUnits": "الوحدات النشطة",
+    "fusionScore": "نتيجة الدمج",
+    "tempo": "حالة الإيقاع",
+    "uptime": "وقت التشغيل",
+    "realTime": "الوقت الفعلي",
+    "live": "مباشر",
+    "signals": "الإشارات الميدانية",
+    "deployedUnits": "الوحدات المنتشرة",
+    "globalScore": "النتيجة العالمية",
+    "tacticalFilters": "عوامل التصفية التكتيكية",
+    "globalView": "عرض عام",
+    "fires": "حرائق",
+    "floods": "فيضانات",
+    "infrastructure": "بنية تحتية",
+    "strategicSimulator": "محاكي استراتيجي",
+    "propagation": "الانتشار المقدر",
+    "speed": "كم/ساعة",
+    "direction": "الاتجاه",
+    "risk": "المخاطر",
+    "worstCase": "أسوأ حالة",
+    "stability": "الاستقرار",
+    "activeIA": "استراتيجية الذكاء الاصطناعي النشطة",
+    "operations": "عمليات البنية التحتية",
+    "search": "البحث عن قطاع أو تنبيه..."
+  },
+  "analytics": {
+    "title": "مركز التحليلات",
+    "trends": "الاتجاهات",
+    "heatmap": "الخريطة الحرارية",
+    "history": "التاريخ",
+    "exportData": "تصدير البيانات",
+    "timeRange": "النطاق الزمني",
+    "last24h": "آخر 24 ساعة",
+    "last7d": "7 أيام",
+    "last30d": "30 يومًا",
+    "last90d": "90 يومًا",
+    "lastYear": "سنة واحدة"
+  },
   "map": {
     "title": "الخريطة التكتيكية",
     "hotspots": "النقاط الساخنة",
@@ -69,7 +131,9 @@
     "medium": "متوسط",
     "low": "منخفض",
     "coordinates": "الإحداثيات",
-    "search": "البحث عن منطقة"
+    "search": "البحث عن منطقة",
+    "satellite": "قمر صناعي",
+    "terrain": "تضاريس"
   },
   "alerts": {
     "title": "تنبيهات حرجة",
@@ -80,32 +144,17 @@
     "zone": "المنطقة",
     "action": "إجراء مطلوب",
     "noAlerts": "لا توجد تنبيهات حرجة",
-    "timestamp": "منذ"
-  },
-  "filters": {
-    "title": "عوامل التصفية التكتيكية",
-    "global": "عرض عام",
-    "fires": "حرائق",
-    "floods": "فيضانات",
-    "earthquakes": "زلازل",
-    "conflicts": "نزاعات",
-    "infrastructure": "بنية تحتية",
-    "reset": "إعادة تعيين"
-  },
-  "simulator": {
-    "title": "محاكي استراتيجي",
-    "propagation": "الانتشار المقدر",
-    "speed": "كم/ساعة",
-    "direction": "الاتجاه",
-    "risk": "المخاطر",
-    "worstCase": "أسوأ حالة",
-    "stability": "الاستقرار"
+    "timestamp": "منذ",
+    "deployment": "النشر الموصى به",
+    "propagationWarning": "خطر الانتشار"
   },
   "ast": {
     "title": "مستشار استراتيجي تكتيكي",
     "analysis": "التحليل قيد التقدم",
     "recommendation": "توصية",
-    "details": "تفاصيل"
+    "details": "تفاصيل",
+    "deployUnit": "نشر وحدة متنقلة",
+    "securePerimeter": "تأمين المحيط"
   },
   "export": {
     "title": "تصدير التقرير",
@@ -125,7 +174,8 @@
     "title": "وضع عدم الاتصال نشط",
     "message": "سيتم حفظ التقارير محلياً",
     "sync": "تقارير معلقة",
-    "syncNow": "مزامنة الآن"
+    "syncNow": "مزامنة الآن",
+    "queue": "قائمة الانتظار"
   },
   "errors": {
     "generic": "حدث خطأ",
@@ -134,7 +184,9 @@
     "notFound": "الصفحة غير موجودة",
     "unauthorized": "وصول غير مصرح به",
     "camera_permission": "تم رفض إذن الكاميرا",
-    "camera_not_found": "لم يتم العثور على كاميرا"
+    "camera_not_found": "لم يتم العثور على كاميرا",
+    "gps_error": "خطأ في نظام تحديد المواقع",
+    "upload_failed": "فشل التحميل"
   },
   "time": {
     "now": "الآن",

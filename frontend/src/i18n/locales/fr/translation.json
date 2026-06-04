@@ -2,7 +2,17 @@
   "app": {
     "name": "SentinelOps",
     "title": "Centre d'opérations tactique",
-    "field": "Opérations terrain"
+    "tagline": "Système de veille stratégique"
+  },
+  "nav": {
+    "dashboard": "Tableau de bord",
+    "command": "Centre de commandement",
+    "field": "Terrain",
+    "analytics": "Analytique",
+    "intelligence": "Intelligence",
+    "map": "Carte tactique",
+    "settings": "Paramètres",
+    "logout": "Déconnexion"
   },
   "status": {
     "system": "État du système",
@@ -14,17 +24,10 @@
     "sync": "Synchronisation",
     "lastSync": "Dernière synchronisation",
     "officer": "Officier de Garde",
-    "sector": "Secteur Alpha • SentinelOps"
-  },
-  "dashboard": {
-    "command": "Centre de commandement",
-    "analytics": "Centre d'analyse",
-    "field": "Terrain",
-    "intel": "Renseignements au sol",
-    "activeUnits": "Unités actives",
-    "fusionScore": "Score de fusion",
-    "tempo": "Statut tempo",
-    "uptime": "Disponibilité"
+    "sector": "Secteur Alpha • SentinelOps",
+    "dataLink": "Liaison de données",
+    "stable": "Stable",
+    "active": "Actif"
   },
   "buttons": {
     "submit": "Transmettre",
@@ -37,7 +40,11 @@
     "refresh": "Rafraîchir",
     "export": "Exporter",
     "print": "Imprimer",
-    "menu": "Menu"
+    "menu": "Menu",
+    "retry": "Réessayer",
+    "sos": "LANCER L'ALERTE SOS",
+    "capture": "Capturer",
+    "retake": "Reprendre"
   },
   "field": {
     "title": "SentinelOps FIELD",
@@ -56,9 +63,13 @@
     "incident_details": "Détails de l'incident",
     "photo": "Photo du terrain",
     "take_photo": "Prendre une photo",
-    "capture": "Capturer",
-    "retake": "Reprendre",
-    "sos": "LANCER L'ALERTE SOS",
+    "reports_sent": "Rapports envoyés",
+    "pending_sync": "En attente de synchronisation",
+    "accuracy": "Précision",
+    "report_title": "Titre du rapport",
+    "report_description": "Description",
+    "enter_title": "Ex: Effondrement rue des Écoles",
+    "enter_description": "Décrivez la situation...",
     "tactical_title": "Titre Tactique",
     "intel_terrain": "Intelligence Terrain",
     "severity_level": "Niveau de Gravité",
@@ -70,6 +81,45 @@
       "intel": "Détails de l'incident..."
     }
   },
+  "command": {
+    "title": "Centre de commandement",
+    "intel": "Renseignements au sol",
+    "activeUnits": "Unités actives",
+    "fusionScore": "Score de fusion",
+    "tempo": "Statut tempo",
+    "uptime": "Disponibilité",
+    "realTime": "En temps réel",
+    "live": "En direct",
+    "signals": "Signaux au sol",
+    "deployedUnits": "Unités déployées sur le terrain",
+    "globalScore": "Score de fusion global",
+    "tacticalFilters": "Filtres tactiques",
+    "globalView": "Vue globale",
+    "fires": "Incendies",
+    "floods": "Inondations",
+    "infrastructure": "Infrastructures",
+    "strategicSimulator": "Simulateur stratégique",
+    "propagation": "Propagation estimée",
+    "risk": "Risque",
+    "worstCase": "Le pire des cas",
+    "stability": "Stabilité",
+    "activeIA": "Stratégie IA active",
+    "operations": "Opérations d'infrastructure",
+    "search": "Rechercher un secteur ou une alerte..."
+  },
+  "analytics": {
+    "title": "Centre d'analyse",
+    "trends": "Tendances",
+    "heatmap": "Carte de chaleur",
+    "history": "Historique",
+    "exportData": "Exporter les données",
+    "timeRange": "Période",
+    "last24h": "Dernières 24h",
+    "last7d": "7 jours",
+    "last30d": "30 jours",
+    "last90d": "90 jours",
+    "lastYear": "1 an"
+  },
   "map": {
     "title": "Carte tactique",
     "hotspots": "Points chauds",
@@ -79,7 +129,9 @@
     "medium": "Modéré",
     "low": "Faible",
     "coordinates": "Coordonnées",
-    "search": "Rechercher une zone"
+    "search": "Rechercher une zone",
+    "satellite": "Satellite",
+    "terrain": "Terrain"
   },
   "alerts": {
     "title": "Alertes critiques",
@@ -90,32 +142,17 @@
     "zone": "Zone",
     "action": "Action requise",
     "noAlerts": "Aucune alerte critique",
-    "timestamp": "Il y a"
-  },
-  "filters": {
-    "title": "Filtres tactiques",
-    "global": "Vue globale",
-    "fires": "Incendies",
-    "floods": "Inondations",
-    "earthquakes": "Tremblements",
-    "conflicts": "Conflits",
-    "infrastructure": "Infrastructures",
-    "reset": "Réinitialiser"
-  },
-  "simulator": {
-    "title": "Simulateur stratégique",
-    "propagation": "Propagation estimée",
-    "speed": "km/h",
-    "direction": "Direction",
-    "risk": "Risque",
-    "worstCase": "Le pire des cas",
-    "stability": "Stabilité"
+    "timestamp": "Il y a",
+    "deployment": "Déploiement recommandé",
+    "propagationWarning": "Risque de propagation"
   },
   "ast": {
     "title": "Conseiller stratégique tactique",
     "analysis": "Analyse en cours",
     "recommendation": "Recommandation",
-    "details": "Détails"
+    "details": "Détails",
+    "deployUnit": "Déploiement unité mobile",
+    "securePerimeter": "Sécuriser le périmètre"
   },
   "export": {
     "title": "Exporter le rapport",
@@ -135,7 +172,8 @@
     "title": "Mode hors ligne actif",
     "message": "Les rapports seront sauvegardés localement",
     "sync": "Rapports en attente",
-    "syncNow": "Synchroniser maintenant"
+    "syncNow": "Synchroniser maintenant",
+    "queue": "File d'attente"
   },
   "errors": {
     "generic": "Une erreur est survenue",
@@ -144,7 +182,9 @@
     "notFound": "Page non trouvée",
     "unauthorized": "Accès non autorisé",
     "camera_permission": "Permission caméra refusée",
-    "camera_not_found": "Aucune caméra trouvée"
+    "camera_not_found": "Aucune caméra trouvée",
+    "gps_error": "Erreur GPS",
+    "upload_failed": "Échec de l'envoi"
   },
   "time": {
     "now": "À l'instant",

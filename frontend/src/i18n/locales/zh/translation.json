@@ -2,7 +2,17 @@
   "app": {
     "name": "SentinelOps",
     "title": "战术行动中心",
-    "field": "现场行动"
+    "tagline": "战略情报系统"
+  },
+  "nav": {
+    "dashboard": "仪表板",
+    "command": "指挥中心",
+    "field": "现场",
+    "analytics": "分析",
+    "intelligence": "情报",
+    "map": "战术地图",
+    "settings": "设置",
+    "logout": "退出"
   },
   "status": {
     "system": "系统状态",
@@ -14,7 +24,10 @@
     "sync": "同步",
     "lastSync": "上次同步",
     "officer": "值班官员",
-    "sector": "阿尔法区域 • SentinelOps"
+    "sector": "阿尔法区域 • SentinelOps",
+    "dataLink": "数据链接",
+    "stable": "稳定",
+    "active": "活跃"
   },
   "buttons": {
     "submit": "提交",
@@ -27,7 +40,11 @@
     "refresh": "刷新",
     "export": "导出",
     "print": "打印",
-    "menu": "菜单"
+    "menu": "菜单",
+    "retry": "重试",
+    "sos": "发出求救警报",
+    "capture": "拍摄",
+    "retake": "重拍"
   },
   "field": {
     "title": "SentinelOps 现场",
@@ -46,9 +63,13 @@
     "incident_details": "事件详情",
     "photo": "现场照片",
     "take_photo": "拍照",
-    "capture": "拍摄",
-    "retake": "重拍",
-    "sos": "发出求救警报",
+    "reports_sent": "已发送报告",
+    "pending_sync": "等待同步",
+    "accuracy": "精度",
+    "report_title": "报告标题",
+    "report_description": "描述",
+    "enter_title": "例如：学校街建筑倒塌",
+    "enter_description": "描述情况...",
     "tactical_title": "战术标题",
     "intel_terrain": "现场情报",
     "severity_level": "严重程度",
@@ -60,6 +81,100 @@
       "intel": "事件详情..."
     }
   },
+  "command": {
+    "title": "指挥中心",
+    "intel": "地面情报",
+    "activeUnits": "活跃单位",
+    "fusionScore": "融合评分",
+    "tempo": "节奏状态",
+    "uptime": "正常运行时间",
+    "realTime": "实时",
+    "live": "直播",
+    "signals": "地面信号",
+    "deployedUnits": "部署单位",
+    "globalScore": "全球评分",
+    "tacticalFilters": "战术筛选",
+    "globalView": "全局视图",
+    "fires": "火灾",
+    "floods": "洪水",
+    "infrastructure": "基础设施",
+    "strategicSimulator": "战略模拟器",
+    "propagation": "预计传播",
+    "risk": "风险",
+    "worstCase": "最坏情况",
+    "stability": "稳定性",
+    "activeIA": "活跃的IA策略",
+    "operations": "基础设施运营",
+    "search": "搜索区域或警报..."
+  },
+  "analytics": {
+    "title": "分析中心",
+    "trends": "趋势",
+    "heatmap": "热力图",
+    "history": "历史",
+    "exportData": "导出数据",
+    "timeRange": "时间范围",
+    "last24h": "最近24小时",
+    "last7d": "7天",
+    "last30d": "30天",
+    "last90d": "90天",
+    "lastYear": "1年"
+  },
+  "map": {
+    "title": "战术地图",
+    "hotspots": "热点区域",
+    "legend": "图例",
+    "critical": "关键",
+    "high": "高",
+    "medium": "中",
+    "low": "低",
+    "coordinates": "坐标",
+    "search": "搜索区域",
+    "satellite": "卫星",
+    "terrain": "地形"
+  },
+  "alerts": {
+    "title": "关键警报",
+    "critical": "关键",
+    "urgent": "紧急",
+    "moderate": "中等",
+    "info": "信息",
+    "zone": "区域",
+    "action": "需要行动",
+    "noAlerts": "无关键警报",
+    "timestamp": "前",
+    "deployment": "建议部署",
+    "propagationWarning": "传播风险"
+  },
+  "ast": {
+    "title": "战术战略顾问",
+    "analysis": "分析进行中",
+    "recommendation": "建议",
+    "details": "详情",
+    "deployUnit": "部署移动单位",
+    "securePerimeter": "确保周界安全"
+  },
+  "export": {
+    "title": "导出报告",
+    "pdf": "导出 PDF",
+    "csv": "导出 CSV",
+    "geojson": "导出 GeoJSON",
+    "options": "导出选项",
+    "orientation": "方向",
+    "portrait": "纵向",
+    "landscape": "横向",
+    "quality": "质量",
+    "include": "包括",
+    "timestamp": "时间戳",
+    "footer": "页脚"
+  },
+  "offline": {
+    "title": "离线模式已激活",
+    "message": "报告将保存在本地",
+    "sync": "待同步报告",
+    "syncNow": "立即同步",
+    "queue": "队列"
+  },
   "errors": {
     "generic": "发生错误",
     "network": "网络错误",
@@ -67,7 +182,9 @@
     "notFound": "页面未找到",
     "unauthorized": "未授权访问",
     "camera_permission": "相机权限被拒绝",
-    "camera_not_found": "未找到相机"
+    "camera_not_found": "未找到相机",
+    "gps_error": "GPS错误",
+    "upload_failed": "上传失败"
   },
   "time": {
     "now": "刚刚",
