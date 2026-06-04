@@ -26,11 +26,16 @@ const FieldAgent = () => {
   const [isCameraActive, setIsCameraActive] = useState(false);
 
   useEffect(() => {
-    // Set document direction for RTL support
-    document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
-    document.documentElement.lang = i18n.language;
+    let isMounted = true;
+
+    if (isMounted) {
+      // Set document direction for RTL support
+      document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
+      document.documentElement.lang = i18n.language;
+    }
     
     return () => {
+      isMounted = false;
       if (stream) stream.getTracks().forEach(track => track.stop());
     };
   }, [stream, isRTL, i18n.language]);
