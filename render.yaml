@@ -6,8 +6,9 @@ services:
   - type: web
     name: sentinelops-api
     runtime: python
-    repo: https://github.com/votre-username/sentinelops
+    repo: https://github.com/coulibalyzakaria98-arch/SentinelOps
     plan: free
+    rootDir: backend
     envVars:
       - key: DATABASE_URL
         fromDatabase:
@@ -20,13 +21,9 @@ services:
       - key: ENVIRONMENT
         value: production
     
-    buildCommand: |
-      cd backend
-      pip install -r requirements.txt
+    buildCommand: pip install -r requirements.txt
     
-    startCommand: |
-      cd backend
-      uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
     
     healthCheckPath: /api/v1/health
     autoDeploy: true
