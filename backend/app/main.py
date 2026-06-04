@@ -25,21 +25,23 @@ async def websocket_endpoint(websocket: WebSocket):
 
 
 # Configuration CORS pour production
+base_origins = settings.ALLOWED_ORIGINS.split(",")
 origins = [
-    "http://localhost:5173",
-    "http://localhost:8080",
+    *base_origins,
     "https://sentinelops.vercel.app",
-    "https://sentinelops-git-main.vercel.app",
-    "*.vercel.app",
+    "https://sentinel-ops.vercel.app",
+    "https://sentinel-ops-nu.vercel.app",
     "https://sentinelops.netlify.app",
 ]
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
+    allow_origin_regex=r"https://sentinel-ops-.*\.vercel\.app", # Support Vercel Previews
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
     allow_headers=["*"],
+    expose_headers=["*"],
 )
 
 # Routes

@@ -7,6 +7,7 @@ class Settings(BaseSettings):
     SECRET_KEY: str = "devsecret"
     ENV: str = "development"
     UPLOAD_DIR: str = "/app/uploads"
+    ALLOWED_ORIGINS: str = "http://localhost:5173,http://localhost:8080"
     
     # Form Schema (Dynamic)
     FORM_SCHEMA: dict = {
