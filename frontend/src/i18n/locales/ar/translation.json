@@ -220,5 +220,17 @@
       "secureLink": "رابط آمن",
       "strategicWatch": "مراقبة استراتيجية"
     }
+  },
+  "simulator": {
+    "title": "محاكي استراتيجي",
+    "propagation": "الانتشار المقدر",
+    "direction": "الشمال الشرقي",
+    "risk": "المخاطرة"
+  },
+  "filters": {
+    "global": "العرض الشامل",
+    "fires": "الحرائق",
+    "floods": "الفيضانات",
+    "infrastructure": "البنية التحتية"
   }
 }

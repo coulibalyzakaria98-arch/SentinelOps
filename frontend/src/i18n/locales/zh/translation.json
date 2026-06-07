@@ -220,5 +220,17 @@
       "secureLink": "安全链接",
       "strategicWatch": "战略监控"
     }
+  },
+  "simulator": {
+    "title": "战略模拟器",
+    "propagation": "预估传播",
+    "direction": "东北",
+    "risk": "风险"
+  },
+  "filters": {
+    "global": "全局视图",
+    "fires": "火灾",
+    "floods": "洪水",
+    "infrastructure": "基础设施"
   }
 }

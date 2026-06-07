@@ -220,5 +220,17 @@
       "secureLink": "Secure link",
       "strategicWatch": "Strategic watch"
     }
+  },
+  "simulator": {
+    "title": "Strategic Simulator",
+    "propagation": "Estimated propagation",
+    "direction": "North-East",
+    "risk": "Risk"
+  },
+  "filters": {
+    "global": "Global view",
+    "fires": "Fires",
+    "floods": "Floods",
+    "infrastructure": "Infrastructure"
   }
 }
