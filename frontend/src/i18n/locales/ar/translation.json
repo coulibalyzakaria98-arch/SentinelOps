@@ -10,7 +10,9 @@
     "analytics": "التحليلات",
     "intelligence": "الاستخبارات",
     "map": "الخريطة التكتيكية",
-    "logout": "تسجيل الخروج"
+    "logout": "تسجيل الخروج",
+    "admin": "مدير النظام",
+    "settings": "الإعدادات"
   },
   "status": {
     "system": "حالة النظام",
@@ -18,7 +20,9 @@
     "online": "متصل",
     "offline": "غير متصل",
     "dataLink": "ربط البيانات",
-    "statusLabel": "الحالة"
+    "statusLabel": "الحالة",
+    "officer": "ضابط المناوبة",
+    "active": "نشط"
   },
   "buttons": {
     "transmit": "إرسال",
@@ -52,27 +56,36 @@
     "activeUnits": "الوحدات النشطة",
     "fusionScore": "نتيجة الدمج",
     "globalScore": "عالمي",
-    "signals": "إشارات نشطة"
+    "signals": "إشارات نشطة",
+    "search": "البحث عن قطاع أو تنبيه",
+    "activeIA": "تحليل متعدد المصادر نشط"
   },
   "alerts": {
-    "title": "حوادث حرجة",
+    "title": "تنبيهات",
     "critical": "حرج",
-    "urgent": "عاجل"
+    "urgent": "عاجل",
+    "moderate": "متوسط",
+    "deployment": "النشر الموصى به",
+    "propagationWarning": "خطر الانتشار",
+    "action": "إجراء مطلوب"
   },
   "filters": {
     "global": "الكل",
     "fires": "حرائق",
     "floods": "فيضانات",
-    "infrastructure": "بنية تحتية"
+    "infrastructure": "بنية تحتية",
+    "title": "التصفية حسب"
   },
   "simulator": {
     "title": "محاكي استراتيجي",
     "propagation": "الانتشار المقدر",
-    "risk": "المخاطر"
+    "risk": "المخاطر",
+    "direction": "الشمال الشرقي"
   },
   "ast": {
     "title": "المستشار التكتيكي الاستراتيجي",
-    "analysis": "تحليل متعدد المصادر نشط",
+    "analysis": "التحليل قيد التقدم",
+    "recommendation": "توصية",
     "confidence": "الثقة الجغرافية المكانية"
   },
   "analytics": {
@@ -80,7 +93,8 @@
     "trends": "الاتجاهات"
   },
   "map": {
-    "title": "الخريطة التكتيكية"
+    "title": "الخريطة التكتيكية",
+    "legend": "الإرشادات"
   },
   "landing": {
     "accessProtocol": "اختر بروتوكول الوصول",

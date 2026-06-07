@@ -163,28 +163,40 @@ const CommandDashboard = () => {
           </div>
         </header>
 
-        {/* KPI Cards */}
+        {/* KPI Cards - TOUTES LES VALEURS SONT TRADUITES */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-4">
+          {/* Renseignements au sol */}
           <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-xl p-4 border border-slate-700">
             <p className="text-xs text-slate-400 uppercase tracking-wider">{t('command.intel')}</p>
-            <p className="text-3xl font-bold text-white mt-1">{mockData.groundIntel}</p>
+            <p className="text-2xl font-bold text-white mt-1">{mockData.groundIntel}</p>
+            <p className="text-[10px] text-slate-500 mt-1">{t('command.signals')}</p>
           </div>
+          
+          {/* Unités actives */}
           <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-xl p-4 border border-slate-700">
             <p className="text-xs text-slate-400 uppercase tracking-wider">{t('command.activeUnits')}</p>
-            <p className="text-3xl font-bold text-white mt-1">{mockData.activeUnits}</p>
+            <p className="text-2xl font-bold text-white mt-1">{mockData.activeUnits}</p>
+            <p className="text-[10px] text-slate-500 mt-1">{t('field.online')}</p>
           </div>
+          
+          {/* Incidents critiques */}
           <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-xl p-4 border border-slate-700">
             <p className="text-xs text-slate-400 uppercase tracking-wider">{t('alerts.critical')}</p>
-            <p className="text-3xl font-bold text-red-400 mt-1">{mockData.criticalIncidents}</p>
+            <p className="text-2xl font-bold text-red-400 mt-1">{mockData.criticalIncidents}</p>
+            <p className="text-[10px] text-slate-500 mt-1">{t('status.active')}</p>
           </div>
+          
+          {/* Score de fusion */}
           <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-xl p-4 border border-slate-700">
             <p className="text-xs text-slate-400 uppercase tracking-wider">{t('command.fusionScore')}</p>
-            <p className="text-3xl font-bold text-blue-400 mt-1">{mockData.fusionScore}%</p>
+            <p className="text-2xl font-bold text-blue-400 mt-1">{mockData.fusionScore}%</p>
+            <p className="text-[10px] text-slate-500 mt-1">{t('command.globalScore')}</p>
           </div>
         </div>
 
         {/* Filters */}
         <div className="px-4 mb-4">
+          <p className="text-xs text-slate-400 uppercase tracking-wider mb-2">{t('filters.title') || 'Filtres'}</p>
           <div className="flex flex-wrap gap-2">
             {filters.map(filter => {
               const Icon = filter.icon;
