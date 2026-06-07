@@ -1,9 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Camera, MapPin, Send, AlertTriangle, Wifi, WifiOff, CheckCircle, RotateCw, Clock, Activity, FileText } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Camera, MapPin, Send, AlertTriangle, Wifi, WifiOff, CheckCircle, RotateCw, Clock, Activity, FileText, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../contexts/AuthContext';
 import { useOffline } from '../contexts/OfflineContext';
 import { useGeolocation } from '../hooks/useGeolocation';
+import CameraModal from '../components/CameraModal';
 
 const FieldAgent = () => {
   const { t, i18n } = useTranslation();
@@ -19,97 +20,17 @@ const FieldAgent = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
   const [capturedImage, setCapturedImage] = useState(null);
-  
-  const videoRef = useRef(null);
-  const canvasRef = useRef(null);
-  const [stream, setStream] = useState(null);
-  const [isCameraActive, setIsCameraActive] = useState(false);
+  const [showCamera, setShowCamera] = useState(false);
 
   useEffect(() => {
-    let isMounted = true;
+    // Set document direction for RTL support
+    document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
+    document.documentElement.lang = i18n.language;
+  }, [isRTL, i18n.language]);
 
-    if (isMounted) {
-      // Set document direction for RTL support
-      document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
-      document.documentElement.lang = i18n.language;
-    }
-    
-    return () => {
-      isMounted = false;
-      if (stream) stream.getTracks().forEach(track => track.stop());
-    };
-  }, [stream, isRTL, i18n.language]);
-
-  const startCamera = async () => {
-    console.log('🔍 Tentative d\'ouverture de la caméra...');
-
-    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-      console.error('❌ getUserMedia non supporté par ce navigateur');
-      alert(t('errors.camera_not_found') + '. ' + t('errors.generic'));
-      return;
-    }
-
-    try {
-      if (stream) {
-        stream.getTracks().forEach(track => track.stop());
-      }
-
-      let mediaStream;
-      try {
-        console.log('🎥 Demande de la caméra arrière (environment)...');
-        mediaStream = await navigator.mediaDevices.getUserMedia({
-          video: {
-            facingMode: { exact: 'environment' },
-            width: { ideal: 1280 },
-            height: { ideal: 720 }
-          }
-        });
-      } catch (firstError) {
-        console.warn('⚠️ Camera arrière indisponible, tentative de fallback vidéo par défaut...', firstError);
-        mediaStream = await navigator.mediaDevices.getUserMedia({ video: true });
-      }
-
-      console.log('✅ Caméra autorisée !', mediaStream);
-      setStream(mediaStream);
-      setIsCameraActive(true);
-
-      if (videoRef.current) {
-        videoRef.current.srcObject = mediaStream;
-        videoRef.current.onloadedmetadata = () => {
-          console.log('🎥 Metadata vidéo chargées, lecture en cours...');
-          videoRef.current.play().catch(e => console.error('❌ Lecture vidéo impossible :', e));
-        };
-      }
-    } catch (error) {
-      console.error('❌ Erreur caméra :', error.name, error.message);
-
-      if (error.name === 'NotAllowedError' || error.name === 'PermissionDeniedError') {
-        alert('Permission caméra refusée. ' + t('errors.camera_permission'));
-      } else if (error.name === 'NotFoundError' || error.name === 'DevicesNotFoundError') {
-        alert(t('errors.camera_not_found'));
-      } else if (error.name === 'NotReadableError') {
-        alert('La caméra est déjà utilisée par une autre application.');
-      } else {
-        alert('Impossible d\'accéder à la caméra. Vérifiez les permissions.');
-      }
-    }
-  };
-
-  const capturePhoto = () => {
-    if (!videoRef.current) return;
-    const canvas = canvasRef.current;
-    const video = videoRef.current;
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-    const ctx = canvas.getContext('2d');
-    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-    const imageData = canvas.toDataURL('image/jpeg', 0.8);
+  const handleCapture = (imageData) => {
     setCapturedImage(imageData);
-    if (stream) {
-      stream.getTracks().forEach(track => track.stop());
-      setStream(null);
-      setIsCameraActive(false);
-    }
+    setShowCamera(false);
   };
 
   const handleSubmit = async (e) => {
@@ -173,7 +94,7 @@ const FieldAgent = () => {
           <div className="flex items-center gap-3">
             {isOnline ? (
               <div className="flex items-center gap-1 text-emerald-400">
-                <Wifi size={14} />
+                <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
                 <span className="text-[10px] font-black uppercase tracking-widest">{t('status.online')}</span>
               </div>
             ) : (
@@ -208,7 +129,7 @@ const FieldAgent = () => {
           <div className="glass-panel p-6 rounded-3xl border-white/10 bg-white/5 space-y-6">
             <div>
               <label className="block text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-2">
-                {t('field.report_title')}
+                {t('field.tactical_title')}
               </label>
               <input
                 type="text"
@@ -222,7 +143,7 @@ const FieldAgent = () => {
 
             <div>
               <label className="block text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-2">
-                {t('field.incident_details')}
+                {t('field.intel_terrain')}
               </label>
               <textarea
                 value={description}
@@ -235,7 +156,7 @@ const FieldAgent = () => {
 
             <div>
               <label className="block text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-3">
-                {t('field.severity.title')}
+                {t('field.severity_level')}
               </label>
               <div className="flex gap-2">
                 {[
@@ -296,20 +217,28 @@ const FieldAgent = () => {
               )}
             </div>
 
-            <div className="glass-panel p-5 rounded-3xl border-white/10 bg-white/5 flex flex-col items-center justify-center">
-               {!isCameraActive && !capturedImage ? (
-                 <button type="button" onClick={startCamera} className="flex flex-col items-center gap-2">
-                    <Camera size={24} className="text-[#1F77D2]" />
-                    <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{t('buttons.camera')}</span>
-                 </button>
-               ) : capturedImage ? (
-                 <div className="relative w-full h-full min-h-[60px]">
-                    <img src={capturedImage} alt="Preview" className="w-full h-full object-cover rounded-xl" />
-                    <button onClick={() => setCapturedImage(null)} className="absolute -top-2 -right-2 bg-red-600 rounded-full p-1"><AlertTriangle size={10} /></button>
+            <div className="glass-panel p-5 rounded-3xl border-white/10 bg-white/5 flex flex-col items-center justify-center relative overflow-hidden min-h-[120px]">
+               {capturedImage ? (
+                 <div className="absolute inset-0 group">
+                    <img src={capturedImage} alt="Preview" className="w-full h-full object-cover" />
+                    <button 
+                      type="button"
+                      onClick={() => setCapturedImage(null)} 
+                      className="absolute top-2 right-2 bg-red-600 rounded-full p-1.5 shadow-lg active:scale-90 transition-transform"
+                    >
+                      <X size={12} />
+                    </button>
                  </div>
                ) : (
-                 <button onClick={capturePhoto} className="w-12 h-12 rounded-full border-4 border-white/20 flex items-center justify-center">
-                    <div className="w-8 h-8 rounded-full bg-white animate-pulse" />
+                 <button 
+                   type="button" 
+                   onClick={() => setShowCamera(true)} 
+                   className="flex flex-col items-center gap-2 group"
+                 >
+                    <div className="w-12 h-12 rounded-2xl bg-blue-600/10 flex items-center justify-center text-[#1F77D2] group-hover:scale-110 transition-transform">
+                      <Camera size={24} />
+                    </div>
+                    <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{t('field.photo')}</span>
                  </button>
                )}
             </div>
@@ -321,11 +250,9 @@ const FieldAgent = () => {
             className="w-full py-5 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl font-black text-white text-sm uppercase tracking-[0.3em] shadow-2xl shadow-blue-500/20 disabled:opacity-50 transition-all active:scale-95 flex items-center justify-center gap-3"
           >
             {isSubmitting ? <RotateCw className="animate-spin" size={20} /> : <Send size={20} />}
-            {isOnline ? t('field.transmit') : t('buttons.save')}
+            {isOnline ? t('field.transmit') : t('field.save')}
           </button>
         </form>
-
-        <canvas ref={canvasRef} className="hidden" />
       </main>
 
       {/* 🚨 SOS EMERGENCY BAR */}
@@ -334,20 +261,27 @@ const FieldAgent = () => {
           type="button"
           className="w-full py-4 bg-red-600 hover:bg-red-500 rounded-2xl flex items-center justify-center gap-3 text-white font-black uppercase tracking-[0.3em] shadow-lg shadow-red-600/20 transition-all active:scale-95"
           onClick={() => {
-            if (confirm(t('buttons.sos') + '?')) {
-               setTitle(`[URGENT] ${t('buttons.sos')}`);
+            if (confirm(t('field.sos_confirm'))) {
+               setTitle(`[URGENT] ${t('field.sos_signal')}`);
                setDamageLevel('total');
                handleSubmit(new Event('submit'));
             }
           }}
         >
           <AlertTriangle size={20} className="animate-pulse" />
-          {t('buttons.sos')}
+          {t('field.sos_signal')}
         </button>
       </div>
+
+      {/* Camera Modal Overlay */}
+      {showCamera && (
+        <CameraModal 
+          onCapture={handleCapture} 
+          onClose={() => setShowCamera(false)} 
+        />
+      )}
     </div>
   );
 };
 
 export default FieldAgent;
-
