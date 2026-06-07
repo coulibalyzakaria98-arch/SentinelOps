@@ -12,7 +12,9 @@
     "intelligence": "الاستخبارات",
     "map": "الخريطة التكتيكية",
     "settings": "الإعدادات",
-    "logout": "تسجيل الخروج"
+    "system": "النظام",
+    "logout": "تسجيل الخروج",
+    "admin": "مدير النظام"
   },
   "status": {
     "system": "حالة النظام",
@@ -27,7 +29,8 @@
     "sector": "القطاع ألفا • سينتينل أوبس",
     "dataLink": "ربط البيانات",
     "stable": "مستقر",
-    "active": "نشط"
+    "active": "نشط",
+    "online_msg": "النظام يعمل"
   },
   "buttons": {
     "submit": "إرسال",
@@ -44,20 +47,27 @@
     "retry": "إعادة المحاولة",
     "sos": "إطلاق إنذار SOS",
     "capture": "التقاط",
-    "retake": "إعادة المحاولة"
+    "retake": "إعادة المحاولة",
+    "close": "إغلاق"
   },
   "field": {
     "title": "سينتينل أوبس ميداني",
-    "severity": "مستوى الضرر",
-    "minimal": "بسيط",
-    "partial": "جزئي",
-    "critical": "حرج",
+    "app_field": "سينتينل أوبس ميداني",
+    "severity": {
+      "title": "مستوى الضرر",
+      "minimal": "بسيط",
+      "partial": "جزئي",
+      "critical": "حرج"
+    },
     "classification": "التصنيف",
-    "flood": "فيضان",
-    "fire": "حريق",
-    "earthquake": "زلزال",
-    "cyclone": "إعصار",
-    "conflict": "نزاع",
+    "types": {
+      "flood": "فيضان",
+      "fire": "حريق",
+      "earthquake": "زلزال",
+      "cyclone": "إعصار",
+      "conflict": "نزاع",
+      "infrastructure": "بنية تحتية"
+    },
     "gps": "GPS",
     "intelligence": "الاستخبارات الميدانية",
     "incident_details": "تفاصيل الحادث",
@@ -68,18 +78,13 @@
     "accuracy": "الدقة",
     "report_title": "عنوان التقرير",
     "report_description": "الوصف",
-    "enter_title": "مثال: انهيار مبنى في شارع المدرسة",
-    "enter_description": "صف الوضع...",
-    "tactical_title": "العنوان التكتيكي",
-    "intel_terrain": "الاستخبارات الميدانية",
-    "severity_level": "مستوى الخطورة",
-    "gps_fixing": "تحديد الموقع...",
+    "enter_title": "مثال: انهيار في القطاع ألفا",
+    "enter_description": "تفاصيل الحادث...",
+    "transmit": "إرسال",
+    "online": "متصل",
+    "offline": "غير متصل",
     "success_msg": "تم إرسال التقرير بنجاح!",
-    "offline_msg": "تم حفظ التقرير (بدون اتصال)",
-    "placeholders": {
-      "title": "مثال: انهيار في القطاع ألفا",
-      "intel": "تفاصيل الحادث..."
-    }
+    "offline_msg": "تم حفظ التقرير (بدون اتصال)"
   },
   "command": {
     "title": "مركز القيادة",
@@ -100,8 +105,6 @@
     "infrastructure": "بنية تحتية",
     "strategicSimulator": "محاكي استراتيجي",
     "propagation": "الانتشار المقدر",
-    "speed": "كم/ساعة",
-    "direction": "الاتجاه",
     "risk": "المخاطر",
     "worstCase": "أسوأ حالة",
     "stability": "الاستقرار",

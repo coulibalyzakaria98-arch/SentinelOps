@@ -12,7 +12,9 @@
     "intelligence": "Intelligence",
     "map": "Tactical Map",
     "settings": "Settings",
-    "logout": "Logout"
+    "system": "System",
+    "logout": "Logout",
+    "admin": "System Administrator"
   },
   "status": {
     "system": "System Status",
@@ -27,7 +29,8 @@
     "sector": "Sector Alpha • SentinelOps",
     "dataLink": "Data Link",
     "stable": "Stable",
-    "active": "Active"
+    "active": "Active",
+    "online_msg": "System operational"
   },
   "buttons": {
     "submit": "Submit",
@@ -44,20 +47,27 @@
     "retry": "Retry",
     "sos": "LAUNCH SOS ALERT",
     "capture": "Capture",
-    "retake": "Retake"
+    "retake": "Retake",
+    "close": "Close"
   },
   "field": {
     "title": "SentinelOps FIELD",
-    "severity": "DAMAGE LEVEL",
-    "minimal": "MINIMAL",
-    "partial": "PARTIAL",
-    "critical": "CRITICAL",
+    "app_field": "SentinelOps FIELD",
+    "severity": {
+      "title": "DAMAGE LEVEL",
+      "minimal": "MINIMAL",
+      "partial": "PARTIAL",
+      "critical": "CRITICAL"
+    },
     "classification": "CLASSIFICATION",
-    "flood": "Flood",
-    "fire": "Fire",
-    "earthquake": "Earthquake",
-    "cyclone": "Cyclone",
-    "conflict": "Conflict",
+    "types": {
+      "flood": "Flood",
+      "fire": "Fire",
+      "earthquake": "Earthquake",
+      "cyclone": "Cyclone",
+      "conflict": "Conflict",
+      "infrastructure": "Infrastructure"
+    },
     "gps": "GPS",
     "intelligence": "FIELD INTELLIGENCE",
     "incident_details": "Incident details",
@@ -68,18 +78,13 @@
     "accuracy": "Accuracy",
     "report_title": "Report title",
     "report_description": "Description",
-    "enter_title": "E.g.: Building collapse on School Street",
-    "enter_description": "Describe the situation...",
-    "tactical_title": "Tactical Title",
-    "intel_terrain": "Field Intelligence",
-    "severity_level": "Severity Level",
-    "gps_fixing": "Fixing GPS...",
+    "enter_title": "Ex: Sector Alpha collapse",
+    "enter_description": "Incident details...",
+    "transmit": "TRANSMIT",
+    "online": "ONLINE",
+    "offline": "OFFLINE",
     "success_msg": "Report sent successfully!",
-    "offline_msg": "Report saved (Offline)",
-    "placeholders": {
-      "title": "E.g.: Alpha Sector Collapse",
-      "intel": "Incident details..."
-    }
+    "offline_msg": "Report saved (Offline)"
   },
   "command": {
     "title": "Command Center",

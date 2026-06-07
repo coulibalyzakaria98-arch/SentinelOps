@@ -12,7 +12,9 @@
     "intelligence": "Intelligence",
     "map": "Carte tactique",
     "settings": "Paramètres",
-    "logout": "Déconnexion"
+    "system": "Système",
+    "logout": "Déconnexion",
+    "admin": "Administrateur système"
   },
   "status": {
     "system": "État du système",
@@ -27,7 +29,8 @@
     "sector": "Secteur Alpha • SentinelOps",
     "dataLink": "Liaison de données",
     "stable": "Stable",
-    "active": "Actif"
+    "active": "Actif",
+    "online_msg": "Système opérationnel"
   },
   "buttons": {
     "submit": "Transmettre",
@@ -44,22 +47,29 @@
     "retry": "Réessayer",
     "sos": "LANCER L'ALERTE SOS",
     "capture": "Capturer",
-    "retake": "Reprendre"
+    "retake": "Reprendre",
+    "close": "Fermer"
   },
   "field": {
-    "title": "SentinelOps FIELD",
-    "severity": "NIVEAU DE GRAVITÉ",
-    "minimal": "MINIME",
-    "partial": "PARTIEL",
-    "critical": "CRITIQUE",
+    "title": "SentinelOps TERRAIN",
+    "app_field": "SentinelOps TERRAIN",
+    "severity": {
+      "title": "NIVEAU DE GRAVITÉ",
+      "minimal": "MINIME",
+      "partial": "PARTIEL",
+      "critical": "CRITIQUE"
+    },
     "classification": "CLASSIFICATION",
-    "flood": "Inondation",
-    "fire": "Incendie",
-    "earthquake": "Tremblement de terre",
-    "cyclone": "Cyclone",
-    "conflict": "Conflit",
+    "types": {
+      "flood": "Inondation",
+      "fire": "Incendie",
+      "earthquake": "Tremblement de terre",
+      "cyclone": "Cyclone",
+      "conflict": "Conflit",
+      "infrastructure": "Infrastructure"
+    },
     "gps": "GPS",
-    "intelligence": "INTELLIGENCE TERRAIN",
+    "intelligence": "RENSEIGNEMENTS TERRAIN",
     "incident_details": "Détails de l'incident",
     "photo": "Photo du terrain",
     "take_photo": "Prendre une photo",
@@ -68,18 +78,13 @@
     "accuracy": "Précision",
     "report_title": "Titre du rapport",
     "report_description": "Description",
-    "enter_title": "Ex: Effondrement rue des Écoles",
-    "enter_description": "Décrivez la situation...",
-    "tactical_title": "Titre Tactique",
-    "intel_terrain": "Intelligence Terrain",
-    "severity_level": "Niveau de Gravité",
-    "gps_fixing": "Localisation GPS...",
+    "enter_title": "Ex: Effondrement Secteur Alpha",
+    "enter_description": "Détails de l'incident...",
+    "transmit": "TRANSMETTRE",
+    "online": "EN LIGNE",
+    "offline": "HORS LIGNE",
     "success_msg": "Rapport envoyé avec succès !",
-    "offline_msg": "Rapport sauvegardé (Hors ligne)",
-    "placeholders": {
-      "title": "Ex: Effondrement Secteur Alpha",
-      "intel": "Détails de l'incident..."
-    }
+    "offline_msg": "Rapport sauvegardé (Hors ligne)"
   },
   "command": {
     "title": "Centre de commandement",

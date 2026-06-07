@@ -41,55 +41,56 @@ const FieldAgent = () => {
   }, [stream, isRTL, i18n.language]);
 
   const startCamera = async () => {
-    console.log("📸 [Camera] Attempting to start camera...");
-    try {
-      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-        console.error("❌ [Camera] getUserMedia not supported");
-        alert(t('errors.generic') + ": Camera API not supported");
-        return;
-      }
+    console.log('🔍 Tentative d\'ouverture de la caméra...');
 
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      console.error('❌ getUserMedia non supporté par ce navigateur');
+      alert(t('errors.camera_not_found') + '. ' + t('errors.generic'));
+      return;
+    }
+
+    try {
       if (stream) {
         stream.getTracks().forEach(track => track.stop());
       }
 
       let mediaStream;
       try {
-        console.log("🎥 [Camera] Trying environment facing mode...");
-        mediaStream = await navigator.mediaDevices.getUserMedia({ 
-          video: { 
-            facingMode: 'environment',
+        console.log('🎥 Demande de la caméra arrière (environment)...');
+        mediaStream = await navigator.mediaDevices.getUserMedia({
+          video: {
+            facingMode: { exact: 'environment' },
             width: { ideal: 1280 },
             height: { ideal: 720 }
-          } 
+          }
         });
-      } catch (err) {
-        console.warn("⚠️ [Camera] Environment mode failed, trying basic video...", err);
+      } catch (firstError) {
+        console.warn('⚠️ Camera arrière indisponible, tentative de fallback vidéo par défaut...', firstError);
         mediaStream = await navigator.mediaDevices.getUserMedia({ video: true });
       }
-      
-      console.log("✅ [Camera] Stream obtained:", mediaStream.id);
+
+      console.log('✅ Caméra autorisée !', mediaStream);
       setStream(mediaStream);
       setIsCameraActive(true);
-      
-      // Delay to ensure video element is ready
-      setTimeout(() => {
-        if (videoRef.current) {
-          videoRef.current.srcObject = mediaStream;
-          videoRef.current.onloadedmetadata = () => {
-            console.log("🎥 [Camera] Video metadata loaded, playing...");
-            videoRef.current.play().catch(e => console.error("❌ [Camera] Video play failed:", e));
-          };
-        }
-      }, 300);
+
+      if (videoRef.current) {
+        videoRef.current.srcObject = mediaStream;
+        videoRef.current.onloadedmetadata = () => {
+          console.log('🎥 Metadata vidéo chargées, lecture en cours...');
+          videoRef.current.play().catch(e => console.error('❌ Lecture vidéo impossible :', e));
+        };
+      }
     } catch (error) {
-      console.error('❌ [Camera] Error:', error);
+      console.error('❌ Erreur caméra :', error.name, error.message);
+
       if (error.name === 'NotAllowedError' || error.name === 'PermissionDeniedError') {
-        alert(t('errors.unauthorized') + " (Camera). " + t('field.sos_confirm'));
+        alert('Permission caméra refusée. ' + t('errors.camera_permission'));
       } else if (error.name === 'NotFoundError' || error.name === 'DevicesNotFoundError') {
-        alert("No camera found on this device.");
+        alert(t('errors.camera_not_found'));
+      } else if (error.name === 'NotReadableError') {
+        alert('La caméra est déjà utilisée par une autre application.');
       } else {
-        alert(`Camera Error: ${error.message}`);
+        alert('Impossible d\'accéder à la caméra. Vérifiez les permissions.');
       }
     }
   };
@@ -207,7 +208,7 @@ const FieldAgent = () => {
           <div className="glass-panel p-6 rounded-3xl border-white/10 bg-white/5 space-y-6">
             <div>
               <label className="block text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-2">
-                {t('field.tactical_title')}
+                {t('field.report_title')}
               </label>
               <input
                 type="text"
@@ -221,7 +222,7 @@ const FieldAgent = () => {
 
             <div>
               <label className="block text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-2">
-                {t('field.intel_terrain')}
+                {t('field.incident_details')}
               </label>
               <textarea
                 value={description}
@@ -234,13 +235,13 @@ const FieldAgent = () => {
 
             <div>
               <label className="block text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-3">
-                {t('field.severity_level')}
+                {t('field.severity.title')}
               </label>
               <div className="flex gap-2">
                 {[
-                  { value: 'minimal', label: t('field.severity.minimal'), color: 'emerald' },
-                  { value: 'partial', label: t('field.severity.partial'), color: 'amber' },
-                  { value: 'total', label: t('field.severity.critical'), color: 'red' }
+                  { value: 'minimal', label: t('field.minimal'), color: 'emerald' },
+                  { value: 'partial', label: t('field.partial'), color: 'amber' },
+                  { value: 'total', label: t('field.critical'), color: 'red' }
                 ].map(level => (
                   <button
                     key={level.value}
@@ -299,7 +300,7 @@ const FieldAgent = () => {
                {!isCameraActive && !capturedImage ? (
                  <button type="button" onClick={startCamera} className="flex flex-col items-center gap-2">
                     <Camera size={24} className="text-[#1F77D2]" />
-                    <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{t('field.photo')}</span>
+                    <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{t('buttons.camera')}</span>
                  </button>
                ) : capturedImage ? (
                  <div className="relative w-full h-full min-h-[60px]">
@@ -320,7 +321,7 @@ const FieldAgent = () => {
             className="w-full py-5 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl font-black text-white text-sm uppercase tracking-[0.3em] shadow-2xl shadow-blue-500/20 disabled:opacity-50 transition-all active:scale-95 flex items-center justify-center gap-3"
           >
             {isSubmitting ? <RotateCw className="animate-spin" size={20} /> : <Send size={20} />}
-            {isOnline ? t('field.transmit') : t('field.save')}
+            {isOnline ? t('field.transmit') : t('buttons.save')}
           </button>
         </form>
 
@@ -333,15 +334,15 @@ const FieldAgent = () => {
           type="button"
           className="w-full py-4 bg-red-600 hover:bg-red-500 rounded-2xl flex items-center justify-center gap-3 text-white font-black uppercase tracking-[0.3em] shadow-lg shadow-red-600/20 transition-all active:scale-95"
           onClick={() => {
-            if (confirm(t('field.sos_confirm'))) {
-               setTitle(`[URGENT] ${t('field.sos_signal')}`);
+            if (confirm(t('buttons.sos') + '?')) {
+               setTitle(`[URGENT] ${t('buttons.sos')}`);
                setDamageLevel('total');
                handleSubmit(new Event('submit'));
             }
           }}
         >
           <AlertTriangle size={20} className="animate-pulse" />
-          {t('field.sos_signal')}
+          {t('buttons.sos')}
         </button>
       </div>
     </div>

@@ -2,7 +2,19 @@
   "app": {
     "name": "SentinelOps",
     "title": "Тактический оперативный центр",
-    "field": "Полевые операции"
+    "tagline": "Система стратегической разведки"
+  },
+  "nav": {
+    "dashboard": "Панель",
+    "command": "Командный центр",
+    "field": "Полевые",
+    "analytics": "Аналитика",
+    "intelligence": "Разведка",
+    "map": "Тактическая карта",
+    "settings": "Настройки",
+    "system": "Система",
+    "logout": "Выход",
+    "admin": "Системный администратор"
   },
   "status": {
     "system": "Состояние системы",
@@ -17,17 +29,8 @@
     "sector": "Сектор Альфа • SentinelOps",
     "dataLink": "Канал данных",
     "stable": "Стабильно",
-    "active": "Активен"
-  },
-  "nav": {
-    "dashboard": "Панель",
-    "command": "Командный центр",
-    "field": "Полевые",
-    "analytics": "Аналитика",
-    "intelligence": "Разведка",
-    "map": "Тактическая карта",
-    "settings": "Настройки",
-    "logout": "Выход"
+    "active": "Активен",
+    "online_msg": "Система работает"
   },
   "buttons": {
     "submit": "Отправить",
@@ -44,20 +47,27 @@
     "retry": "Повторить",
     "sos": "ЗАПУСТИТЬ ТРЕВОГУ SOS",
     "capture": "Снять",
-    "retake": "Повторить"
+    "retake": "Повторить",
+    "close": "Закрыть"
   },
   "field": {
     "title": "SentinelOps ПОЛЕ",
-    "severity": "УРОВЕНЬ УЩЕРБА",
-    "minimal": "МИНИМАЛЬНЫЙ",
-    "partial": "ЧАСТИЧНЫЙ",
-    "critical": "КРИТИЧЕСКИЙ",
+    "app_field": "SentinelOps ПОЛЕ",
+    "severity": {
+      "title": "УРОВЕНЬ УЩЕРБА",
+      "minimal": "МИНИМАЛЬНЫЙ",
+      "partial": "ЧАСТИЧНЫЙ",
+      "critical": "КРИТИЧЕСКИЙ"
+    },
     "classification": "КЛАССИФИКАЦИЯ",
-    "flood": "Наводнение",
-    "fire": "Пожар",
-    "earthquake": "Землетрясение",
-    "cyclone": "Циклон",
-    "conflict": "Конфликт",
+    "types": {
+      "flood": "Наводнение",
+      "fire": "Пожар",
+      "earthquake": "Землетрясение",
+      "cyclone": "Циклон",
+      "conflict": "Конфликт",
+      "infrastructure": "Инфраструктура"
+    },
     "gps": "GPS",
     "intelligence": "ПОЛЕВАЯ РАЗВЕДКА",
     "incident_details": "Детали инцидента",
@@ -68,18 +78,13 @@
     "accuracy": "Точность",
     "report_title": "Заголовок отчета",
     "report_description": "Описание",
-    "enter_title": "Пример: Обрушение на Школьной улице",
-    "enter_description": "Опишите ситуацию...",
-    "tactical_title": "Тактическое название",
-    "intel_terrain": "Полевая разведка",
-    "severity_level": "Уровень серьезности",
-    "gps_fixing": "Определение местоположения...",
+    "enter_title": "Пример: Обрушение в Секторе Альфа",
+    "enter_description": "Детали инцидента...",
+    "transmit": "ПЕРЕДАТЬ",
+    "online": "ОНЛАЙН",
+    "offline": "ОФЛАЙН",
     "success_msg": "Отчет успешно отправлен!",
-    "offline_msg": "Отчет сохранен (в автономном режиме)",
-    "placeholders": {
-      "title": "Пример: Обрушение в секторе Альфа",
-      "intel": "Детали происшествия..."
-    }
+    "offline_msg": "Отчет сохранен (в автономном режиме)"
   },
   "command": {
     "title": "Командный центр",
@@ -178,7 +183,7 @@
   "errors": {
     "generic": "Произошла ошибка",
     "network": "Ошибка сети",
-    "offline": "Вы не в сети",
+    "offline": "Вы офлайн",
     "notFound": "Страница не найдена",
     "unauthorized": "Несанкционированный доступ",
     "camera_permission": "Разрешение на камеру отклонено",

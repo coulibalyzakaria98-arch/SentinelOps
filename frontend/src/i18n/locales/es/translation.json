@@ -12,7 +12,9 @@
     "intelligence": "Inteligencia",
     "map": "Mapa Táctico",
     "settings": "Configuración",
-    "logout": "Salir"
+    "system": "Sistema",
+    "logout": "Salir",
+    "admin": "Administrador del sistema"
   },
   "status": {
     "system": "Estado del Sistema",
@@ -27,7 +29,8 @@
     "sector": "Sector Alpha • SentinelOps",
     "dataLink": "Enlace de Datos",
     "stable": "Estable",
-    "active": "Activo"
+    "active": "Activo",
+    "online_msg": "Sistema operativo"
   },
   "buttons": {
     "submit": "Enviar",
@@ -44,20 +47,27 @@
     "retry": "Reintentar",
     "sos": "LANZAR ALERTA SOS",
     "capture": "Capturar",
-    "retake": "Repetir"
+    "retake": "Repetir",
+    "close": "Cerrar"
   },
   "field": {
     "title": "SentinelOps CAMPO",
-    "severity": "NIVEL DE DAÑO",
-    "minimal": "MÍNIMO",
-    "partial": "PARCIAL",
-    "critical": "CRÍTICO",
+    "app_field": "SentinelOps CAMPO",
+    "severity": {
+      "title": "NIVEL DE DAÑO",
+      "minimal": "MÍNIMO",
+      "partial": "PARCIAL",
+      "critical": "CRÍTICO"
+    },
     "classification": "CLASIFICACIÓN",
-    "flood": "Inundación",
-    "fire": "Incendio",
-    "earthquake": "Terremoto",
-    "cyclone": "Ciclón",
-    "conflict": "Conflicto",
+    "types": {
+      "flood": "Inundación",
+      "fire": "Incendio",
+      "earthquake": "Terremoto",
+      "cyclone": "Ciclón",
+      "conflict": "Conflicto",
+      "infrastructure": "Infraestructura"
+    },
     "gps": "GPS",
     "intelligence": "INTELIGENCIA DE CAMPO",
     "incident_details": "Detalles del incidente",
@@ -68,18 +78,13 @@
     "accuracy": "Precisión",
     "report_title": "Título del informe",
     "report_description": "Descripción",
-    "enter_title": "Ej: Derrumbe en calle Escolar",
-    "enter_description": "Describa la situación...",
-    "tactical_title": "Título Táctico",
-    "intel_terrain": "Inteligencia de Campo",
-    "severity_level": "Nivel de Gravedad",
-    "gps_fixing": "Localizando GPS...",
+    "enter_title": "Ej: Colapso en Sector Alpha",
+    "enter_description": "Detalles del incidente...",
+    "transmit": "TRANSMITIR",
+    "online": "EN LÍNEA",
+    "offline": "FUERA DE LÍNEA",
     "success_msg": "¡Informe enviado con éxito!",
-    "offline_msg": "Informe guardado (Sin conexión)",
-    "placeholders": {
-      "title": "Ej: Colapso del Sector Alpha",
-      "intel": "Detalles del incidente..."
-    }
+    "offline_msg": "Informe guardado (Sin conexión)"
   },
   "command": {
     "title": "Centro de Comando",
@@ -100,7 +105,7 @@
     "infrastructure": "Infraestructura",
     "strategicSimulator": "Simulador Estratégico",
     "propagation": "Propagación estimada",
-    "risk": "Risgo",
+    "risk": "Riesgo",
     "worstCase": "Peor caso",
     "stability": "Estabilidad",
     "activeIA": "Estrategia IA Activa",

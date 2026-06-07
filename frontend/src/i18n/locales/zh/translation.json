@@ -12,7 +12,9 @@
     "intelligence": "情报",
     "map": "战术地图",
     "settings": "设置",
-    "logout": "退出"
+    "system": "系统",
+    "logout": "退出",
+    "admin": "系统管理员"
   },
   "status": {
     "system": "系统状态",
@@ -27,7 +29,8 @@
     "sector": "阿尔法区域 • SentinelOps",
     "dataLink": "数据链接",
     "stable": "稳定",
-    "active": "活跃"
+    "active": "活跃",
+    "online_msg": "系统运行中"
   },
   "buttons": {
     "submit": "提交",
@@ -44,20 +47,27 @@
     "retry": "重试",
     "sos": "发出求救警报",
     "capture": "拍摄",
-    "retake": "重拍"
+    "retake": "重拍",
+    "close": "关闭"
   },
   "field": {
     "title": "SentinelOps 现场",
-    "severity": "损坏程度",
-    "minimal": "轻微",
-    "partial": "部分",
-    "critical": "严重",
+    "app_field": "SentinelOps 现场",
+    "severity": {
+      "title": "损坏程度",
+      "minimal": "轻微",
+      "partial": "部分",
+      "critical": "严重"
+    },
     "classification": "分类",
-    "flood": "洪水",
-    "fire": "火灾",
-    "earthquake": "地震",
-    "cyclone": "气旋",
-    "conflict": "冲突",
+    "types": {
+      "flood": "洪水",
+      "fire": "火灾",
+      "earthquake": "地震",
+      "cyclone": "气旋",
+      "conflict": "冲突",
+      "infrastructure": "基础设施"
+    },
     "gps": "GPS",
     "intelligence": "现场情报",
     "incident_details": "事件详情",
@@ -68,18 +78,13 @@
     "accuracy": "精度",
     "report_title": "报告标题",
     "report_description": "描述",
-    "enter_title": "例如：学校街建筑倒塌",
-    "enter_description": "描述情况...",
-    "tactical_title": "战术标题",
-    "intel_terrain": "现场情报",
-    "severity_level": "严重程度",
-    "gps_fixing": "正在定位 GPS...",
+    "enter_title": "例如：阿尔法区域倒塌",
+    "enter_description": "事件详情...",
+    "transmit": "发送",
+    "online": "在线",
+    "offline": "离线",
     "success_msg": "报告发送成功！",
-    "offline_msg": "报告已保存（离线）",
-    "placeholders": {
-      "title": "例如：阿尔法区域坍塌",
-      "intel": "事件详情..."
-    }
+    "offline_msg": "报告已保存（离线）"
   },
   "command": {
     "title": "指挥中心",
