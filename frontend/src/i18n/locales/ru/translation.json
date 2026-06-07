@@ -2,6 +2,7 @@
   "app": {
     "name": "SentinelOps",
     "title": "Тактический оперативный центр",
+    "field": "Полевые операции",
     "tagline": "Система стратегической разведки"
   },
   "nav": {
@@ -12,10 +13,8 @@
     "intelligence": "Разведка",
     "map": "Тактическая карта",
     "settings": "Настройки",
-    "system": "Система",
     "logout": "Выход",
-    "admin": "Системный администратор",
-    "navigation": "Навигация"
+    "admin": "Администратор"
   },
   "status": {
     "system": "Состояние системы",
@@ -31,8 +30,7 @@
     "dataLink": "Канал данных",
     "stable": "Стабильно",
     "active": "Активен",
-    "online_msg": "Система работает",
-    "statusLabel": "Статус"
+    "signals": "Активные сигналы"
   },
   "buttons": {
     "submit": "Отправить",
@@ -49,27 +47,20 @@
     "retry": "Повторить",
     "sos": "ЗАПУСТИТЬ ТРЕВОГУ SOS",
     "capture": "Снять",
-    "retake": "Повторить",
-    "close": "Закрыть"
+    "retake": "Повторить"
   },
   "field": {
     "title": "SentinelOps ПОЛЕ",
-    "app_field": "SentinelOps ПОЛЕ",
-    "severity": {
-      "title": "УРОВЕНЬ УЩЕРБА",
-      "minimal": "МИНИМАЛЬНЫЙ",
-      "partial": "ЧАСТИЧНЫЙ",
-      "critical": "КРИТИЧЕСКИЙ"
-    },
+    "severity": "УРОВЕНЬ УЩЕРБА",
+    "minimal": "МИНИМАЛЬНЫЙ",
+    "partial": "ЧАСТИЧНЫЙ",
+    "critical": "КРИТИЧЕСКИЙ",
     "classification": "КЛАССИФИКАЦИЯ",
-    "types": {
-      "flood": "Наводнение",
-      "fire": "Пожар",
-      "earthquake": "Землетрясение",
-      "cyclone": "Циклон",
-      "conflict": "Конфликт",
-      "infrastructure": "Инфраструктура"
-    },
+    "flood": "Наводнение",
+    "fire": "Пожар",
+    "earthquake": "Землетрясение",
+    "cyclone": "Циклон",
+    "conflict": "Конфликт",
     "gps": "GPS",
     "intelligence": "ПОЛЕВАЯ РАЗВЕДКА",
     "incident_details": "Детали инцидента",
@@ -80,17 +71,23 @@
     "accuracy": "Точность",
     "report_title": "Заголовок отчета",
     "report_description": "Описание",
-    "enter_title": "Пример: Обрушение в Секторе Альфа",
-    "enter_description": "Детали инцидента...",
-    "transmit": "ПЕРЕДАТЬ",
-    "online": "ОНЛАЙН",
-    "offline": "ОФЛАЙН",
+    "enter_title": "Пример: Обрушение на Школьной улице",
+    "enter_description": "Опишите ситуацию...",
+    "tactical_title": "Тактическое название",
+    "intel_terrain": "Полевая разведка",
+    "severity_level": "Уровень серьезности",
+    "gps_fixing": "Определение местоположения...",
     "success_msg": "Отчет успешно отправлен!",
-    "offline_msg": "Отчет сохранен (в автономном режиме)"
+    "offline_msg": "Отчет сохранен (в автономном режиме)",
+    "placeholders": {
+      "title": "Пример: Обрушение в секторе Альфа",
+      "intel": "Детали происшествия..."
+    },
+    "online": "В сети"
   },
   "command": {
     "title": "Командный центр",
-    "intel": "Наземная разведка",
+    "intel": "Разведданные",
     "activeUnits": "Активные подразделения",
     "fusionScore": "Оценка слияния",
     "tempo": "Темп",
@@ -159,7 +156,9 @@
     "recommendation": "Рекомендация",
     "details": "Подробности",
     "deployUnit": "Развернуть мобильный отряд",
-    "securePerimeter": "Обезопасить периметр"
+    "securePerimeter": "Обезопасить периметр",
+    "activeIA": "Активная стратегия ИИ",
+    "confidence": "Уверенность"
   },
   "export": {
     "title": "Экспорт отчета",
@@ -185,7 +184,7 @@
   "errors": {
     "generic": "Произошла ошибка",
     "network": "Ошибка сети",
-    "offline": "Вы офлайн",
+    "offline": "Вы не в сети",
     "notFound": "Страница не найдена",
     "unauthorized": "Несанкционированный доступ",
     "camera_permission": "Разрешение на камеру отклонено",
@@ -201,36 +200,5 @@
     "hours": "часов",
     "day": "день",
     "days": "дней"
-  },
-  "landing": {
-    "accessProtocol": "ВЫБЕРИТЕ ПРОТОКОЛ ДОСТУПА",
-    "fieldDescription": "Передача разведданных с места событий и мультимедийные отчеты.",
-    "commandDescription": "Мониторинг в реальном времени и тактическая координация.",
-    "accessAction": "Доступ →",
-    "features": {
-      "photo": "Полевое фото",
-      "gps": "GPS",
-      "offline": "Офлайн",
-      "map": "Карта",
-      "kpis": "KPIs",
-      "units": "Подразделения"
-    },
-    "footer": {
-      "fusionActive": "Активная синергия Sentinel",
-      "secureLink": "Защищенное соединение",
-      "strategicWatch": "Стратегическое наблюдение"
-    }
-  },
-  "simulator": {
-    "title": "Стратегический симулятор",
-    "propagation": "Расчетное распространение",
-    "direction": "Северо-Восток",
-    "risk": "Риск"
-  },
-  "filters": {
-    "global": "Глобальный вид",
-    "fires": "Пожары",
-    "floods": "Наводнения",
-    "infrastructure": "Инфраструктура"
   }
 }
