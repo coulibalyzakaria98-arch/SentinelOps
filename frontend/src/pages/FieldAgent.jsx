@@ -239,9 +239,9 @@ const FieldAgent = () => {
               </label>
               <div className="flex gap-2">
                 {[
-                  { value: 'minimal', label: t('field.minimal'), color: 'emerald' },
-                  { value: 'partial', label: t('field.partial'), color: 'amber' },
-                  { value: 'total', label: t('field.critical'), color: 'red' }
+                  { value: 'minimal', label: t('field.severity.minimal'), color: 'emerald' },
+                  { value: 'partial', label: t('field.severity.partial'), color: 'amber' },
+                  { value: 'total', label: t('field.severity.critical'), color: 'red' }
                 ].map(level => (
                   <button
                     key={level.value}
