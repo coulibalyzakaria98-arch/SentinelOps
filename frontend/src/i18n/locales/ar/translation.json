@@ -82,26 +82,26 @@
     "report_description": "الوصف",
     "enter_title": "مثال: انهيار في القطاع ألفا",
     "enter_description": "تفاصيل الحادث...",
-    "transmit": "إرسال",
-    "online": "متصل",
+    "transmit": "إرسال التقرير",
+    "online": "في الميدان",
     "offline": "غير متصل",
-    "success_msg": "تم إرسال التقرير بنجاح!",
-    "offline_msg": "تم حفظ التقرير (بدون اتصال)"
+    "success_msg": "تم إرسال التقرير بنجاح",
+    "offline_msg": "تم حفظ التقرير محلياً - سيتم المزامنة تلقائياً"
   },
   "command": {
     "title": "مركز القيادة",
     "intel": "الاستخبارات الميدانية",
+    "signals": "إشارات نشطة",
     "activeUnits": "الوحدات النشطة",
     "fusionScore": "نتيجة الدمج",
+    "globalScore": "عالمي",
     "tempo": "حالة الإيقاع",
     "uptime": "وقت التشغيل",
     "realTime": "الوقت الفعلي",
     "live": "مباشر",
-    "signals": "الإشارات الميدانية",
     "deployedUnits": "الوحدات المنتشرة",
-    "globalScore": "النتيجة العالمية",
-    "tacticalFilters": "عوامل التصفية التكتيكية",
-    "globalView": "عرض عام",
+    "tacticalFilters": "القطاع التشغيلي",
+    "globalView": "الكل",
     "fires": "حرائق",
     "floods": "فيضانات",
     "infrastructure": "بنية تحتية",
@@ -110,7 +110,7 @@
     "risk": "المخاطر",
     "worstCase": "أسوأ حالة",
     "stability": "الاستقرار",
-    "activeIA": "استراتيجية الذكاء الاصطناعي النشطة",
+    "activeIA": "تحليل متعدد المصادر نشط",
     "operations": "عمليات البنية التحتية",
     "search": "البحث عن قطاع أو تنبيه..."
   },
@@ -141,7 +141,7 @@
     "terrain": "تضاريس"
   },
   "alerts": {
-    "title": "تنبيهات حرجة",
+    "title": "حوادث حرجة",
     "critical": "حرج",
     "urgent": "عاجل",
     "moderate": "متوسط",
@@ -153,13 +153,34 @@
     "deployment": "النشر الموصى به",
     "propagationWarning": "خطر الانتشار"
   },
+  "filters": {
+    "title": "القطاع التشغيلي",
+    "global": "الكل",
+    "fires": "حرائق",
+    "floods": "فيضانات",
+    "earthquakes": "زلازل",
+    "conflicts": "نزاعات",
+    "infrastructure": "بنية تحتية",
+    "reset": "إعادة تعيين"
+  },
+  "simulator": {
+    "title": "محاكي استراتيجي",
+    "propagation": "الانتشار المقدر",
+    "speed": "كم/ساعة",
+    "direction": "الشمال الشرقي",
+    "risk": "المخاطر",
+    "worstCase": "أسوأ حالة",
+    "stability": "الاستقرار"
+  },
   "ast": {
-    "title": "مستشار استراتيجي تكتيكي",
+    "title": "المستشار التكتيكي الاستراتيجي",
     "analysis": "التحليل قيد التقدم",
     "recommendation": "توصية",
     "details": "تفاصيل",
     "deployUnit": "نشر وحدة متنقلة",
-    "securePerimeter": "تأمين المحيط"
+    "securePerimeter": "تأمين المحيط",
+    "confidence": "الثقة الجغرافية المكانية",
+    "activeIA": "تحليل متعدد المصادر نشط"
   },
   "export": {
     "title": "تصدير التقرير",
@@ -176,31 +197,11 @@
     "footer": "تذييل"
   },
   "offline": {
-    "title": "وضع عدم الاتصال نشط",
+    "title": "وضع غير متصل نشط",
     "message": "سيتم حفظ التقارير محلياً",
     "sync": "تقارير معلقة",
     "syncNow": "مزامنة الآن",
     "queue": "قائمة الانتظار"
-  },
-  "errors": {
-    "generic": "حدث خطأ",
-    "network": "خطأ في الشبكة",
-    "offline": "أنت غير متصل",
-    "notFound": "الصفحة غير موجودة",
-    "unauthorized": "وصول غير مصرح به",
-    "camera_permission": "تم رفض إذن الكاميرا",
-    "camera_not_found": "لم يتم العثور على كاميرا",
-    "gps_error": "خطأ في نظام تحديد المواقع",
-    "upload_failed": "فشل التحميل"
-  },
-  "time": {
-    "now": "الآن",
-    "minute": "دقيقة",
-    "minutes": "دقائق",
-    "hour": "ساعة",
-    "hours": "ساعات",
-    "day": "يوم",
-    "days": "أيام"
   },
   "landing": {
     "accessProtocol": "اختر بروتوكول الوصول الخاص بك",
@@ -221,16 +222,24 @@
       "strategicWatch": "مراقبة استراتيجية"
     }
   },
-  "simulator": {
-    "title": "محاكي استراتيجي",
-    "propagation": "الانتشار المقدر",
-    "direction": "الشمال الشرقي",
-    "risk": "المخاطرة"
+  "errors": {
+    "generic": "حدث خطأ",
+    "network": "خطأ في الشبكة",
+    "offline": "أنت غير متصل",
+    "notFound": "الصفحة غير موجودة",
+    "unauthorized": "وصول غير مصرح به",
+    "camera_permission": "تم رفض إذن الكاميرا",
+    "camera_not_found": "لم يتم العثور على كاميرا",
+    "gps_error": "خطأ في نظام تحديد المواقع",
+    "upload_failed": "فشل التحميل"
   },
-  "filters": {
-    "global": "العرض الشامل",
-    "fires": "الحرائق",
-    "floods": "الفيضانات",
-    "infrastructure": "البنية التحتية"
+  "time": {
+    "now": "الآن",
+    "minute": "دقيقة",
+    "minutes": "دقائق",
+    "hour": "ساعة",
+    "hours": "ساعات",
+    "day": "يوم",
+    "days": "أيام"
   }
 }
