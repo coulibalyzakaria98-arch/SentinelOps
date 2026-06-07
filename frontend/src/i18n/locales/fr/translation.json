@@ -12,9 +12,8 @@
     "intelligence": "Intelligence",
     "map": "Carte tactique",
     "settings": "Paramètres",
-    "system": "Système",
     "logout": "Déconnexion",
-    "admin": "Administrateur système",
+    "admin": "Administrateur",
     "navigation": "Navigation"
   },
   "status": {
@@ -24,15 +23,13 @@
     "critical": "CRITIQUE",
     "online": "EN LIGNE",
     "offline": "HORS LIGNE",
-    "sync": "Synchronisation",
-    "lastSync": "Dernière synchronisation",
+    "dataLink": "Liaison de données",
+    "statusLabel": "Statut",
     "officer": "Officier de Garde",
     "sector": "Secteur Alpha • SentinelOps",
-    "dataLink": "Liaison de données",
-    "stable": "Stable",
     "active": "Actif",
-    "online_msg": "Système opérationnel",
-    "statusLabel": "État"
+    "sync": "Synchronisation",
+    "lastSync": "Dernière synchronisation"
   },
   "buttons": {
     "submit": "Transmettre",
@@ -49,14 +46,12 @@
     "retry": "Réessayer",
     "sos": "LANCER L'ALERTE SOS",
     "capture": "Capturer",
-    "retake": "Reprendre",
-    "close": "Fermer"
+    "retake": "Reprendre"
   },
   "field": {
-    "title": "SentinelOps TERRAIN",
-    "app_field": "SentinelOps TERRAIN",
+    "title": "SentinelOps FIELD",
+    "severity_level": "Niveau de Gravité",
     "severity": {
-      "title": "NIVEAU DE GRAVITÉ",
       "minimal": "MINIME",
       "partial": "PARTIEL",
       "critical": "CRITIQUE"
@@ -67,120 +62,132 @@
       "fire": "Incendie",
       "earthquake": "Tremblement de terre",
       "cyclone": "Cyclone",
-      "conflict": "Conflit",
-      "infrastructure": "Infrastructure"
+      "conflict": "Conflit"
     },
     "gps": "GPS",
-    "intelligence": "RENSEIGNEMENTS TERRAIN",
-    "incident_details": "Détails de l'incident",
-    "photo": "Photo du terrain",
-    "take_photo": "Prendre une photo",
-    "reports_sent": "Rapports envoyés",
-    "pending_sync": "En attente de synchronisation",
-    "accuracy": "Précision",
+    "gps_fixing": "Localisation GPS...",
+    "transmit": "Transmettre le rapport",
+    "online": "Sur le terrain",
+    "photo": "Photo",
     "report_title": "Titre du rapport",
     "report_description": "Description",
-    "enter_title": "Ex: Effondrement Secteur Alpha",
-    "enter_description": "Détails de l'incident...",
-    "transmit": "TRANSMETTRE",
-    "online": "EN LIGNE",
-    "offline": "HORS LIGNE",
+    "incident_details": "Détails de l'incident",
+    "tactical_title": "Titre Tactique",
+    "intel_terrain": "Intelligence Terrain",
     "success_msg": "Rapport envoyé avec succès !",
-    "offline_msg": "Rapport sauvegardé (Hors ligne)"
+    "offline_msg": "Rapport sauvegardé (Hors ligne)",
+    "placeholders": {
+      "title": "Ex: Effondrement Secteur Alpha",
+      "intel": "Détails de l'incident..."
+    },
+    "sos_signal": "SIGNAL SOS",
+    "sos_confirm": "Lancer l'alerte SOS immédiate ?"
   },
   "command": {
     "title": "Centre de commandement",
     "intel": "Renseignements au sol",
     "activeUnits": "Unités actives",
     "fusionScore": "Score de fusion",
-    "tempo": "Statut tempo",
-    "uptime": "Disponibilité",
-    "realTime": "En temps réel",
+    "globalScore": "Global",
+    "signals": "Signaux actifs",
+    "search": "Rechercher un secteur ou une alerte",
+    "activeIA": "Analyse multi-sources active",
     "live": "En direct",
-    "signals": "Signaux au sol",
-    "deployedUnits": "Unités déployées sur le terrain",
-    "globalScore": "Score de fusion global",
-    "tacticalFilters": "Filtres tactiques",
-    "globalView": "Vue globale",
+    "live_feed": "Flux Tactique Temps Réel",
+    "inactive_link": "Lien Inactif",
+    "no_summary": "Aucun résumé..."
+  },
+  "alerts": {
+    "title": "Alertes",
+    "critical": "CRITIQUE",
+    "urgent": "URGENT",
+    "moderate": "MODÉRÉ",
+    "info": "INFORMATION",
+    "deployment": "Déploiement recommandé",
+    "propagationWarning": "Risque de propagation",
+    "action": "Action requise"
+  },
+  "filters": {
+    "global": "Tout",
     "fires": "Incendies",
     "floods": "Inondations",
     "infrastructure": "Infrastructures",
-    "strategicSimulator": "Simulateur stratégique",
+    "title": "Filtrer par"
+  },
+  "simulator": {
+    "title": "Simulateur stratégique",
     "propagation": "Propagation estimée",
     "risk": "Risque",
+    "direction": "Direction",
     "worstCase": "Le pire des cas",
-    "stability": "Stabilité",
-    "activeIA": "Stratégie IA active",
-    "operations": "Opérations d'infrastructure",
-    "search": "Rechercher un secteur ou une alerte..."
+    "stability": "Stabilité"
+  },
+  "ast": {
+    "title": "Conseiller Stratégique Tactique",
+    "analysis": "Analyse en cours",
+    "recommendation": "Recommandation",
+    "confidence": "Confiance",
+    "deployUnit": "Déploiement immédiat de deux unités de confinement vers le périmètre Nord.",
+    "analysis_demo": "Augmentation anormale des signaux thermiques détectée dans le Secteur Delta. Risque de propagation vers les zones résidentielles estimé à 74%."
   },
   "analytics": {
     "title": "Centre d'analyse",
     "trends": "Tendances",
     "heatmap": "Carte de chaleur",
     "history": "Historique",
-    "exportData": "Exporter les données",
-    "timeRange": "Période",
-    "last24h": "Dernières 24h",
-    "last7d": "7 jours",
-    "last30d": "30 jours",
-    "last90d": "90 jours",
-    "lastYear": "1 an"
+    "total_incidents": "Total Incidents",
+    "response_time": "Temps de Réponse",
+    "resource_utilization": "Utilisation Ressources",
+    "units_deployed": "Unités Déployées",
+    "breakdown": "Répartition",
+    "ia_insight": "Aperçu IA",
+    "optimization": "Optimisation",
+    "attention": "Attention",
+    "trends_incidents": "Tendances des Incidents",
+    "trends_delays": "Analyse des Délais",
+    "trends_resources": "Occupation des Ressources",
+    "loading_data": "Données en attente de chargement...",
+    "global_avg": "Moyenne globale",
+    "current_cap": "Capacité actuelle",
+    "field_teams": "Équipes terrain",
+    "real_time_viz": "Visualisation en temps réel • Sentinel-2",
+    "last_update": "Dernière mise à jour"
   },
   "map": {
     "title": "Carte tactique",
-    "hotspots": "Points chauds",
-    "legend": "Légende",
-    "critical": "Critique",
-    "high": "Élevé",
-    "medium": "Modéré",
-    "low": "Faible",
-    "coordinates": "Coordonnées",
-    "search": "Rechercher une zone",
-    "satellite": "Satellite",
-    "terrain": "Terrain"
+    "legend": "Légende"
   },
-  "alerts": {
-    "title": "Alertes critiques",
-    "critical": "CRITIQUE",
-    "urgent": "URGENT",
-    "moderate": "MODÉRÉ",
-    "info": "INFORMATION",
-    "zone": "Zone",
-    "action": "Action requise",
-    "noAlerts": "Aucune alerte critique",
-    "timestamp": "Il y a",
-    "deployment": "Déploiement recommandé",
-    "propagationWarning": "Risque de propagation"
+  "landing": {
+    "accessProtocol": "Choisir le protocole d'accès",
+    "fieldDescription": "Transmission d'informations terrain",
+    "commandDescription": "Surveillance en temps réel",
+    "accessAction": "Accès ←",
+    "features": {
+      "photo": "Photo",
+      "gps": "GPS",
+      "offline": "Offline",
+      "map": "Carte",
+      "kpis": "KPIs",
+      "units": "Unités"
+    },
+    "footer": {
+      "fusionActive": "Sentinel Fusion Active",
+      "secureLink": "Lien sécurisé",
+      "strategicWatch": "Veille stratégique"
+    }
   },
-  "ast": {
-    "title": "Conseiller stratégique tactique",
-    "analysis": "Analyse en cours",
-    "recommendation": "Recommandation",
-    "details": "Détails",
-    "deployUnit": "Déploiement unité mobile",
-    "securePerimeter": "Sécuriser le périmètre"
-  },
-  "export": {
-    "title": "Exporter le rapport",
-    "pdf": "Export PDF",
-    "csv": "Export CSV",
-    "geojson": "Export GeoJSON",
-    "options": "Options d'export",
-    "orientation": "Orientation",
-    "portrait": "Portrait",
-    "landscape": "Paysage",
-    "quality": "Qualité",
-    "include": "Inclure",
-    "timestamp": "Horodatage",
-    "footer": "Pied de page"
-  },
-  "offline": {
-    "title": "Mode hors ligne actif",
-    "message": "Les rapports seront sauvegardés localement",
-    "sync": "Rapports en attente",
-    "syncNow": "Synchroniser maintenant",
-    "queue": "File d'attente"
+  "time": {
+    "now": "À l'instant",
+    "minute": "minute",
+    "minutes": "minutes",
+    "hour": "heure",
+    "hours": "heures",
+    "day": "jour",
+    "days": "jours",
+    "last24h": "Dernières 24h",
+    "last7d": "7 Jours",
+    "last30d": "30 Jours",
+    "last90d": "90 Jours"
   },
   "errors": {
     "generic": "Une erreur est survenue",
@@ -192,45 +199,5 @@
     "camera_not_found": "Aucune caméra trouvée",
     "gps_error": "Erreur GPS",
     "upload_failed": "Échec de l'envoi"
-  },
-  "time": {
-    "now": "À l'instant",
-    "minute": "minute",
-    "minutes": "minutes",
-    "hour": "heure",
-    "hours": "heures",
-    "day": "jour",
-    "days": "jours"
-  },
-  "landing": {
-    "accessProtocol": "SÉLECTIONNEZ VOTRE PROTOCOLE D'ACCÈS",
-    "fieldDescription": "Transmission d'intelligence de terrain et rapports multimédias.",
-    "commandDescription": "Surveillance en temps réel et coordination tactique.",
-    "accessAction": "Accéder →",
-    "features": {
-      "photo": "Photo",
-      "gps": "GPS",
-      "offline": "Hors ligne",
-      "map": "Carte",
-      "kpis": "KPIs",
-      "units": "Unités"
-    },
-    "footer": {
-      "fusionActive": "Sentinel Fusion actif",
-      "secureLink": "Lien sécurisé",
-      "strategicWatch": "Veille stratégique"
-    }
-  },
-  "simulator": {
-    "title": "Simulateur Stratégique",
-    "propagation": "Propagation estimée",
-    "direction": "Nord-Est",
-    "risk": "Risque"
-  },
-  "filters": {
-    "global": "Vue globale",
-    "fires": "Incendies",
-    "floods": "Inondations",
-    "infrastructure": "Infrastructure"
   }
 }

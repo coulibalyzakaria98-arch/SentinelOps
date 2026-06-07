@@ -12,7 +12,6 @@
     "intelligence": "情报",
     "map": "战术地图",
     "settings": "设置",
-    "system": "系统",
     "logout": "退出",
     "admin": "系统管理员",
     "navigation": "导航"
@@ -24,15 +23,13 @@
     "critical": "关键",
     "online": "在线",
     "offline": "离线",
-    "sync": "同步",
-    "lastSync": "上次同步",
+    "dataLink": "数据链接",
+    "statusLabel": "状态",
     "officer": "值班官员",
     "sector": "阿尔法区域 • SentinelOps",
-    "dataLink": "数据链接",
-    "stable": "稳定",
     "active": "活跃",
-    "online_msg": "系统运行中",
-    "statusLabel": "状态"
+    "sync": "同步",
+    "lastSync": "上次同步"
   },
   "buttons": {
     "submit": "提交",
@@ -49,14 +46,12 @@
     "retry": "重试",
     "sos": "发出求救警报",
     "capture": "拍摄",
-    "retake": "重拍",
-    "close": "关闭"
+    "retake": "重拍"
   },
   "field": {
     "title": "SentinelOps 现场",
-    "app_field": "SentinelOps 现场",
+    "severity_level": "损坏程度",
     "severity": {
-      "title": "损坏程度",
       "minimal": "轻微",
       "partial": "部分",
       "critical": "严重"
@@ -67,131 +62,119 @@
       "fire": "火灾",
       "earthquake": "地震",
       "cyclone": "气旋",
-      "conflict": "冲突",
-      "infrastructure": "基础设施"
+      "conflict": "冲突"
     },
     "gps": "GPS",
-    "intelligence": "现场情报",
-    "incident_details": "事件详情",
-    "photo": "现场照片",
-    "take_photo": "拍照",
-    "reports_sent": "已发送报告",
-    "pending_sync": "等待同步",
-    "accuracy": "精度",
+    "gps_fixing": "正在定位 GPS...",
+    "transmit": "发送报告",
+    "online": "在现场",
+    "photo": "照片",
     "report_title": "报告标题",
     "report_description": "描述",
-    "enter_title": "例如：阿尔法区域倒塌",
-    "enter_description": "事件详情...",
-    "transmit": "发送",
-    "online": "在线",
-    "offline": "离线",
+    "incident_details": "事件详情",
+    "tactical_title": "战术标题",
+    "intel_terrain": "现场情报",
     "success_msg": "报告发送成功！",
-    "offline_msg": "报告已保存（离线）"
+    "offline_msg": "报告已保存（离线）",
+    "placeholders": {
+      "title": "例如：阿尔法区域坍塌",
+      "intel": "事件详情..."
+    },
+    "sos_signal": "发出求救警报",
+    "sos_confirm": "立即发出求救警报？"
   },
   "command": {
     "title": "指挥中心",
     "intel": "地面情报",
     "activeUnits": "活跃单位",
     "fusionScore": "融合评分",
-    "tempo": "节奏状态",
-    "uptime": "正常运行时间",
-    "realTime": "实时",
-    "live": "直播",
-    "signals": "地面信号",
-    "deployedUnits": "部署单位",
-    "globalScore": "全球评分",
-    "tacticalFilters": "战术筛选",
-    "globalView": "全局视图",
+    "globalScore": "全球",
+    "signals": "活跃信号",
+    "search": "搜索区域或警报",
+    "activeIA": "活跃多源分析",
+    "live": "实时",
+    "live_feed": "战术实时流",
+    "inactive_link": "链接无效",
+    "no_summary": "无摘要可用..."
+  },
+  "alerts": {
+    "title": "警报",
+    "critical": "关键",
+    "urgent": "紧急",
+    "moderate": "中等",
+    "info": "信息",
+    "deployment": "建议部署",
+    "propagationWarning": "传播风险",
+    "action": "需要采取行动"
+  },
+  "filters": {
+    "global": "全部",
     "fires": "火灾",
     "floods": "洪水",
     "infrastructure": "基础设施",
-    "strategicSimulator": "战略模拟器",
+    "title": "筛选依据"
+  },
+  "simulator": {
+    "title": "战略模拟器",
     "propagation": "预计传播",
     "risk": "风险",
+    "direction": "方向",
     "worstCase": "最坏情况",
-    "stability": "稳定性",
-    "activeIA": "活跃的IA策略",
-    "operations": "基础设施运营",
-    "search": "搜索区域或警报..."
+    "stability": "稳定性"
+  },
+  "ast": {
+    "title": "战术战略顾问",
+    "analysis": "分析进行中",
+    "recommendation": "建议",
+    "confidence": "置信度",
+    "deployUnit": "立即向北周界部署两个遏制单位。",
+    "analysis_demo": "德尔塔区域检测到热信号异常增加。传播到住宅区的风险估计为 74%。"
   },
   "analytics": {
     "title": "分析中心",
     "trends": "趋势",
     "heatmap": "热力图",
     "history": "历史",
-    "exportData": "导出数据",
-    "timeRange": "时间范围",
-    "last24h": "最近24小时",
-    "last7d": "7天",
-    "last30d": "30天",
-    "last90d": "90天",
-    "lastYear": "1年"
+    "total_incidents": "总事件数",
+    "response_time": "响应时间",
+    "resource_utilization": "资源利用率",
+    "units_deployed": "已部署单位",
+    "breakdown": "细分",
+    "ia_insight": "AI 洞察",
+    "optimization": "优化",
+    "attention": "注意",
+    "trends_incidents": "事件趋势",
+    "trends_delays": "延迟分析",
+    "trends_resources": "资源占用",
+    "loading_data": "等待数据加载...",
+    "global_avg": "全球平均",
+    "current_cap": "当前容量",
+    "field_teams": "现场团队",
+    "real_time_viz": "实时可视化 • Sentinel-2",
+    "last_update": "最后更新"
   },
   "map": {
     "title": "战术地图",
-    "hotspots": "热点区域",
-    "legend": "图例",
-    "critical": "关键",
-    "high": "高",
-    "medium": "中",
-    "low": "低",
-    "coordinates": "坐标",
-    "search": "搜索区域",
-    "satellite": "卫星",
-    "terrain": "地形"
+    "legend": "图例"
   },
-  "alerts": {
-    "title": "关键警报",
-    "critical": "关键",
-    "urgent": "紧急",
-    "moderate": "中等",
-    "info": "信息",
-    "zone": "区域",
-    "action": "需要行动",
-    "noAlerts": "无关键警报",
-    "timestamp": "前",
-    "deployment": "建议部署",
-    "propagationWarning": "传播风险"
-  },
-  "ast": {
-    "title": "战术战略顾问",
-    "analysis": "分析进行中",
-    "recommendation": "建议",
-    "details": "详情",
-    "deployUnit": "部署移动单位",
-    "securePerimeter": "确保周界安全"
-  },
-  "export": {
-    "title": "导出报告",
-    "pdf": "导出 PDF",
-    "csv": "导出 CSV",
-    "geojson": "导出 GeoJSON",
-    "options": "导出选项",
-    "orientation": "方向",
-    "portrait": "纵向",
-    "landscape": "横向",
-    "quality": "质量",
-    "include": "包括",
-    "timestamp": "时间戳",
-    "footer": "页脚"
-  },
-  "offline": {
-    "title": "离线模式已激活",
-    "message": "报告将保存在本地",
-    "sync": "待同步报告",
-    "syncNow": "立即同步",
-    "queue": "队列"
-  },
-  "errors": {
-    "generic": "发生错误",
-    "network": "网络错误",
-    "offline": "您处于离线状态",
-    "notFound": "页面未找到",
-    "unauthorized": "未授权访问",
-    "camera_permission": "相机权限被拒绝",
-    "camera_not_found": "未找到相机",
-    "gps_error": "GPS错误",
-    "upload_failed": "上传失败"
+  "landing": {
+    "accessProtocol": "选择访问协议",
+    "fieldDescription": "现场信息传输",
+    "commandDescription": "实时监控",
+    "accessAction": "进入 ←",
+    "features": {
+      "photo": "照片",
+      "gps": "GPS",
+      "offline": "离线",
+      "map": "地图",
+      "kpis": "KPI",
+      "units": "单位"
+    },
+    "footer": {
+      "fusionActive": "Sentinel 融合活跃",
+      "secureLink": "安全链接",
+      "strategicWatch": "战略观察"
+    }
   },
   "time": {
     "now": "刚刚",
@@ -200,37 +183,21 @@
     "hour": "小时",
     "hours": "小时",
     "day": "天",
-    "days": "天"
+    "days": "天",
+    "last24h": "最近24小时",
+    "last7d": "7天",
+    "last30d": "30天",
+    "last90d": "90天"
   },
-  "landing": {
-    "accessProtocol": "选择您的访问协议",
-    "fieldDescription": "现场情报传输和多媒体报告。",
-    "commandDescription": "实时监控和战术协调。",
-    "accessAction": "访问 →",
-    "features": {
-      "photo": "照片",
-      "gps": "GPS",
-      "offline": "离线",
-      "map": "地图",
-      "kpis": "KPIs",
-      "units": "单位"
-    },
-    "footer": {
-      "fusionActive": "Sentinel 融合激活",
-      "secureLink": "安全链接",
-      "strategicWatch": "战略监控"
-    }
-  },
-  "simulator": {
-    "title": "战略模拟器",
-    "propagation": "预估传播",
-    "direction": "东北",
-    "risk": "风险"
-  },
-  "filters": {
-    "global": "全局视图",
-    "fires": "火灾",
-    "floods": "洪水",
-    "infrastructure": "基础设施"
+  "errors": {
+    "generic": "发生错误",
+    "network": "网络错误",
+    "offline": "您已离线",
+    "notFound": "页面未找到",
+    "unauthorized": "未授权访问",
+    "camera_permission": "相机权限被拒绝",
+    "camera_not_found": "未找到相机",
+    "gps_error": "GPS错误",
+    "upload_failed": "上传失败"
   }
 }

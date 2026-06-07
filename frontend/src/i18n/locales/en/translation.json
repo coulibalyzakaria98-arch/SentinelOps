@@ -12,7 +12,6 @@
     "intelligence": "Intelligence",
     "map": "Tactical Map",
     "settings": "Settings",
-    "system": "System",
     "logout": "Logout",
     "admin": "System Administrator",
     "navigation": "Navigation"
@@ -24,15 +23,13 @@
     "critical": "CRITICAL",
     "online": "ONLINE",
     "offline": "OFFLINE",
-    "sync": "Synchronization",
-    "lastSync": "Last sync",
+    "dataLink": "Data Link",
+    "statusLabel": "Status",
     "officer": "Duty Officer",
     "sector": "Sector Alpha • SentinelOps",
-    "dataLink": "Data Link",
-    "stable": "Stable",
     "active": "Active",
-    "online_msg": "System operational",
-    "statusLabel": "Status"
+    "sync": "Synchronization",
+    "lastSync": "Last sync"
   },
   "buttons": {
     "submit": "Submit",
@@ -49,14 +46,12 @@
     "retry": "Retry",
     "sos": "LAUNCH SOS ALERT",
     "capture": "Capture",
-    "retake": "Retake",
-    "close": "Close"
+    "retake": "Retake"
   },
   "field": {
     "title": "SentinelOps FIELD",
-    "app_field": "SentinelOps FIELD",
+    "severity_level": "Damage Level",
     "severity": {
-      "title": "DAMAGE LEVEL",
       "minimal": "MINIMAL",
       "partial": "PARTIAL",
       "critical": "CRITICAL"
@@ -67,146 +62,106 @@
       "fire": "Fire",
       "earthquake": "Earthquake",
       "cyclone": "Cyclone",
-      "conflict": "Conflict",
-      "infrastructure": "Infrastructure"
+      "conflict": "Conflict"
     },
     "gps": "GPS",
-    "intelligence": "FIELD INTELLIGENCE",
-    "incident_details": "Incident details",
-    "photo": "Field Photo",
-    "take_photo": "Take a photo",
-    "reports_sent": "Reports sent",
-    "pending_sync": "Pending sync",
-    "accuracy": "Accuracy",
+    "gps_fixing": "Fixing GPS...",
+    "transmit": "Transmit report",
+    "online": "In the field",
+    "photo": "Photo",
     "report_title": "Report title",
     "report_description": "Description",
-    "enter_title": "Ex: Sector Alpha collapse",
-    "enter_description": "Incident details...",
-    "transmit": "TRANSMIT",
-    "online": "ONLINE",
-    "offline": "OFFLINE",
+    "incident_details": "Incident details",
+    "tactical_title": "Tactical Title",
+    "intel_terrain": "Field Intelligence",
     "success_msg": "Report sent successfully!",
-    "offline_msg": "Report saved (Offline)"
+    "offline_msg": "Report saved (Offline)",
+    "placeholders": {
+      "title": "Ex: Alpha Sector collapse",
+      "intel": "Incident details..."
+    },
+    "sos_signal": "SOS SIGNAL",
+    "sos_confirm": "Launch immediate SOS alert?"
   },
   "command": {
     "title": "Command Center",
     "intel": "Ground Intelligence",
     "activeUnits": "Active Units",
     "fusionScore": "Fusion Score",
-    "tempo": "Tempo Status",
-    "uptime": "Uptime",
-    "realTime": "Real-time",
+    "globalScore": "Global",
+    "signals": "Active signals",
+    "search": "Search for a sector or alert",
+    "activeIA": "Active multi-source analysis",
     "live": "Live",
-    "signals": "Ground Signals",
-    "deployedUnits": "Units deployed on the ground",
-    "globalScore": "Global Fusion Score",
-    "tacticalFilters": "Tactical Filters",
-    "globalView": "Global view",
+    "live_feed": "Tactical Real-Time Feed",
+    "inactive_link": "Inactive Link",
+    "no_summary": "No summary available..."
+  },
+  "alerts": {
+    "title": "Alerts",
+    "critical": "CRITICAL",
+    "urgent": "URGENT",
+    "moderate": "MODERATE",
+    "info": "INFORMATION",
+    "deployment": "Recommended deployment",
+    "propagationWarning": "Propagation risk",
+    "action": "Action required"
+  },
+  "filters": {
+    "global": "All",
     "fires": "Fires",
     "floods": "Floods",
     "infrastructure": "Infrastructure",
-    "strategicSimulator": "Strategic Simulator",
+    "title": "Filter by"
+  },
+  "simulator": {
+    "title": "Strategic Simulator",
     "propagation": "Estimated propagation",
     "risk": "Risk",
+    "direction": "Direction",
     "worstCase": "Worst case",
-    "stability": "Stability",
-    "activeIA": "Active IA Strategy",
-    "operations": "Infrastructure Operations",
-    "search": "Search for a sector or alert..."
+    "stability": "Stability"
+  },
+  "ast": {
+    "title": "Tactical Strategic Advisor",
+    "analysis": "Analysis in progress",
+    "recommendation": "Recommendation",
+    "confidence": "Confidence",
+    "deployUnit": "Immediate deployment of two containment units toward the North perimeter.",
+    "analysis_demo": "Abnormal increase in thermal signals detected in Delta Sector. Risk of propagation to residential areas estimated at 74%."
   },
   "analytics": {
     "title": "Analytics Center",
     "trends": "Trends",
     "heatmap": "Heatmap",
     "history": "History",
-    "exportData": "Export data",
-    "timeRange": "Time range",
-    "last24h": "Last 24 hours",
-    "last7d": "7 days",
-    "last30d": "30 days",
-    "last90d": "90 days",
-    "lastYear": "1 year"
+    "total_incidents": "Total Incidents",
+    "response_time": "Response Time",
+    "resource_utilization": "Resource Utilization",
+    "units_deployed": "Units Deployed",
+    "breakdown": "Breakdown",
+    "ia_insight": "IA Insight",
+    "optimization": "Optimization",
+    "attention": "Attention",
+    "trends_incidents": "Incident Trends",
+    "trends_delays": "Delay Analysis",
+    "trends_resources": "Resource Occupation",
+    "loading_data": "Waiting for data load...",
+    "global_avg": "Global average",
+    "current_cap": "Current capacity",
+    "field_teams": "Field teams",
+    "real_time_viz": "Real-time visualization • Sentinel-2",
+    "last_update": "Last update"
   },
   "map": {
     "title": "Tactical Map",
-    "hotspots": "Hotspots",
-    "legend": "Legend",
-    "critical": "Critical",
-    "high": "High",
-    "medium": "Medium",
-    "low": "Low",
-    "coordinates": "Coordinates",
-    "search": "Search area",
-    "satellite": "Satellite",
-    "terrain": "Terrain"
-  },
-  "alerts": {
-    "title": "Critical Alerts",
-    "critical": "CRITICAL",
-    "urgent": "URGENT",
-    "moderate": "MODERATE",
-    "info": "INFORMATION",
-    "zone": "Zone",
-    "action": "Action required",
-    "noAlerts": "No critical alerts",
-    "timestamp": "ago",
-    "deployment": "Recommended deployment",
-    "propagationWarning": "Propagation risk"
-  },
-  "ast": {
-    "title": "Tactical Strategic Advisor",
-    "analysis": "Analysis in progress",
-    "recommendation": "Recommendation",
-    "details": "Details",
-    "deployUnit": "Deploy mobile unit",
-    "securePerimeter": "Secure perimeter"
-  },
-  "export": {
-    "title": "Export Report",
-    "pdf": "PDF Export",
-    "csv": "CSV Export",
-    "geojson": "GeoJSON Export",
-    "options": "Export options",
-    "orientation": "Orientation",
-    "portrait": "Portrait",
-    "landscape": "Landscape",
-    "quality": "Quality",
-    "include": "Include",
-    "timestamp": "Timestamp",
-    "footer": "Footer"
-  },
-  "offline": {
-    "title": "Offline mode active",
-    "message": "Reports will be saved locally",
-    "sync": "Pending reports",
-    "syncNow": "Sync now",
-    "queue": "Queue"
-  },
-  "errors": {
-    "generic": "An error occurred",
-    "network": "Network error",
-    "offline": "You are offline",
-    "notFound": "Page not found",
-    "unauthorized": "Unauthorized access",
-    "camera_permission": "Camera permission denied",
-    "camera_not_found": "No camera found",
-    "gps_error": "GPS error",
-    "upload_failed": "Upload failed"
-  },
-  "time": {
-    "now": "Just now",
-    "minute": "minute",
-    "minutes": "minutes",
-    "hour": "hour",
-    "hours": "hours",
-    "day": "day",
-    "days": "days"
+    "legend": "Legend"
   },
   "landing": {
-    "accessProtocol": "SELECT YOUR ACCESS PROTOCOL",
-    "fieldDescription": "Field intelligence transmission and multimedia reporting.",
-    "commandDescription": "Real-time surveillance and tactical coordination.",
-    "accessAction": "ACCESS →",
+    "accessProtocol": "Select access protocol",
+    "fieldDescription": "Ground information transmission",
+    "commandDescription": "Real-time surveillance",
+    "accessAction": "Access ←",
     "features": {
       "photo": "Photo",
       "gps": "GPS",
@@ -221,16 +176,28 @@
       "strategicWatch": "Strategic watch"
     }
   },
-  "simulator": {
-    "title": "Strategic Simulator",
-    "propagation": "Estimated propagation",
-    "direction": "North-East",
-    "risk": "Risk"
+  "time": {
+    "now": "Just now",
+    "minute": "minute",
+    "minutes": "minutes",
+    "hour": "hour",
+    "hours": "hours",
+    "day": "day",
+    "days": "days",
+    "last24h": "Last 24h",
+    "last7d": "7 Days",
+    "last30d": "30 Days",
+    "last90d": "90 Days"
   },
-  "filters": {
-    "global": "Global view",
-    "fires": "Fires",
-    "floods": "Floods",
-    "infrastructure": "Infrastructure"
+  "errors": {
+    "generic": "An error occurred",
+    "network": "Network error",
+    "offline": "You are offline",
+    "notFound": "Page not found",
+    "unauthorized": "Unauthorized access",
+    "camera_permission": "Camera permission denied",
+    "camera_not_found": "No camera found",
+    "gps_error": "GPS error",
+    "upload_failed": "Upload failed"
   }
 }

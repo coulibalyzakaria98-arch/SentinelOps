@@ -115,7 +115,7 @@ const CommandCenter = () => {
                 <div className="p-3 rounded-xl bg-white/5 border border-white/5">
                   <p className="text-[10px] text-slate-400 font-bold uppercase mb-1">{t('ast.analysis')}</p>
                   <p className="text-xs text-slate-200 leading-relaxed italic">
-                    "Augmentation anormale des signaux thermiques détectée dans le Secteur Delta. Risque de propagation vers les zones résidentielles estimé à 74%."
+                    "{t('ast.analysis_demo')}"
                   </p>
                 </div>
                 

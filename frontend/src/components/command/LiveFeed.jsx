@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { reportApi } from '../../services/api';
 import { Activity, Satellite, Camera, Shield, MessageSquare, Clock } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 import { useIntelligenceWS } from '../../hooks/useIntelligenceWS';
 import { useCallback } from 'react';
 
 const LiveFeed = () => {
+  const { t } = useTranslation();
   const [reports, setReports] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -49,7 +51,7 @@ const LiveFeed = () => {
       <div className="p-4 border-b border-white/5 bg-slate-900/60 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Satellite size={14} className="text-blue-500" />
-          <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-100">Flux Tactique Temps Réel</h4>
+          <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-100">{t('command.live_feed')}</h4>
         </div>
         <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse shadow-[0_0_8px_#3b82f6]" />
       </div>
@@ -64,7 +66,7 @@ const LiveFeed = () => {
         ) : reports.length === 0 ? (
           <div className="h-full flex flex-col items-center justify-center text-center p-8 opacity-20">
              <MessageSquare size={32} className="mb-4" />
-             <p className="text-[10px] font-black uppercase tracking-widest">Lien Inactif</p>
+             <p className="text-[10px] font-black uppercase tracking-widest">{t('command.inactive_link')}</p>
           </div>
         ) : (
           <div className="space-y-3">
@@ -78,7 +80,7 @@ const LiveFeed = () => {
                        <span className={`text-[8px] font-black px-1.5 py-0.5 rounded uppercase tracking-tighter ${
                          report.damage_level === 'total' ? 'bg-red-500/10 text-red-500' : 'bg-slate-800 text-slate-500'
                        }`}>
-                         {report.damage_level}
+                         {t(`field.severity.${report.damage_level}`)}
                        </span>
                     </div>
                     <div className="flex items-center gap-1.5 text-[9px] font-mono font-bold text-slate-600 group-hover:text-slate-400">
@@ -88,7 +90,7 @@ const LiveFeed = () => {
                  </div>
                  <p className="text-[10px] font-black text-slate-200 leading-tight mb-1 group-hover:text-blue-400 transition-colors uppercase tracking-tight line-clamp-1">{report.title}</p>
                  <div className="flex items-center justify-between">
-                    <p className="text-[9px] text-slate-500 font-medium italic truncate max-w-[70%]">{report.description || 'Aucun résumé...'}</p>
+                    <p className="text-[9px] text-slate-500 font-medium italic truncate max-w-[70%]">{report.description || t('command.no_summary')}</p>
                     <div className="flex items-center gap-1 px-1.5 py-0.5 rounded bg-blue-500/10 border border-blue-500/20">
                        <Shield size={8} className="text-blue-400" />
                        <span className="text-[8px] font-black text-blue-300">{Math.round((report.confidence_score || 0) * 100)}%</span>

@@ -1,7 +1,8 @@
 {
   "app": {
     "name": "سينتينل أوبس",
-    "title": "مركز العمليات التكتيكية"
+    "title": "مركز العمليات التكتيكية",
+    "tagline": "نظام الاستخبارات الاستراتيجي"
   },
   "nav": {
     "dashboard": "لوحة القيادة",
@@ -12,28 +13,45 @@
     "map": "الخريطة التكتيكية",
     "logout": "تسجيل الخروج",
     "admin": "مدير النظام",
-    "settings": "الإعدادات"
+    "settings": "الإعدادات",
+    "navigation": "الملاحة"
   },
   "status": {
     "system": "حالة النظام",
     "nominal": "طبيعي",
+    "degraded": "متدهور",
+    "critical": "حرج",
     "online": "متصل",
     "offline": "غير متصل",
     "dataLink": "ربط البيانات",
     "statusLabel": "الحالة",
     "officer": "ضابط المناوبة",
-    "active": "نشط"
+    "sector": "القطاع ألفا • سينتينل أوبس",
+    "active": "نشط",
+    "sync": "مزامنة",
+    "lastSync": "آخر مزامنة"
   },
   "buttons": {
+    "submit": "إرسال",
     "transmit": "إرسال",
-    "camera": "الكاميرا",
+    "camera": "تفعيل الكاميرا",
     "cancel": "إلغاء",
-    "save": "حفظ"
+    "save": "حفظ",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "refresh": "تحديث",
+    "export": "تصدير",
+    "print": "طباعة",
+    "menu": "القائمة",
+    "retry": "إعادة المحاولة",
+    "sos": "إطلاق إنذار SOS",
+    "capture": "التقاط",
+    "retake": "إعادة المحاولة"
   },
   "field": {
     "title": "سينتينل أوبس ميداني",
+    "severity_level": "مستوى الضرر",
     "severity": {
-      "title": "مستوى الضرر",
       "minimal": "بسيط",
       "partial": "جزئي",
       "critical": "حرج"
@@ -42,13 +60,28 @@
     "types": {
       "flood": "فيضان",
       "fire": "حريق",
-      "earthquake": "زلزال"
+      "earthquake": "زلزال",
+      "cyclone": "إعصار",
+      "conflict": "نزاع"
     },
     "gps": "GPS",
+    "gps_fixing": "تحديد الموقع...",
     "transmit": "إرسال التقرير",
     "online": "في الميدان",
+    "photo": "صورة",
     "report_title": "عنوان التقرير",
-    "incident_details": "تفاصيل الحادث"
+    "report_description": "الوصف",
+    "incident_details": "تفاصيل الحادث",
+    "tactical_title": "العنوان التكتيكي",
+    "intel_terrain": "الاستخبارات الميدانية",
+    "success_msg": "تم إرسال التقرير بنجاح!",
+    "offline_msg": "تم حفظ التقرير (بدون اتصال)",
+    "placeholders": {
+      "title": "مثال: انهيار في القطاع ألفا",
+      "intel": "تفاصيل الحادث..."
+    },
+    "sos_signal": "إشارة استغاثة",
+    "sos_confirm": "إطلاق تنبيه استغاثة فوري؟"
   },
   "command": {
     "title": "مركز القيادة",
@@ -58,13 +91,18 @@
     "globalScore": "عالمي",
     "signals": "إشارات نشطة",
     "search": "البحث عن قطاع أو تنبيه",
-    "activeIA": "تحليل متعدد المصادر نشط"
+    "activeIA": "تحليل متعدد المصادر نشط",
+    "live": "مباشر",
+    "live_feed": "تدفق تكتيكي في الوقت الفعلي",
+    "inactive_link": "رابط غير نشط",
+    "no_summary": "لا يوجد ملخص..."
   },
   "alerts": {
     "title": "تنبيهات",
     "critical": "حرج",
     "urgent": "عاجل",
     "moderate": "متوسط",
+    "info": "معلومات",
     "deployment": "النشر الموصى به",
     "propagationWarning": "خطر الانتشار",
     "action": "إجراء مطلوب"
@@ -80,21 +118,40 @@
     "title": "محاكي استراتيجي",
     "propagation": "الانتشار المقدر",
     "risk": "المخاطر",
-    "direction": "الشمال الشرقي"
+    "direction": "الاتجاه",
+    "worstCase": "أسوأ الاحتمالات",
+    "stability": "الاستقرار"
   },
   "ast": {
     "title": "المستشار التكتيكي الاستراتيجي",
     "analysis": "التحليل قيد التقدم",
     "recommendation": "توصية",
-    "confidence": "الثقة الجغرافية المكانية"
+    "confidence": "الثقة",
+    "deployUnit": "نشر وحدتين احتواء نحو المحيط الشمالي.",
+    "analysis_demo": "تم اكتشاف زيادة غير عادية في الإشارات الحرارية في قطاع دلتا. يقدر خطر الانتشار نحو المناطق السكنية بنسبة 74%."
   },
   "analytics": {
     "title": "مركز التحليلات",
-    "trends": "الاتجاهات"
-  },
-  "map": {
-    "title": "الخريطة التكتيكية",
-    "legend": "الإرشادات"
+    "trends": "الاتجاهات",
+    "heatmap": "الخريطة الحرارية",
+    "history": "التاريخ",
+    "total_incidents": "إجمالي الحوادث",
+    "response_time": "وقت الاستجابة",
+    "resource_utilization": "استخدام الموارد",
+    "units_deployed": "الوحدات المنتشرة",
+    "breakdown": "التوزيع",
+    "ia_insight": "نظرة الذكاء الاصطناعي",
+    "optimization": "تحسين",
+    "attention": "انتباه",
+    "trends_incidents": "اتجاهات الحوادث",
+    "trends_delays": "تحليل التأخير",
+    "trends_resources": "إشغال الموارد",
+    "loading_data": "في انتظار تحميل البيانات...",
+    "global_avg": "المعدل العالمي",
+    "current_cap": "القدرة الحالية",
+    "field_teams": "الفرق الميدانية",
+    "real_time_viz": "تصوير في الوقت الفعلي • Sentinel-2",
+    "last_update": "آخر تحديث"
   },
   "landing": {
     "accessProtocol": "اختر بروتوكول الوصول",
@@ -114,5 +171,29 @@
       "secureLink": "رابط آمن",
       "strategicWatch": "مراقبة استراتيجية"
     }
+  },
+  "time": {
+    "now": "الآن",
+    "minute": "دقيقة",
+    "minutes": "دقائق",
+    "hour": "ساعة",
+    "hours": "ساعات",
+    "day": "يوم",
+    "days": "أيام",
+    "last24h": "آخر 24 ساعة",
+    "last7d": "7 أيام",
+    "last30d": "30 يومًا",
+    "last90d": "90 يومًا"
+  },
+  "errors": {
+    "generic": "حدث خطأ",
+    "network": "خطأ في الشبكة",
+    "offline": "أنت غير متصل",
+    "notFound": "الصفحة غير موجودة",
+    "unauthorized": "وصول غير مصرح به",
+    "camera_permission": "تم رفض إذن الكاميرا",
+    "camera_not_found": "لم يتم العثور على كاميرا",
+    "gps_error": "خطأ في نظام تحديد المواقع",
+    "upload_failed": "فشل التحميل"
   }
 }
