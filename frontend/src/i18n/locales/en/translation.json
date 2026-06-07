@@ -29,7 +29,9 @@
     "sector": "Sector Alpha • SentinelOps",
     "active": "Active",
     "sync": "Synchronization",
-    "lastSync": "Last sync"
+    "lastSync": "Last sync",
+    "live": "Live",
+    "stable": "Stable"
   },
   "buttons": {
     "submit": "Submit",
@@ -46,15 +48,18 @@
     "retry": "Retry",
     "sos": "LAUNCH SOS ALERT",
     "capture": "Capture",
-    "retake": "Retake"
+    "retake": "Retake",
+    "close": "Close"
   },
   "field": {
     "title": "SentinelOps FIELD",
     "severity_level": "Damage Level",
     "severity": {
+      "title": "DAMAGE LEVEL",
       "minimal": "MINIMAL",
       "partial": "PARTIAL",
-      "critical": "CRITICAL"
+      "critical": "CRITICAL",
+      "total": "TOTAL"
     },
     "classification": "CLASSIFICATION",
     "types": {
@@ -62,7 +67,9 @@
       "fire": "Fire",
       "earthquake": "Earthquake",
       "cyclone": "Cyclone",
-      "conflict": "Conflict"
+      "conflict": "Conflict",
+      "infrastructure": "Infrastructure",
+      "other": "Other"
     },
     "gps": "GPS",
     "gps_fixing": "Fixing GPS...",
@@ -77,11 +84,14 @@
     "success_msg": "Report sent successfully!",
     "offline_msg": "Report saved (Offline)",
     "placeholders": {
-      "title": "Ex: Alpha Sector collapse",
+      "title": "Ex: Sector Alpha collapse",
       "intel": "Incident details..."
     },
     "sos_signal": "SOS SIGNAL",
-    "sos_confirm": "Launch immediate SOS alert?"
+    "sos_confirm": "Launch immediate SOS alert?",
+    "accuracy": "Accuracy",
+    "reports_sent": "Reports sent",
+    "pending_sync": "Pending"
   },
   "command": {
     "title": "Command Center",
@@ -105,7 +115,8 @@
     "info": "INFORMATION",
     "deployment": "Recommended deployment",
     "propagationWarning": "Propagation risk",
-    "action": "Action required"
+    "action": "Action required",
+    "noAlerts": "No priority alerts"
   },
   "filters": {
     "global": "All",
@@ -128,7 +139,9 @@
     "recommendation": "Recommendation",
     "confidence": "Confidence",
     "deployUnit": "Immediate deployment of two containment units toward the North perimeter.",
-    "analysis_demo": "Abnormal increase in thermal signals detected in Delta Sector. Risk of propagation to residential areas estimated at 74%."
+    "analysis_demo": "Abnormal increase in thermal signals detected in Delta Sector. Risk of propagation to residential areas estimated at 74%.",
+    "securePerimeter": "Secure perimeter",
+    "details": "Details"
   },
   "analytics": {
     "title": "Analytics Center",

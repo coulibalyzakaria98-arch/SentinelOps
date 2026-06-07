@@ -16,6 +16,7 @@ class Report(Base):
     crisis_type = Column(String, nullable=False)
     location = Column(Geometry(geometry_type='POINT', srid=4326), nullable=False)
     image_path = Column(String, nullable=True)
+    image_url = Column(String, nullable=True)
     image_hash = Column(String, nullable=True)
     confidence_score = Column(Float, default=0.0)
     signature = Column(String, nullable=True)

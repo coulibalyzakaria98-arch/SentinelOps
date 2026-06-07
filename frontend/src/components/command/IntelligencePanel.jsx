@@ -8,12 +8,15 @@ import {
   ChevronRight,
   Info
 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const IntelligencePanel = ({ fusionScore = 88, intelligence = {} }) => {
+  const { t } = useTranslation();
+  
   const recommendations = [
-    { id: 1, type: 'PRIORITY', text: "Déploiement immédiat recommandé dans le Secteur Nord-Est.", icon: <ShieldAlert size={14} className="text-red-400" /> },
-    { id: 2, type: 'TACTICAL', text: "Établir des relais de communication tous les 5km.", icon: <Zap size={14} className="text-blue-400" /> },
-    { id: 3, type: 'RISK', text: "Risque de rupture d'infrastructure secondaire estimé à 82%.", icon: <TrendingUp size={14} className="text-orange-400" /> }
+    { id: 1, type: 'PRIORITY', text: t('ast.deployUnit'), icon: <ShieldAlert size={14} className="text-red-400" /> },
+    { id: 2, type: 'TACTICAL', text: t('ast.securePerimeter'), icon: <Zap size={14} className="text-blue-400" /> },
+    { id: 3, type: 'RISK', text: t('alerts.propagationWarning'), icon: <TrendingUp size={14} className="text-orange-400" /> }
   ];
 
   const getScoreColor = (score) => {
@@ -37,13 +40,13 @@ const IntelligencePanel = ({ fusionScore = 88, intelligence = {} }) => {
                 <BrainCircuit size={20} />
               </div>
               <div>
-                <h3 className="text-sm font-black text-white uppercase tracking-widest leading-none">Cœur de Fusion IA</h3>
-                <p className="text-[9px] font-bold text-blue-400/60 uppercase tracking-widest mt-1">Analyse Multi-Sources Active</p>
+                <h3 className="text-sm font-black text-white uppercase tracking-widest leading-none">{t('command.fusionScore')}</h3>
+                <p className="text-[9px] font-bold text-blue-400/60 uppercase tracking-widest mt-1">{t('command.activeIA')}</p>
               </div>
             </div>
             <div className="flex flex-col items-end">
               <span className={`text-3xl font-black ${getScoreColor(fusionScore)} tracking-tighter`}>{fusionScore}%</span>
-              <span className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Confiance Géo-Spatiale</span>
+              <span className="text-[8px] font-black text-slate-500 uppercase tracking-widest">{t('ast.confidence')}</span>
             </div>
           </div>
 
@@ -61,7 +64,7 @@ const IntelligencePanel = ({ fusionScore = 88, intelligence = {} }) => {
         <div className="flex items-center justify-between mb-6">
           <h3 className="text-[10px] font-black text-white uppercase tracking-[0.2em] flex items-center gap-2">
             <Info size={14} className="text-blue-500" />
-            Conseiller Tactique (AST)
+            {t('ast.title')}
           </h3>
           <span className="px-2 py-0.5 rounded-md bg-white/5 text-[8px] font-black text-slate-500 border border-white/5">v4.2.1-SENTINEL</span>
         </div>
@@ -77,7 +80,7 @@ const IntelligencePanel = ({ fusionScore = 88, intelligence = {} }) => {
                     {rec.text}
                   </p>
                   <div className="flex items-center gap-1 mt-2 text-blue-400 group-hover:translate-x-1 transition-transform">
-                    <span className="text-[8px] font-black uppercase tracking-widest">Détails de l'analyse</span>
+                    <span className="text-[8px] font-black uppercase tracking-widest">{t('ast.details')}</span>
                     <ChevronRight size={10} />
                   </div>
                 </div>
@@ -91,23 +94,23 @@ const IntelligencePanel = ({ fusionScore = 88, intelligence = {} }) => {
       <div className="glass-panel p-6 rounded-[2rem] border border-white/10 bg-[#07101F]/90 shadow-xl">
         <h3 className="text-[10px] font-black text-white uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
           <MapIcon size={14} className="text-orange-500" />
-          Simulateur de Risque
+          {t('simulator.title')}
         </h3>
         
         <div className="grid grid-cols-2 gap-4">
           <div className="space-y-1">
             <div className="text-lg font-black text-white">4.2 <span className="text-[10px] text-slate-500 uppercase ml-0.5">km/h</span></div>
-            <p className="text-[9px] font-bold text-slate-500 uppercase tracking-widest leading-none">Vitesse Propagation</p>
+            <p className="text-[9px] font-bold text-slate-500 uppercase tracking-widest leading-none">{t('simulator.propagation')}</p>
           </div>
           <div className="space-y-1 text-right">
-            <div className="text-lg font-black text-white">Nord-Est</div>
-            <p className="text-[9px] font-bold text-slate-500 uppercase tracking-widest leading-none">Direction Dominante</p>
+            <div className="text-lg font-black text-white">{t('simulator.direction')}</div>
+            <p className="text-[9px] font-bold text-slate-500 uppercase tracking-widest leading-none">{t('simulator.direction')}</p>
           </div>
         </div>
 
         <div className="mt-6 p-4 rounded-2xl bg-orange-500/5 border border-orange-500/10">
           <div className="flex justify-between items-center mb-2">
-            <span className="text-[9px] font-black text-orange-400 uppercase tracking-widest">Index de Menace Seccondaire</span>
+            <span className="text-[9px] font-black text-orange-400 uppercase tracking-widest">{t('simulator.risk')}</span>
             <span className="text-[10px] font-black text-white">78%</span>
           </div>
           <div className="h-1 bg-slate-900 rounded-full overflow-hidden">
@@ -120,3 +123,4 @@ const IntelligencePanel = ({ fusionScore = 88, intelligence = {} }) => {
 };
 
 export default IntelligencePanel;
+

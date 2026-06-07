@@ -13,10 +13,11 @@ class ReportService:
     @staticmethod
     async def create_report(db: Session, report_data: ReportCreate, image: UploadFile = None):
         image_filename = None
+        image_url = None
         image_hash = None
         
         if image:
-            image_filename, image_hash = image_service.strip_exif_and_save(image)
+            image_filename, image_url, image_hash = await image_service.process_and_upload(image)
         
         # Check for duplicates
         duplicates = duplicate_service.check_duplicates(
@@ -35,6 +36,7 @@ class ReportService:
             crisis_type=report_data.crisis_type,
             location=geometry,  # 🔥 Utiliser l'objet geometry, pas string
             image_path=image_filename,
+            image_url=image_url,
             image_hash=image_hash,
             metadata_json=report_data.metadata,
             version=report_data.version

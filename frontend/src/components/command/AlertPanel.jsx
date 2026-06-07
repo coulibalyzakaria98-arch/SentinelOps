@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { reportApi } from '../../services/api';
 import { AlertCircle, ShieldAlert, ChevronRight } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const AlertPanel = () => {
+  const { t } = useTranslation();
   const [alerts, setAlerts] = useState([]);
 
   useEffect(() => {
     const fetchAlerts = async () => {
-      const data = await reportApi.getAll();
-      const critical = data.filter(r => (r.confidence_score || 0) > 0.8 || r.damage_level === 'total');
-      setAlerts(critical.slice(0, 3));
+      try {
+        const data = await reportApi.getAll();
+        const critical = data.filter(r => (r.confidence_score || 0) > 0.8 || r.damage_level === 'total');
+        setAlerts(critical.slice(0, 3));
+      } catch (err) {
+        console.error("Alert Fetch Failed:", err);
+      }
     };
     fetchAlerts();
     const interval = setInterval(fetchAlerts, 15000);
@@ -21,7 +27,7 @@ const AlertPanel = () => {
       <div className="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center text-green-500">
          <AlertCircle size={16} />
       </div>
-      <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 italic">Aucune alerte prioritaire détectée</p>
+      <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 italic">{t('alerts.noAlerts')}</p>
     </div>
   );
 
@@ -35,8 +41,8 @@ const AlertPanel = () => {
            <div className="flex-1 min-w-0">
               <p className="text-[10px] font-black text-white uppercase tracking-tight truncate group-hover:text-red-400 transition-colors">{alert.title}</p>
               <div className="flex items-center gap-2 mt-0.5">
-                 <span className="text-[8px] font-black bg-red-600 px-1 rounded text-white tracking-widest">CRITIQUE</span>
-                 <span className="text-[8px] font-bold text-slate-500 uppercase">{alert.infrastructure_type}</span>
+                 <span className="text-[8px] font-black bg-red-600 px-1 rounded text-white tracking-widest">{t('alerts.critical')}</span>
+                 <span className="text-[8px] font-bold text-slate-500 uppercase">{t(`filters.infrastructure`)}</span>
               </div>
            </div>
            <ChevronRight size={14} className="text-slate-700 group-hover:text-white transition-colors" />

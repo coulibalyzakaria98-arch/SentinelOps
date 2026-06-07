@@ -79,6 +79,7 @@ const MapController = ({ center }) => {
 };
 
 export const CrisisMap = ({ filters = {} }) => {
+  const { t } = useTranslation();
   const [reports, setReports] = useState([]);
   const [satelliteSignals, setSatelliteSignals] = useState([]);
   const [clusters, setClusters] = useState([]);
@@ -172,7 +173,7 @@ export const CrisisMap = ({ filters = {} }) => {
             </div>
             <div>
               <p className="text-[10px] font-black text-blue-400 uppercase tracking-[0.2em] leading-none">SENTINEL-2 FUSION</p>
-              <p className="text-[8px] font-bold text-slate-500 uppercase mt-1">Status: Active Link</p>
+              <p className="text-[8px] font-bold text-slate-500 uppercase mt-1">{t('status.dataLink')}: {t('status.active')}</p>
             </div>
           </div>
           <div className="h-1 w-full bg-slate-800 rounded-full overflow-hidden">
@@ -182,7 +183,7 @@ export const CrisisMap = ({ filters = {} }) => {
 
         <div className="glass-panel px-4 py-2 rounded-xl border-white/5 flex items-center gap-3">
            <Activity className="text-green-500 w-3 h-3" />
-           <span className="text-[9px] font-black text-slate-300 uppercase tracking-widest">Ground Intel: {filteredReports.length} Signals</span>
+           <span className="text-[9px] font-black text-slate-300 uppercase tracking-widest">{t('command.intel')}: {filteredReports.length} {t('command.signals')}</span>
         </div>
       </div>
 
@@ -191,7 +192,7 @@ export const CrisisMap = ({ filters = {} }) => {
         <div className="glass-panel p-5 rounded-3xl border-white/5 flex flex-col gap-4 min-w-[280px] shadow-2xl">
           <div className="flex justify-between items-center">
             <h4 className="text-[10px] font-black uppercase text-slate-400 tracking-widest flex items-center gap-2">
-              <Zap className="w-3 h-3 text-yellow-500" /> Strategic Simulator
+              <Zap className="w-3 h-3 text-yellow-500" /> {t('simulator.title')}
             </h4>
             {simMode !== 'idle' && (
               <span className="px-2 py-1 bg-blue-600 rounded text-[9px] font-black text-white animate-pulse">T + {simStep}H</span>
@@ -203,20 +204,20 @@ export const CrisisMap = ({ filters = {} }) => {
               onClick={() => { setSimMode(simMode === 'no_action' ? 'idle' : 'no_action'); setSimStep(0); }}
               className={`p-3 rounded-2xl text-[9px] font-black uppercase border transition-all duration-300 ${simMode === 'no_action' ? 'bg-red-600 border-red-500 text-white shadow-lg' : 'bg-slate-800/50 border-white/5 text-slate-500 hover:text-white'}`}
             >
-              Worst Case
+              {t('simulator.worstCase')}
             </button>
             <button 
               onClick={() => { setSimMode(simMode === 'intervention' ? 'idle' : 'intervention'); setSimStep(0); }}
               className={`p-3 rounded-2xl text-[9px] font-black uppercase border transition-all duration-300 ${simMode === 'intervention' ? 'bg-green-600 border-green-500 text-white shadow-lg' : 'bg-slate-800/50 border-white/5 text-slate-500 hover:text-white'}`}
             >
-              Stability
+              {t('simulator.stability')}
             </button>
           </div>
           
           {simMode !== 'idle' && (
             <div className="space-y-2">
                <div className="flex justify-between text-[8px] font-bold text-slate-500 uppercase">
-                  <span>Propagation</span>
+                  <span>{t('simulator.propagation')}</span>
                   <span>{Math.round((simStep / 6) * 100)}%</span>
                </div>
                <div className="h-1 bg-slate-800 rounded-full overflow-hidden">
@@ -273,15 +274,24 @@ export const CrisisMap = ({ filters = {} }) => {
                   eventHandlers={{ click: () => setFocusPoint([r.latitude, r.longitude]) }}
                 >
                   <Popup className="tactical-popup">
-                    <div className="p-2 min-w-[160px]">
+                    <div className="p-2 min-w-[200px]">
+                      {(r.image_url || r.image_path) && (
+                        <div className="h-32 mb-3 rounded-lg overflow-hidden border border-slate-200">
+                           <img 
+                             src={r.image_url || `${import.meta.env.VITE_API_URL || 'http://localhost:8000/api/v1'}/uploads/${r.image_path}`} 
+                             className="w-full h-full object-cover" 
+                             alt="Field Evidence" 
+                           />
+                        </div>
+                      )}
                       <div className="flex items-center gap-2 mb-2">
                         <AlertTriangle className={`w-4 h-4 ${r.damage_level === 'total' ? 'text-red-500' : 'text-amber-500'}`} />
-                        <span className="text-[10px] font-black uppercase tracking-widest">{r.crisis_type}</span>
+                        <span className="text-[10px] font-black uppercase tracking-widest">{t(`field.types.${r.crisis_type}`)}</span>
                       </div>
                       <p className="text-[11px] font-bold text-slate-800 mb-2">{r.title}</p>
                       <div className="h-px bg-slate-200 my-2" />
                       <div className="flex justify-between items-center text-[9px]">
-                        <span className="text-slate-500 font-bold">FUSION SCORE</span>
+                        <span className="text-slate-500 font-bold uppercase">{t('command.fusionScore')}</span>
                         <span className="font-black text-blue-600">{Math.round((r.confidence_score || 0.5) * 100)}%</span>
                       </div>
                     </div>
@@ -340,7 +350,7 @@ export const CrisisMap = ({ filters = {} }) => {
                  </div>
                ))}
             </div>
-            <span className="text-[9px] font-black text-white uppercase tracking-widest">Active Units</span>
+            <span className="text-[9px] font-black text-white uppercase tracking-widest">{t('command.activeUnits')}</span>
          </div>
       </div>
     </div>

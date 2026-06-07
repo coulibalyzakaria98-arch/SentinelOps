@@ -23,6 +23,7 @@ class ReportInDB(ReportBase):
     id: UUID
     version: int
     image_path: Optional[str] = None
+    image_url: Optional[str] = None
     image_hash: Optional[str] = None
     confidence_score: float
     created_at: datetime

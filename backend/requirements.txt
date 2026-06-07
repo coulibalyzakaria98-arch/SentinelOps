@@ -16,3 +16,4 @@ httpx==0.25.1
 pillow==11.1.0
 geoalchemy2==0.14.1
 cloudinary==1.36.0
+

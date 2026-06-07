@@ -80,6 +80,7 @@ def list_reports(skip: int = 0, limit: int = 100, db: Session = Depends(get_db))
                 "longitude": float(lon) if lon is not None else 0.0,
                 "confidence_score": float(r.confidence_score or 0.0),
                 "image_path": r.image_path,
+                "image_url": r.image_url,
                 "created_at": r.created_at.isoformat() if r.created_at else None,
                 "version": r.version or 1,
                 "priority_explanation": scoring_service.get_explanation(r, mock_duplicates_count)

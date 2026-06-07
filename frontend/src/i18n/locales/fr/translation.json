@@ -29,7 +29,9 @@
     "sector": "Secteur Alpha • SentinelOps",
     "active": "Actif",
     "sync": "Synchronisation",
-    "lastSync": "Dernière synchronisation"
+    "lastSync": "Dernière synchronisation",
+    "live": "En direct",
+    "stable": "Stable"
   },
   "buttons": {
     "submit": "Transmettre",
@@ -46,15 +48,18 @@
     "retry": "Réessayer",
     "sos": "LANCER L'ALERTE SOS",
     "capture": "Capturer",
-    "retake": "Reprendre"
+    "retake": "Reprendre",
+    "close": "Fermer"
   },
   "field": {
     "title": "SentinelOps FIELD",
     "severity_level": "Niveau de Gravité",
     "severity": {
+      "title": "NIVEAU DE GRAVITÉ",
       "minimal": "MINIME",
       "partial": "PARTIEL",
-      "critical": "CRITIQUE"
+      "critical": "CRITIQUE",
+      "total": "TOTAL"
     },
     "classification": "CLASSIFICATION",
     "types": {
@@ -62,7 +67,9 @@
       "fire": "Incendie",
       "earthquake": "Tremblement de terre",
       "cyclone": "Cyclone",
-      "conflict": "Conflit"
+      "conflict": "Conflit",
+      "infrastructure": "Infrastructure",
+      "other": "Autre"
     },
     "gps": "GPS",
     "gps_fixing": "Localisation GPS...",
@@ -81,7 +88,10 @@
       "intel": "Détails de l'incident..."
     },
     "sos_signal": "SIGNAL SOS",
-    "sos_confirm": "Lancer l'alerte SOS immédiate ?"
+    "sos_confirm": "Lancer l'alerte SOS immédiate ?",
+    "accuracy": "Précision",
+    "reports_sent": "Rapports envoyés",
+    "pending_sync": "En attente"
   },
   "command": {
     "title": "Centre de commandement",
@@ -105,7 +115,8 @@
     "info": "INFORMATION",
     "deployment": "Déploiement recommandé",
     "propagationWarning": "Risque de propagation",
-    "action": "Action requise"
+    "action": "Action requise",
+    "noAlerts": "Aucune alerte prioritaire"
   },
   "filters": {
     "global": "Tout",
@@ -128,7 +139,9 @@
     "recommendation": "Recommandation",
     "confidence": "Confiance",
     "deployUnit": "Déploiement immédiat de deux unités de confinement vers le périmètre Nord.",
-    "analysis_demo": "Augmentation anormale des signaux thermiques détectée dans le Secteur Delta. Risque de propagation vers les zones résidentielles estimé à 74%."
+    "analysis_demo": "Augmentation anormale des signaux thermiques détectée dans le Secteur Delta. Risque de propagation vers les zones résidentielles estimé à 74%.",
+    "securePerimeter": "Sécuriser le périmètre",
+    "details": "Détails"
   },
   "analytics": {
     "title": "Centre d'analyse",
