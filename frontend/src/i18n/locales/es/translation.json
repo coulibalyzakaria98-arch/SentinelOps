@@ -14,7 +14,8 @@
     "settings": "Configuración",
     "system": "Sistema",
     "logout": "Salir",
-    "admin": "Administrador del sistema"
+    "admin": "Administrador del sistema",
+    "navigation": "Navegación"
   },
   "status": {
     "system": "Estado del Sistema",
@@ -30,7 +31,8 @@
     "dataLink": "Enlace de Datos",
     "stable": "Estable",
     "active": "Activo",
-    "online_msg": "Sistema operativo"
+    "online_msg": "Sistema operativo",
+    "statusLabel": "Estado"
   },
   "buttons": {
     "submit": "Enviar",
@@ -199,5 +201,24 @@
     "hours": "horas",
     "day": "día",
     "days": "días"
+  },
+  "landing": {
+    "accessProtocol": "SELECCIONA TU PROTOCOLO DE ACCESO",
+    "fieldDescription": "Transmisión de inteligencia de campo y reportes multimedia.",
+    "commandDescription": "Vigilancia en tiempo real y coordinación táctica.",
+    "accessAction": "Acceder →",
+    "features": {
+      "photo": "Foto",
+      "gps": "GPS",
+      "offline": "Fuera de línea",
+      "map": "Mapa",
+      "kpis": "KPIs",
+      "units": "Unidades"
+    },
+    "footer": {
+      "fusionActive": "Fusión Sentinel activa",
+      "secureLink": "Enlace seguro",
+      "strategicWatch": "Vigilancia estratégica"
+    }
   }
 }

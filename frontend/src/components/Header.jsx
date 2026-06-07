@@ -43,7 +43,7 @@ const Header = ({ isCrisisAlert, onToggleSidebar }) => {
           <div className="flex items-center gap-2">
             <div className="w-2 h-6 bg-[#1F77D2] rounded-full" />
             <h1 className="text-xl font-black uppercase tracking-tighter text-white">
-              Sentinel<span className="text-[#1F77D2]">Ops</span>
+              {t('app.name')} <span className="text-[#1F77D2]">{t('app.title')}</span>
             </h1>
           </div>
           

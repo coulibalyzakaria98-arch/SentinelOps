@@ -12,18 +12,27 @@ import {
   LogOut
 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
+import { useTranslation } from '../hooks/useTranslation';
 
 const Sidebar = ({ isOpen, setIsOpen }) => {
   const { user, logout } = useAuth();
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
 
+  const roleLabels = {
+    field: t('nav.field'),
+    command: t('nav.command'),
+    analyst: t('nav.analytics'),
+    admin: t('nav.admin')
+  };
+
   const navItems = [
-    { id: 'dashboard', path: '/dashboard', label: 'Dashboard', icon: <LayoutGrid size={20} />, roles: ['admin', 'command', 'analyst', 'user'] },
-    { id: 'map', path: '/map', label: 'Carte Tactique', icon: <MapIcon size={20} />, roles: ['admin', 'command', 'user'] },
-    { id: 'intel', path: '/intel', label: 'Intelligence', icon: <FileText size={20} />, roles: ['admin', 'command', 'analyst'] },
-    { id: 'analytics', path: '/analytics', label: 'Analytique', icon: <BarChart3 size={20} />, roles: ['admin', 'analyst'] },
-    { id: 'settings', path: '/settings', label: 'Système', icon: <Settings size={20} />, roles: ['admin'] },
+    { id: 'dashboard', path: '/dashboard', label: t('nav.dashboard'), icon: <LayoutGrid size={20} />, roles: ['admin', 'command', 'analyst', 'user'] },
+    { id: 'map', path: '/map', label: t('nav.map'), icon: <MapIcon size={20} />, roles: ['admin', 'command', 'user'] },
+    { id: 'intel', path: '/intel', label: t('nav.intelligence'), icon: <FileText size={20} />, roles: ['admin', 'command', 'analyst'] },
+    { id: 'analytics', path: '/analytics', label: t('nav.analytics'), icon: <BarChart3 size={20} />, roles: ['admin', 'analyst'] },
+    { id: 'settings', path: '/settings', label: t('nav.settings'), icon: <Settings size={20} />, roles: ['admin'] },
   ];
 
   const filteredNavItems = navItems.filter(item => 
@@ -49,8 +58,8 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
               <Shield className="text-white w-5 h-5" />
             </div>
             <div>
-              <h2 className="text-sm font-black uppercase tracking-widest text-white leading-tight">SentinelOps</h2>
-              <p className="text-[10px] font-bold text-blue-400 uppercase tracking-tighter">Ops Center</p>
+              <h2 className="text-sm font-black uppercase tracking-widest text-white leading-tight">{t('app.name')}</h2>
+              <p className="text-[10px] font-bold text-blue-400 uppercase tracking-tighter">{t('app.title')}</p>
             </div>
           </div>
           <button onClick={() => setIsOpen(false)} className="ml-auto p-2 text-slate-400 hover:text-white transition-colors lg:hidden">
@@ -65,15 +74,15 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
               {user?.name?.[0] || 'A'}
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-xs font-black text-white truncate uppercase">{user?.name || 'Agent'}</p>
-              <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">{user?.role || 'User'}</p>
+              <p className="text-xs font-black text-white truncate uppercase">{user?.name || t('nav.admin')}</p>
+              <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">{roleLabels[user?.role] || user?.role || t('nav.field')}</p>
             </div>
           </div>
         </div>
 
         {/* Navigation Menu */}
         <nav className="px-4 flex flex-col gap-1">
-          <p className="px-4 mb-2 text-[10px] font-black text-slate-600 uppercase tracking-[0.2em]">Navigation</p>
+          <p className="px-4 mb-2 text-[10px] font-black text-slate-600 uppercase tracking-[0.2em]">{t('nav.navigation')}</p>
           {filteredNavItems.map((item) => {
             const isActive = location.pathname === item.path;
             return (
@@ -104,8 +113,8 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
            <div className="flex items-center gap-3 mb-4">
               <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
               <div className="flex-1">
-                <p className="text-[9px] font-black text-slate-400 uppercase tracking-[0.15em]">Liaison de données</p>
-                <p className="text-[10px] font-black text-emerald-400 uppercase">Status: Nominal</p>
+                <p className="text-[9px] font-black text-slate-400 uppercase tracking-[0.15em]">{t('status.dataLink')}</p>
+                <p className="text-[10px] font-black text-emerald-400 uppercase">{t('status.statusLabel')}: {t('status.nominal')}</p>
               </div>
               <Activity size={14} className="text-slate-600" />
            </div>
@@ -115,7 +124,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
              className="w-full flex items-center justify-center gap-2 py-3 rounded-xl border border-white/5 text-slate-400 hover:bg-red-500/10 hover:text-red-400 hover:border-red-500/20 transition-all text-xs font-black uppercase tracking-widest"
            >
              <LogOut size={14} />
-             Déconnexion
+             {t('nav.logout')}
            </button>
         </div>
       </aside>

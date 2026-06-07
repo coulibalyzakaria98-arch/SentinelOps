@@ -14,7 +14,8 @@
     "settings": "Settings",
     "system": "System",
     "logout": "Logout",
-    "admin": "System Administrator"
+    "admin": "System Administrator",
+    "navigation": "Navigation"
   },
   "status": {
     "system": "System Status",
@@ -30,7 +31,8 @@
     "dataLink": "Data Link",
     "stable": "Stable",
     "active": "Active",
-    "online_msg": "System operational"
+    "online_msg": "System operational",
+    "statusLabel": "Status"
   },
   "buttons": {
     "submit": "Submit",
@@ -199,5 +201,24 @@
     "hours": "hours",
     "day": "day",
     "days": "days"
+  },
+  "landing": {
+    "accessProtocol": "SELECT YOUR ACCESS PROTOCOL",
+    "fieldDescription": "Field intelligence transmission and multimedia reporting.",
+    "commandDescription": "Real-time surveillance and tactical coordination.",
+    "accessAction": "ACCESS →",
+    "features": {
+      "photo": "Photo",
+      "gps": "GPS",
+      "offline": "Offline",
+      "map": "Map",
+      "kpis": "KPIs",
+      "units": "Units"
+    },
+    "footer": {
+      "fusionActive": "Sentinel Fusion Active",
+      "secureLink": "Secure link",
+      "strategicWatch": "Strategic watch"
+    }
   }
 }

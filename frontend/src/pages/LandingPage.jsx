@@ -1,11 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
+import { useTranslation } from '../hooks/useTranslation';
 import { Shield, User, Satellite, Radio, Eye } from 'lucide-react';
 
 const LandingPage = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
+  const { t } = useTranslation();
 
   const selectRole = (role) => {
     login(role);
@@ -26,10 +28,10 @@ const LandingPage = () => {
             </div>
           </div>
           <h1 className="text-5xl font-black text-white mb-2 tracking-tight">
-            Sentinel<span className="text-[#1F77D2]">Ops</span>
+            {t('app.name')}
           </h1>
-          <p className="text-slate-400 text-sm tracking-wider">CENTRE D'OPÉRATIONS TACTIQUE</p>
-          <p className="text-slate-500 text-xs mt-2">SÉLECTIONNEZ VOTRE PROTOCOLE D'ACCÈS</p>
+          <p className="text-slate-400 text-sm tracking-wider">{t('app.title')}</p>
+          <p className="text-slate-500 text-xs mt-2">{t('landing.accessProtocol')}</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
@@ -40,17 +42,17 @@ const LandingPage = () => {
             <div className="absolute top-4 right-4 w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center">
               <User className="w-6 h-6 text-green-400" />
             </div>
-            <h2 className="text-2xl font-bold text-white mb-2">AGENT DE TERRAIN</h2>
+            <h2 className="text-2xl font-bold text-white mb-2">{t('nav.field')}</h2>
             <p className="text-slate-400 text-sm mb-4">
-              Transmission d'intelligence et rapports multimédias.
+              {t('landing.fieldDescription')}
             </p>
             <div className="flex items-center gap-4 text-xs text-slate-500">
-              <span className="flex items-center gap-1">📸 Photo</span>
-              <span className="flex items-center gap-1">📍 GPS</span>
-              <span className="flex items-center gap-1">📡 Hors ligne</span>
+              <span className="flex items-center gap-1">📸 {t('landing.features.photo')}</span>
+              <span className="flex items-center gap-1">📍 {t('landing.features.gps')}</span>
+              <span className="flex items-center gap-1">📡 {t('landing.features.offline')}</span>
             </div>
             <div className="mt-4 text-[#1F77D2] text-sm font-medium opacity-0 group-hover:opacity-100 transition">
-              Accéder →
+              {t('landing.accessAction')}
             </div>
           </button>
 
@@ -61,26 +63,26 @@ const LandingPage = () => {
             <div className="absolute top-4 right-4 w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center">
               <Shield className="w-6 h-6 text-blue-400" />
             </div>
-            <h2 className="text-2xl font-bold text-white mb-2">CENTRE DE COMMANDEMENT</h2>
+            <h2 className="text-2xl font-bold text-white mb-2">{t('nav.command')}</h2>
             <p className="text-slate-400 text-sm mb-4">
-              Surveillance temps réel et coordination tactique.
+              {t('landing.commandDescription')}
             </p>
             <div className="flex items-center gap-4 text-xs text-slate-500">
-              <span className="flex items-center gap-1">🗺️ Carte</span>
-              <span className="flex items-center gap-1">📊 KPIs</span>
-              <span className="flex items-center gap-1">🚁 Unités</span>
+              <span className="flex items-center gap-1">🗺️ {t('landing.features.map')}</span>
+              <span className="flex items-center gap-1">📊 {t('landing.features.kpis')}</span>
+              <span className="flex items-center gap-1">🚁 {t('landing.features.units')}</span>
             </div>
             <div className="mt-4 text-[#1F77D2] text-sm font-medium opacity-0 group-hover:opacity-100 transition">
-              Accéder →
+              {t('landing.accessAction')}
             </div>
           </button>
         </div>
 
         <div className="text-center mt-8">
           <div className="flex justify-center gap-6 text-slate-600 text-xs">
-            <span className="flex items-center gap-1"><Radio size={10} /> Sentinel Fusion Active</span>
-            <span className="flex items-center gap-1"><Satellite size={10} /> Lien sécurisé</span>
-            <span className="flex items-center gap-1"><Eye size={10} /> Veille stratégique</span>
+            <span className="flex items-center gap-1"><Radio size={10} /> {t('landing.footer.fusionActive')}</span>
+            <span className="flex items-center gap-1"><Satellite size={10} /> {t('landing.footer.secureLink')}</span>
+            <span className="flex items-center gap-1"><Eye size={10} /> {t('landing.footer.strategicWatch')}</span>
           </div>
         </div>
       </div>

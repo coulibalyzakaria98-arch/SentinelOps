@@ -14,7 +14,8 @@
     "settings": "设置",
     "system": "系统",
     "logout": "退出",
-    "admin": "系统管理员"
+    "admin": "系统管理员",
+    "navigation": "导航"
   },
   "status": {
     "system": "系统状态",
@@ -30,7 +31,8 @@
     "dataLink": "数据链接",
     "stable": "稳定",
     "active": "活跃",
-    "online_msg": "系统运行中"
+    "online_msg": "系统运行中",
+    "statusLabel": "状态"
   },
   "buttons": {
     "submit": "提交",
@@ -199,5 +201,24 @@
     "hours": "小时",
     "day": "天",
     "days": "天"
+  },
+  "landing": {
+    "accessProtocol": "选择您的访问协议",
+    "fieldDescription": "现场情报传输和多媒体报告。",
+    "commandDescription": "实时监控和战术协调。",
+    "accessAction": "访问 →",
+    "features": {
+      "photo": "照片",
+      "gps": "GPS",
+      "offline": "离线",
+      "map": "地图",
+      "kpis": "KPIs",
+      "units": "单位"
+    },
+    "footer": {
+      "fusionActive": "Sentinel 融合激活",
+      "secureLink": "安全链接",
+      "strategicWatch": "战略监控"
+    }
   }
 }

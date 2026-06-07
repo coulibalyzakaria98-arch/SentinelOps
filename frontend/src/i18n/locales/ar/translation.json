@@ -14,7 +14,8 @@
     "settings": "الإعدادات",
     "system": "النظام",
     "logout": "تسجيل الخروج",
-    "admin": "مدير النظام"
+    "admin": "مدير النظام",
+    "navigation": "التنقل"
   },
   "status": {
     "system": "حالة النظام",
@@ -30,7 +31,8 @@
     "dataLink": "ربط البيانات",
     "stable": "مستقر",
     "active": "نشط",
-    "online_msg": "النظام يعمل"
+    "online_msg": "النظام يعمل",
+    "statusLabel": "الحالة"
   },
   "buttons": {
     "submit": "إرسال",
@@ -199,5 +201,24 @@
     "hours": "ساعات",
     "day": "يوم",
     "days": "أيام"
+  },
+  "landing": {
+    "accessProtocol": "اختر بروتوكول الوصول الخاص بك",
+    "fieldDescription": "نقل معلومات ميدانية وتقارير وسائط متعددة.",
+    "commandDescription": "المراقبة في الوقت الفعلي والتنسيق التكتيكي.",
+    "accessAction": "الوصول →",
+    "features": {
+      "photo": "الصورة",
+      "gps": "GPS",
+      "offline": "غير متصل",
+      "map": "الخريطة",
+      "kpis": "مؤشرات الأداء الرئيسية",
+      "units": "الوحدات"
+    },
+    "footer": {
+      "fusionActive": "دمج Sentinel نشط",
+      "secureLink": "رابط آمن",
+      "strategicWatch": "مراقبة استراتيجية"
+    }
   }
 }

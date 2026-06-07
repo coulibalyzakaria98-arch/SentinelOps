@@ -14,7 +14,8 @@
     "settings": "Paramètres",
     "system": "Système",
     "logout": "Déconnexion",
-    "admin": "Administrateur système"
+    "admin": "Administrateur système",
+    "navigation": "Navigation"
   },
   "status": {
     "system": "État du système",
@@ -30,7 +31,8 @@
     "dataLink": "Liaison de données",
     "stable": "Stable",
     "active": "Actif",
-    "online_msg": "Système opérationnel"
+    "online_msg": "Système opérationnel",
+    "statusLabel": "État"
   },
   "buttons": {
     "submit": "Transmettre",
@@ -199,5 +201,24 @@
     "hours": "heures",
     "day": "jour",
     "days": "jours"
+  },
+  "landing": {
+    "accessProtocol": "SÉLECTIONNEZ VOTRE PROTOCOLE D'ACCÈS",
+    "fieldDescription": "Transmission d'intelligence de terrain et rapports multimédias.",
+    "commandDescription": "Surveillance en temps réel et coordination tactique.",
+    "accessAction": "Accéder →",
+    "features": {
+      "photo": "Photo",
+      "gps": "GPS",
+      "offline": "Hors ligne",
+      "map": "Carte",
+      "kpis": "KPIs",
+      "units": "Unités"
+    },
+    "footer": {
+      "fusionActive": "Sentinel Fusion actif",
+      "secureLink": "Lien sécurisé",
+      "strategicWatch": "Veille stratégique"
+    }
   }
 }
