@@ -7,6 +7,7 @@ import { reportApi } from '../../services/api';
 import { offlineStorage } from '../../services/offlineStorage';
 import { useIntelligenceWS } from '../../hooks/useIntelligenceWS';
 import { AlertTriangle, Shield, Zap, Satellite, Activity } from 'lucide-react';
+import { useTranslation } from '../../hooks/useTranslation';
 
 const { BaseLayer, Overlay } = LayersControl;
 

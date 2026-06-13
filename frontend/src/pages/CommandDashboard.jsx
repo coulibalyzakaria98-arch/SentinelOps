@@ -10,7 +10,18 @@ import {
 } from 'lucide-react';
 
 const CommandDashboard = () => {
-  const { t, i18n } = useTranslation();
+  // Fallback if useTranslation fails
+  let t = (key) => key;
+  let i18n = { language: 'fr', changeLanguage: () => {} };
+  
+  try {
+    const translation = useTranslation();
+    t = translation.t;
+    i18n = translation.i18n;
+  } catch (error) {
+    console.warn('i18n not loaded, using fallback');
+  }
+
   const navigate = useNavigate();
   const [collapsed, setCollapsed] = useState(false);
   const [activeFilter, setActiveFilter] = useState('all');
