@@ -8,7 +8,9 @@ from .core.ws import manager
 app = FastAPI(
     title="SentinelOps API",
     description="API pour le système de veille stratégique",
-    version="1.0.0"
+    version="1.0.0",
+    docs_url="/docs",      # Swagger UI → https://sentinelops-api.onrender.com/docs
+    redoc_url="/redoc"    # ReDoc UI  → https://sentinelops-api.onrender.com/redoc
 )
 
 # Store manager in app state for access in routes
@@ -60,6 +62,11 @@ def get_form_schema():
 @app.get("/")
 async def root():
     return {"message": "SentinelOps API", "version": "1.0.0", "status": "operational"}
+
+@app.get("/health")
+async def health_root():
+    """Root-level health check – utilisé par Render et curl pour vérifier le statut."""
+    return {"status": "ok", "service": "SentinelOps API", "version": "1.0.0"}
 
 if __name__ == "__main__":
     import uvicorn
